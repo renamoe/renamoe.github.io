@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/avatar.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="有 A,B 两种金券，它们每天的价值都不同，在第 i 天时分别为 \(A_i,B_i\)，你可以用手中的金券换取相应价值的钱，或用钱兑换相同价值的金券，但兑换到的两种金券的数量之比是一个定值，这个定值在第 i 天为 \(R_i\)。 现给出 n 天中两种金券的价值，R，以及你初始时拥有的资金 S，求 n 天后你最多能有多少钱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="题解 P4027 [NOI2007]货币兑换">
+<meta property="og:url" content="http://example.com/2020/08/05/2020-08-05-%E9%A2%98%E8%A7%A3-P4027-[NOI2007]%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="有 A,B 两种金券，它们每天的价值都不同，在第 i 天时分别为 \(A_i,B_i\)，你可以用手中的金券换取相应价值的钱，或用钱兑换相同价值的金券，但兑换到的两种金券的数量之比是一个定值，这个定值在第 i 天为 \(R_i\)。 现给出 n 天中两种金券的价值，R，以及你初始时拥有的资金 S，求 n 天后你最多能有多少钱。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-05T02:03:08.000Z">
+<meta property="article:author" content="RenaMoe">
+<meta property="article:tag" content="CDQ分治">
+<meta property="article:tag" content="斜率优化">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/08/05/2020-08-05-%E9%A2%98%E8%A7%A3-P4027-[NOI2007]%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>题解 P4027 [NOI2007]货币兑换 | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">提高效率qwq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/05/2020-08-05-%E9%A2%98%E8%A7%A3-P4027-[NOI2007]%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          题解 P4027 [NOI2007]货币兑换
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-05 08:00:00 / 修改时间：10:03:08" itemprop="dateCreated datePublished" datetime="2020-08-05T08:00:00+08:00">2020-08-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DP/" itemprop="url" rel="index"><span itemprop="name">DP</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/08/05/2020-08-05-%E9%A2%98%E8%A7%A3-P4027-%5BNOI2007%5D%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/05/2020-08-05-%E9%A2%98%E8%A7%A3-P4027-%5BNOI2007%5D%E8%B4%A7%E5%B8%81%E5%85%91%E6%8D%A2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>有 A,B 两种金券，它们每天的价值都不同，在第 i 天时分别为 <span class="math inline">\(A_i,B_i\)</span>，你可以用手中的金券换取相应价值的钱，或用钱兑换相同价值的金券，但兑换到的两种金券的数量之比是一个定值，这个定值在第 i 天为 <span class="math inline">\(R_i\)</span>。</p>
+<p>现给出 n 天中两种金券的价值，R，以及你初始时拥有的资金 S，求 n 天后你最多能有多少钱。</p>
+</blockquote>
+<a id="more"></a>
+<p>我来做经典的CDQ维护凸包了qwq。</p>
+<h2 id="思路">思路</h2>
+<h3 id="dp">DP</h3>
+<p>如果第 i 天卖出相对于第 j 天买入有利可图，那么肯定全部卖出。</p>
+<p>考虑 DP，我们可以推出转移方程： <span class="math display">\[
+f_i=\frac{f_jR_j}{A_jR_j+B_j}\times A_i + \frac{f_j}{A_jR_j+B_j}\times B_i
+\]</span> 我们设 A,B 券分别买入的数量为 <span class="math inline">\(x_i=\frac{f_iR_i}{A_iR_i+B_i},y_i=\frac{f_i}{A_iR_i+B_i}\)</span> 。</p>
+<p>得到：</p>
+<p><span class="math display">\[
+f_i=A_ix_j + B_iy_j\\
+y_j=-\frac{A_i}{B_i}x_j+\frac{f_i}{B_j}
+\]</span></p>
+<p>啊这是个斜率优化欸，维护上凸包使得直线的 <span class="math inline">\(b=\frac{f_i}{B_j}\)</span> 最大。</p>
+<p><del>我上来就单调队列线性时间内干过去。。。啊怎么不太对</del>。</p>
+<p>发现斜率 <span class="math inline">\(-\frac{A_i}{B_i}\)</span> 不是单调的，需要手写平衡树维护凸包什么的。</p>
+<p>这辈子不可能写这种东西的，虽然 cmd2001 学长有博客讲用 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cmd2001/p/8492492.html">STL set 维护动态凸包</a>。</p>
+<p>于是我们来学习 CDQ 维护斜率优化凸包。</p>
+<h3 id="cdq-维护斜率优化的凸包">CDQ 维护斜率优化的凸包</h3>
+<p>CDQ 分治的话，要每次计算左半边对右半边的贡献。</p>
+<p>可以让左区间按 <span class="math inline">\(x_i\)</span> 排序，保持右区间按斜率 <span class="math inline">\(k_i=\frac{A_i}{B_i}\)</span> 单调递增有序。</p>
+<p>左区间就可以通过栈维护一个斜率单调递减的凸包来更新右区间的答案。</p>
+<p>每一层分治就这么 <span class="math inline">\(O(n)\)</span> 解决，总复杂度 <span class="math inline">\(O(nlogn)\)</span>。</p>
+<h2 id="code">code</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/36384478">提交记录</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> RenaMoe &#123;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> TT&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(TT &amp;x)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Eps = <span class="number">1e-7</span>;<span class="comment">// 注意精度误差</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> INF = <span class="number">1e8</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Ask</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> k, x, y, a, b, r;<span class="comment">// 分别表示：斜率,x,y,A,B,R</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, s;</span><br><span class="line"><span class="keyword">int</span> stk[N];</span><br><span class="line">Ask q[N], tmp[N];</span><br><span class="line"><span class="keyword">double</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Ask &amp;x, <span class="keyword">const</span> Ask &amp;y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x.k &lt; y.k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求斜率</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">get_slope</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">fabs</span>(q[i].x - q[j].x) &lt;= Eps) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">return</span> (q[i].y - q[j].y) / (q[i].x - q[j].x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">        <span class="comment">// 此时1~l-1的答案都已经处理完，更新f[l]</span></span><br><span class="line">        f[l] = max(f[l], f[l<span class="number">-1</span>]);</span><br><span class="line">        q[l].y = f[l] / (q[l].a * q[l].r + q[l].b), q[l].x = q[l].y * q[l].r;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 按id划分左右区间</span></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, q1 = l, q2 = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (q[i].id &lt;= mid) tmp[q1++] = q[i];</span><br><span class="line">        <span class="keyword">else</span> tmp[q2++] = q[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++i) q[i] = tmp[i];</span><br><span class="line">    <span class="comment">// 先处理左区间</span></span><br><span class="line">    solve(l, mid);</span><br><span class="line">    <span class="comment">// 维护左区间斜率单调递减的凸包</span></span><br><span class="line">    <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= mid; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (top &gt;= <span class="number">2</span> &amp;&amp; get_slope(stk[top<span class="number">-1</span>], stk[top]) &lt; get_slope(stk[top], i) + Eps) top--;</span><br><span class="line">        stk[++top] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 用左区间的凸包更新右区间答案</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mid+<span class="number">1</span>; i &lt;= r; ++i) &#123;</span><br><span class="line">        <span class="keyword">while</span> (top &gt;= <span class="number">2</span> &amp;&amp; get_slope(stk[top<span class="number">-1</span>], stk[top]) &lt;= q[i].k + Eps) top--;</span><br><span class="line">        <span class="keyword">int</span> j = stk[top];</span><br><span class="line">        f[q[i].id] = max(f[q[i].id], q[i].a * q[j].x + q[i].b * q[j].y);<span class="comment">// 注意是q[i].id，不是i</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 处理右区间</span></span><br><span class="line">    solve(mid+<span class="number">1</span>, r);</span><br><span class="line">    <span class="comment">// 按x单调递增归并排序，以作为上一层的左区间</span></span><br><span class="line">    q1 = l, q2 = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (q1 &lt;= mid &amp;&amp; (q2 &gt; r || q[q1].x &lt; q[q2].x + Eps)) tmp[i] = q[q1++];</span><br><span class="line">        <span class="keyword">else</span> tmp[i] = q[q2++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++i) q[i] = tmp[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lf%lf%lf&quot;</span>, &amp;q[i].a, &amp;q[i].b, &amp;q[i].r);</span><br><span class="line">        q[i].k = -(q[i].a / q[i].b), q[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(q+<span class="number">1</span>, q+n+<span class="number">1</span>, cmp);<span class="comment">// 先按斜率单调递增排序</span></span><br><span class="line">    f[<span class="number">0</span>] = s;</span><br><span class="line">    solve(<span class="number">1</span>, n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3lf\n&quot;</span>, f[n]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    RenaMoe::main();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CDQ%E5%88%86%E6%B2%BB/" rel="tag"># CDQ分治</a>
+              <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="tag"># 斜率优化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/04/2020-08-04-%E9%A2%98%E8%A7%A3-P3527-POI2011MET-Meteors/" rel="prev" title="题解 P3527 [POI2011]MET-Meteors">
+      <i class="fa fa-chevron-left"></i> 题解 P3527 [POI2011]MET-Meteors
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/09/2020-08-09-%E9%A2%98%E8%A7%A3-P6007-USACO20JANSpringboards-G/" rel="next" title="题解 P6007 [USACO20JAN]Springboards G">
+      题解 P6007 [USACO20JAN]Springboards G <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dp"><span class="nav-number">1.1.</span> <span class="nav-text">DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdq-%E7%BB%B4%E6%8A%A4%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96%E7%9A%84%E5%87%B8%E5%8C%85"><span class="nav-number">1.2.</span> <span class="nav-text">CDQ 维护斜率优化的凸包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.</span> <span class="nav-text">code</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>

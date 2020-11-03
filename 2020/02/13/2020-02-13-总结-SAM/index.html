@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/avatar.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="\(SAM:\ Suffix\ Automaton\) ，后缀自动机 难理解，但代码好写（当初敲完模板题没总结，现在忘光了QAQ） 总体上是 后缀 trie + parent tree ，构成一个可以表示所有子串的 DAG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总结 SAM">
+<meta property="og:url" content="http://example.com/2020/02/13/2020-02-13-%E6%80%BB%E7%BB%93-SAM/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="\(SAM:\ Suffix\ Automaton\) ，后缀自动机 难理解，但代码好写（当初敲完模板题没总结，现在忘光了QAQ） 总体上是 后缀 trie + parent tree ，构成一个可以表示所有子串的 DAG">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://true-banana.github.io/img/001.png">
+<meta property="og:image" content="https://true-banana.github.io/img/002.png">
+<meta property="article:published_time" content="2020-02-13T10:48:18.000Z">
+<meta property="article:modified_time" content="2020-08-07T06:53:26.000Z">
+<meta property="article:author" content="RenaMoe">
+<meta property="article:tag" content="SAM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://true-banana.github.io/img/001.png">
+
+<link rel="canonical" href="http://example.com/2020/02/13/2020-02-13-%E6%80%BB%E7%BB%93-SAM/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>总结 SAM | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">提高效率qwq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/13/2020-02-13-%E6%80%BB%E7%BB%93-SAM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          总结 SAM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-13 18:48:18" itemprop="dateCreated datePublished" datetime="2020-02-13T18:48:18+08:00">2020-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-07 14:53:26" itemprop="dateModified" datetime="2020-08-07T14:53:26+08:00">2020-08-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/13/2020-02-13-%E6%80%BB%E7%BB%93-SAM/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/13/2020-02-13-%E6%80%BB%E7%BB%93-SAM/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span class="math inline">\(SAM:\ Suffix\ Automaton\)</span> ，后缀自动机</p>
+<p>难理解，但代码好写（当初敲完模板题没总结，现在忘光了QAQ）</p>
+<p>总体上是 <strong>后缀 trie + parent tree</strong> ，构成一个可以表示所有子串的 DAG</p>
+<a id="more"></a>
+<p>福利：<a target="_blank" rel="noopener" href="http://yeah.moe/p/a8e74947/">后缀自动机可视化</a></p>
+<p>推荐博客：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Kesdiael3/hou-zhui-zi-dong-ji-yang-xie">KesdiaelKen 的博客</a>（我就是看这博客学会的）</li>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/ShadowassIIXVIIIIV/solution-p3804">shadowice1984 的博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xzyxzy/p/9186759.html">xzyxzy 的博客</a></li>
+</ul>
+<p>这博客主要是我总结自己不好理解的地方，不是很全面</p>
+<hr />
+<blockquote>
+<p>声明：本文中图片大部分为 BANANA 从他人博客<del>盗来的</del>借鉴的，一些语言表达借鉴于 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/Kesdiael3/hou-zhui-zi-dong-ji-yang-xie">KesdiaelKen 的博客</a> ，若有侵权请 <a href="mailto:true-banana@outlook.com">联系BANANA</a> 删除</p>
+</blockquote>
+<h2 id="思路">思路</h2>
+<h3 id="前置">前置</h3>
+<p>先了解几个概念：</p>
+<p><strong>后缀 trie </strong>：把字符串的每一个后缀插入到 trie 树里</p>
+<p>一个普通的后缀 trie ，有很大部分节点是可以压缩的</p>
+<p><img src="https://true-banana.github.io/img/001.png" /></p>
+<p><strong>endpos 集合</strong> ：一个子串在原串出现的位置（可能出现多次）的右端点集合</p>
+<blockquote>
+<p>比如一个串“banana”</p>
+<p><span class="math inline">\(endpos(b)=\{1\},\ endpos(a)=\{2,4,6\}\)</span></p>
+<p><span class="math inline">\(endpos(an)=\{3,5\},\ endpos(ana)=\{4,6\}\)</span></p>
+</blockquote>
+<p><strong>parent tree</strong> ：一个子串前面添加一个或几个字符，可以将他的 endpos 集合<strong>分割</strong>，endpos 集合之间便有了父子关系</p>
+<p><img src="https://true-banana.github.io/img/002.png" /></p>
+<p>parent tree 上每一个节点表示的 endpos 集合唯一地表示一个后缀集合</p>
+<p><del>不好举例，自己手模吧</del></p>
+<h3 id="构造">构造</h3>
+<p><em>将后缀 trie 和 parent tree 结合起来便是 SAM 的 DAG</em></p>
+<p><strong>那么一条路径表示原串的一个子串，一个节点 x 表示根节点到 x 路径形成的所有串的 endpos 集合</strong></p>
+<p>SAM 常见的增量构造：将字符串从前到后一个一个字符插进去（离线构造窝不会）</p>
+<p>先确定一些量：</p>
+<ul>
+<li><p><span class="math inline">\(fa[x]\)</span> ：x 节点表示的集合在 parent tree 上的父亲</p></li>
+<li><p><span class="math inline">\(len[x]\)</span> ：x 节点表示的集合中<strong>最长</strong>的串的长度</p>
+<p>如果设最短的串长为 <span class="math inline">\(minlen[x]\)</span> ，那么 <span class="math inline">\(len[fa[x]]+1=minlen[x]\)</span> ，即 parent tree 上的分割关系</p></li>
+</ul>
+<p>我们考虑从后面插入一个字符 c，会有什么变化：</p>
+<ul>
+<li>多出新串的后缀</li>
+<li>新串后缀的 endpos 集合改变</li>
+</ul>
+<p>那么在 trie 的意义上要把旧串所有后缀的后面加上字符 c</p>
+<p>在 SAM 上实现就是先新建节点 np</p>
+<p>然后把最后一个节点 p、它在 parent tree 的父亲以及祖先的 c 儿子设为该节点（<strong>相当于压缩地遍历旧串的所有后缀</strong>）</p>
+<p>并且 <span class="math inline">\(len[np]=len[p]+1\)</span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> p = last, np = last = ++cnt;</span><br><span class="line">len[np] = len[p] + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (p &amp;&amp; !ch[p][c])</span><br><span class="line">    ch[p][c] = np, p = fa[p];</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li><p>如果这些祖先都没有 c 儿子，到达最高的祖先就是根节点</p>
+<p>说明字符 c 是一个新字符，parent tree 上根节点多一个儿子：只有位置 c 的 endpos 集合</p></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!p) fa[np] = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li><p>那么如果有一个祖先 p 已经有了 c 儿子，设它为 q</p>
+<p>说明旧串有子串的结尾是 c 字符，那么就要看这个 q 的 len 了</p>
+<ul>
+<li><p><span class="math inline">\(len[q]=len[p]+1\)</span></p>
+<p>说明 q 在插入时 p 就是最后一个节点了</p>
+<p>那么根到 q 点表示的子串都是根到 np 表示的子串的后缀</p>
+<p>在 parent tree 上，q 是 np 的父亲</p></li>
+<li><p><span class="math inline">\(len[q]&gt;len[p]+1\)</span></p>
+<p>在 parent tree 上，q 和 np 是兄弟</p>
+<p>那么就新建一个 nq （复制一份 q ）作为它俩的父亲</p>
+<p>将之前 p 及其祖先指向 q 的 c 儿子全指向 nq 即可</p></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> q = ch[p][c];</span><br><span class="line"><span class="keyword">if</span> (len[q] == len[p] + <span class="number">1</span>)</span><br><span class="line">    fa[np] = q;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> nq = ++cnt;</span><br><span class="line">    <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">    len[nq] = len[p] + <span class="number">1</span>;</span><br><span class="line">    fa[nq] = fa[q], fa[q] = fa[np] = nq;</span><br><span class="line">    <span class="keyword">while</span> (p &amp;&amp; ch[p][c] == q)</span><br><span class="line">        ch[p][c] = nq, p = fa[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="code">code</h2>
+<p>完整构造代码，看起来一堆 while 却是<span class="math inline">\(O(n)\)</span></p>
+<p>注意点数是 2n 规模</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Suffix_Automaton</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> cnt, last;</span><br><span class="line">    <span class="keyword">int</span> fa[N&lt;&lt;<span class="number">1</span>], ch[N&lt;&lt;<span class="number">1</span>][<span class="number">30</span>], len[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="title">Suffix_Automaton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        last = cnt = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = last, np = last = ++cnt;</span><br><span class="line">        len[np] = len[p] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; !ch[p][c])</span><br><span class="line">            ch[p][c] = np, p = fa[p];</span><br><span class="line">        <span class="keyword">if</span> (!p) fa[np] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[q] == len[p] + <span class="number">1</span>)</span><br><span class="line">                fa[np] = q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++cnt;</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>;</span><br><span class="line">                fa[nq] = fa[q], fa[q] = fa[np] = nq;</span><br><span class="line">                <span class="keyword">while</span> (p &amp;&amp; ch[p][c] == q)</span><br><span class="line">                    ch[p][c] = nq, p = fa[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; SAM;</span><br></pre></td></tr></table></figure>
+<h2 id="应用">应用</h2>
+<ul>
+<li><p>判断子串</p>
+<p>直接在 SAM 上跑，跑完没到 NULL 即为子串</p></li>
+<li><p>求不同子串个数</p>
+<p>设 <span class="math inline">\(f[i]\)</span> 为从 i 点出发的子串， <span class="math inline">\(f[i]=\sum_{(i,j)\in Edge}{f[j]+1}\)</span></p>
+<p>好像还可以直接求 <span class="math inline">\(\sum{(len[i]-len[fa[i]])}\)</span> ，因为 SAM上无重复子串</p></li>
+<li><p>待更~</p></li>
+</ul>
+<h2 id="题目">题目</h2>
+<p>BANANA 由于过菜，还不会写几道题~</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3804">P3804 【模板】后缀自动机 (SAM)</a></li>
+</ul>
+<blockquote>
+<p>求出 <em>S</em> 的所有出现次数不为 1 的子串的出现次数乘上该子串长度的最大值</p>
+</blockquote>
+<p>一个子串的出现次数即在 parent tree 上该子树的 size</p>
+<p>暴力建出 parent tree，或者拓扑一下 DAG ，统计</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4070">P4070 [SDOI2016]生成魔咒</a></li>
+</ul>
+<blockquote>
+<p>每次向后插入一个字符，并求每次操作后不同子串个数</p>
+</blockquote>
+<p>显然 SAM 应用在求不同子串个数 <span class="math inline">\(\sum{(len[i]-len[fa[i]])}\)</span></p>
+<p>每次只增加一个 len 影响总个数的节点，<code>ans += len[x] - len[fa[x]]</code>，于是每次 <span class="math inline">\(O(1)\)</span> 统计答案</p>
+<p>大坑：“字符”范围 1e9 ，每个节点要用 map 存儿子</p>
+<ul>
+<li>待更~</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SAM/" rel="tag"># SAM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/06/2020-02-06-%E6%80%BB%E7%BB%93-BSGS/" rel="prev" title="总结 BSGS">
+      <i class="fa fa-chevron-left"></i> 总结 BSGS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/13/2020-02-13-%E6%9D%BF%E5%AD%90-SA/" rel="next" title="板子 SA">
+      板子 SA <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">前置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0"><span class="nav-number">1.2.</span> <span class="nav-text">构造</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">2.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">4.</span> <span class="nav-text">题目</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
