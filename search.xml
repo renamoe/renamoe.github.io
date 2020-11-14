@@ -2733,7 +2733,10 @@ H_n=
 <p><a href="https://www.luogu.com.cn/problem/P3354">题目</a></p>
 <p>树形背包 DP。</p>
 <p>设 <span class="math inline">\(f_{u,f,k},g_{u,f,k}\)</span> 表示 u 为根的子树以 f 为关键点、强制 / 不强制 u 为关键点、使用了 k 个关键点的最小花费。</p>
-<p><span class="math display">\[f_{u,f,k}\leftarrow f_{v,f,l}+f{u,f,k-l}\\g_{u,f,k}\leftarrow f_{v,u,l}+g_{u,f,k-l}\]</span></p>
+<p><span class="math display">\[
+\begin{align} f_{u,f,k}&amp;\leftarrow f_{v,f,l}+f_{u,f,k-l}\\
+g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l}\end{align}
+\]</span></p>
 <p>复杂度 <span class="math inline">\(\Theta(n^4)\)</span>。</p>
 <h1 id="section-2">11.3</h1>
 <h2 id="acwing277-饼干">AcWing277 饼干</h2>
@@ -2746,7 +2749,9 @@ H_n=
 <h2 id="p6564-poi2007-堆积木klo">P6564 [POI2007] 堆积木KLO</h2>
 <p><a href="https://www.luogu.com.cn/problem/P6564">题目</a></p>
 <p>CDQ，BIT，LIS 等均可。</p>
-<p><span class="math display">\[i&gt;j,\\ a_i&gt; a_j,\\ a_i-a_j\le i-j\]</span></p>
+<p><span class="math display">\[
+\begin{align}i&amp;&gt;j,\\ a_i&amp;&gt; a_j,\\ a_i-a_j&amp;\le i-j\end{align}
+\]</span></p>
 <p>满足后两个条件时一定满足第一个条件，转化为二维偏序直接上 CDQ。</p>
 <p>因为一个 <span class="math inline">\(&gt;\)</span> 一个 <span class="math inline">\(\ge\)</span>，所以 <span class="math inline">\(i-a_i\)</span> 属性要作第一维。</p>
 <h2 id="p2175-小z的游戏分队">P2175 小Z的游戏分队</h2>
@@ -2770,7 +2775,8 @@ H_n=
 <p>丧心病狂的出题人 <a href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
 <p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
 <p><span class="math display">\[
-\hat{F}*S=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T
+\begin{align}\hat{F}*S&amp;=\sum_{T\subseteq U}(-1)^{|S\cap T|}F_T \\
+F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T\end{align}
 \]</span></p>
 <p>每次只要 <span class="math inline">\(\Theta(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\Theta(n\log_2n)\)</span>。</p>
 <h2 id="p3047-usaco12febnearby-cows-g">P3047 [USACO12FEB]Nearby Cows G</h2>
@@ -2819,7 +2825,10 @@ H_n=
 <p>打表，发现 <span class="math inline">\(a&lt;b\)</span> 时答案是 <span class="math inline">\((a-1)\times b - a\)</span>。</p>
 <p>证明：设无法表示出来的为 x。</p>
 <p><span class="math display">\[
-x\equiv ma\pmod b \quad(1&lt;m&lt;b)\\ x=ma+nb\quad(1&lt;m&lt;b,n&lt;0)
+\begin{align}
+x&amp;\equiv ma\pmod b &amp;(1&lt;m&lt;b)\\
+x&amp;=ma+nb&amp;(1&lt;m&lt;b,n&lt;0)
+\end{align}
 \]</span></p>
 <p>当 x 最大时，<span class="math inline">\(m=b-1,n=-1\)</span>，证毕。</p>
 <h2 id="p5092-usaco04opencube-stacking">P5092 [USACO04OPEN]Cube Stacking</h2>
