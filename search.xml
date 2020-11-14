@@ -2694,4 +2694,163 @@ H_n=
         <tag>最大独立集</tag>
       </tags>
   </entry>
+  <entry>
+    <title>20年11月13日 小测</title>
+    <url>/2020/11/14/20%E5%B9%B411%E6%9C%8813%E6%97%A5%E5%B0%8F%E6%B5%8B/</url>
+    <content><![CDATA[<p>死刚 A 题，30 分。</p>
+<a id="more"></a>
+<h1 id="a">A</h1>
+<p><a href="http://sjzezoj.com:9280/problem/44">题目</a></p>
+<blockquote>
+<p>给出 m 个长度不超过 n 的黑白序列，每次将同色的长度大于 1 的区间换成一个相反颜色的点，求每一列直到到不能操作的最少步数之和。 <span class="math inline">\(n\le 10^4,m\le100\)</span>。</p>
+</blockquote>
+<p>贪心。</p>
+<p>每次操作就是将相邻三个（边界是两个）合并，贪心的想，一定是从中间能消的开始消（尽量每次消除两个区间）。</p>
+<p>如果中间两个可行的区间中间的区间个数超过总数一半，那么答案为中间的区间数。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T, n, len, tot, ans;</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s+<span class="number">1</span>);</span><br><span class="line">        len = <span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">        tot = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == s[i<span class="number">-1</span>]) a[tot]++;</span><br><span class="line">            <span class="keyword">else</span> a[++tot] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] &gt; <span class="number">1</span>) a[i] = <span class="number">1</span>, flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span> a[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!flag) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> l = tot &gt;&gt; <span class="number">1</span>, r = l + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &amp;&amp; !a[l]) l--;</span><br><span class="line">        <span class="keyword">while</span> (r &lt;= tot &amp;&amp; !a[r]) r++;</span><br><span class="line">        <span class="keyword">if</span> (!l) &#123;</span><br><span class="line">            ans += r;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (r &gt; tot) &#123;</span><br><span class="line">            ans += tot - l + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ((r - l) * <span class="number">2</span> &gt;= tot) ans += r - l + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> ans += tot / <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="b">B</h1>
+<p><a href="http://sjzezoj.com:9280/contest/10/problem/45">题目</a></p>
+<blockquote>
+<p>n 个商店 m 个物品，每种物品在每个商店有不同的价值，每个商店有交通费，求买完所有物品的最小费用。 <span class="math inline">\(n\le 100,m\le 16\)</span>。</p>
+</blockquote>
+<p>状压 DP。</p>
+<p>设 <span class="math inline">\(f_{i,S}\)</span> 表示前 i 个商店已购买 S 状态的最小费用。对于每个商店，强制去该商店，更新所有状态，再与不去该商店的状态取 <span class="math inline">\(\min\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">109</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, maxn;</span><br><span class="line"><span class="keyword">int</span> f[M][N], val[M][M], fee[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        read(fee[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++j)</span><br><span class="line">            read(val[i][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    maxn = (<span class="number">1</span> &lt;&lt; m) - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memset</span>(f[<span class="number">0</span>], <span class="number">0x3f</span>, <span class="keyword">sizeof</span> f[<span class="number">0</span>]);</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxn; ++j) &#123;</span><br><span class="line">            f[i][j] = f[i<span class="number">-1</span>][j] + fee[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxn; ++j) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= m; ++k) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((j &amp; (<span class="number">1</span> &lt;&lt; (k - <span class="number">1</span>))) == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                f[i][j] = min(f[i][j], f[i][j ^ (<span class="number">1</span> &lt;&lt; (k - <span class="number">1</span>))] + val[i][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxn; ++j) &#123;</span><br><span class="line">            f[i][j] = min(f[i][j], f[i<span class="number">-1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, f[n][maxn]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>模拟赛</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>20年11月 刷题记录</title>
+    <url>/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>做题好慢啊。</p>
+<a id="more"></a>
+<h1 id="section">11.1</h1>
+<p>咕了。</p>
+<h1 id="section-1">11.2</h1>
+<h2 id="p3354-ioi2005riv-河流">P3354 [IOI2005]Riv 河流</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3354">题目</a></p>
+<p>树形背包 DP。</p>
+<p>设 <span class="math inline">\(f_{u,f,k},g_{u,f,k}\)</span> 表示 u 为根的子树以 f 为关键点、强制 / 不强制 u 为关键点、使用了 k 个关键点的最小花费。</p>
+<p><span class="math display">\[f_{u,f,k}\leftarrow f_{v,f,l}+f{u,f,k-l}\\g_{u,f,k}\leftarrow f_{v,u,l}+g_{u,f,k-l}\]</span></p>
+<p>复杂度 <span class="math inline">\(\Theta(n^4)\)</span>。</p>
+<h1 id="section-2">11.3</h1>
+<h2 id="acwing277-饼干">AcWing277 饼干</h2>
+<p><a href="https://www.acwing.com/problem/content/description/279">题目</a></p>
+<p>简单 DP。</p>
+<p>先贪心地让怨气值大的在前，则分配饼干个数单调不增，设 <span class="math inline">\(f_{i,j}\)</span> 表示前 i 个人分 j 个饼干最优答案。</p>
+<p>简化状态，强制让最后一个人只得到 1 个，其他状态 <span class="math inline">\(f_{i,j}\Leftarrow f_{i,j-i}\)</span>。</p>
+<p>接下来只要考虑最后有多少个人同样分到 1 个就行。</p>
+<p>复杂度 <span class="math inline">\(\Theta(n^2m)\)</span>。</p>
+<h2 id="p6564-poi2007-堆积木klo">P6564 [POI2007] 堆积木KLO</h2>
+<p><a href="https://www.luogu.com.cn/problem/P6564">题目</a></p>
+<p>CDQ，BIT，LIS 等均可。</p>
+<p><span class="math display">\[i&gt;j,\\ a_i&gt; a_j,\\ a_i-a_j\le i-j\]</span></p>
+<p>满足后两个条件时一定满足第一个条件，转化为二维偏序直接上 CDQ。</p>
+<p>因为一个 <span class="math inline">\(&gt;\)</span> 一个 <span class="math inline">\(\ge\)</span>，所以 <span class="math inline">\(i-a_i\)</span> 属性要作第一维。</p>
+<h2 id="p2175-小z的游戏分队">P2175 小Z的游戏分队</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2175">题目</a></p>
+<p>每个人向不信任的人连边，形成若干个二分图。</p>
+<p>以每个二分图两边人数差为权值，背包 DP 某个答案是否能出现。</p>
+<h1 id="section-3">11.4</h1>
+<h2 id="p1800-software">P1800 software</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1800">题目</a></p>
+<p>二分 + 背包 DP。</p>
+<p>明显答案是单调的，考虑怎么判定合法。</p>
+<p>在时间限制内，每个人固定了任务一的量，就能确定任务二的量，于是将一个人拆成 m 个物品。</p>
+<p>背包 DP 出 n 个人完成任务一时最多能够完成的任务二的量即可。</p>
+<h2 id="u139384-异或和">U139384 异或和</h2>
+<p><a href="https://www.luogu.com.cn/problem/U139384">题目</a></p>
+<p>FWT。</p>
+<p>设 <span class="math inline">\(f^i(x)\)</span> 表示选 i 个数，异或和能否为 x，容易得到 <span class="math inline">\(f^1(x)\)</span>，通过 FWT 自卷即可转移。</p>
+<p>将选取最多的，转化为删去最少的使得异或和为零（前者）。</p>
+<p>设所有数异或和为 s，异或和能够为 s 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
+<p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 <span class="math inline">\(FWT/iFWT\)</span> 可以做到 <span class="math inline">\(\Theta(n\log_2^2n)\)</span>。</p>
+<p>丧心病狂的出题人 <a href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
+<p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
+<p><span class="math display">\[
+\hat{F}*S=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T
+\]</span></p>
+<p>每次只要 <span class="math inline">\(\Theta(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\Theta(n\log_2n)\)</span>。</p>
+<h2 id="p3047-usaco12febnearby-cows-g">P3047 [USACO12FEB]Nearby Cows G</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3047">题目</a></p>
+<p>换根 DP。</p>
+<p>先处理出 <span class="math inline">\(f_{u,i}\)</span> 表示以 u 为根的子树深度为 i 的点权和，<span class="math inline">\(\Theta(k)\)</span> 转移。此时 1 的 DP 值为答案。</p>
+<p>换根，每次将 u 的一个子树 v 贡献减去，分成两个独立的树，再由 u 转移到 v 即可。</p>
+<blockquote>
+<p>换根 DP 的特点是能够快速地将子树分离、改变父子关系后合并</p>
+</blockquote>
+<h1 id="section-4">11.5</h1>
+<h2 id="p4161-scoi2009游戏">P4161 [SCOI2009]游戏</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4161">题目</a></p>
+<p>数论，背包 DP。</p>
+<p>容易发现一个排列可以看成几个环，而变换回来的步数是这些环的 <span class="math inline">\(\operatorname{lcm}\)</span>。</p>
+<p>问题转化成：n 拆成若干个数的和，这些数的 <span class="math inline">\(\operatorname{lcm}\)</span> 的种数。</p>
+<p>将 <span class="math inline">\(\operatorname{lcm}\)</span> 唯一分解，每个质因子的指数为所有数该质因子的最大指数。</p>
+<p>那么 DP 每个质数不同质数的情况下的方案数，转化成完全背包。</p>
+<p>设 <span class="math inline">\(f_{i,j}\)</span> 表示到第 i 个质数，将 j 拆开的 <span class="math inline">\(\operatorname{lcm}\)</span> 种数，则 <span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\)</span>。</p>
+<p>因为无法处理 1，而 1 不影响 <span class="math inline">\(\operatorname{lcm}\)</span>，所以拆开的数的和不一定为 n，剩下的用 1 填满，最后答案为 <span class="math inline">\(\sum_{i=0}^n f_{cnt_p,i}\)</span>。</p>
+<h2 id="p6280-usaco20openexercise-g">P6280 [USACO20OPEN]Exercise G</h2>
+<p><a href="https://www.luogu.com.cn/problem/P6280">题目</a></p>
+<p>和上题一样，只不过是求 <span class="math inline">\(\operatorname{lcm}\)</span> 的和。</p>
+<p>每次 DP 时是一个新的素数，所以直接乘以上一个状态，<span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\times p_i^k\)</span>。</p>
+<h2 id="p4342-ioi1998polygon">P4342 [IOI1998]Polygon</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4342">题目</a></p>
+<p>区间 DP。</p>
+<p>题目唬人，但是容易看出来每次断成链后是个区间 DP，枚举断点后直接做，<span class="math inline">\(\Theta(n^4)\)</span> 可过。</p>
+<p>然后就 80 分 qwq。因为有乘法，而每个数可能为负，负负得正。</p>
+<p>于是同时维护最大值和最小值。</p>
+<h2 id="p4158-scoi2009粉刷匠">P4158 [SCOI2009]粉刷匠</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4158">题目</a></p>
+<p>简单 DP + 背包 DP。</p>
+<p>问题在于如何分配粉刷次数，先对于每一行单独处理，将不同粉刷次数的答案化为物品。</p>
+<p>设 <span class="math inline">\(f_{i,k}\)</span> 表示前 i 位粉刷 k 次最多正确个数，<span class="math inline">\(f_{i,k}\leftarrow f_{j,k-1}+\max\{s_0(j+1,i),s_1(j+1,i)\}\)</span>。</p>
+<p>然后对于 <span class="math inline">\(n\times m\)</span> 个物品进行背包即可。</p>
+<h2 id="p1092-虫食算">P1092 虫食算</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1092">题目</a></p>
+<p>搜索。</p>
+<p>正解好像是高斯消元，不会。</p>
+<p>从低位到高位开始搜，当三位中有两个确定时就可以推出第三个。</p>
+<p>还有一个剪枝，每确定一列，就扫一遍后面没搜的列，看在进不进位的情况下是否都矛盾。</p>
+<h2 id="p3951-小凯的疑惑">P3951 小凯的疑惑</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3951">题目</a></p>
+<p>数论。</p>
+<p>打表，发现 <span class="math inline">\(a&lt;b\)</span> 时答案是 <span class="math inline">\((a-1)\times b - a\)</span>。</p>
+<p>证明：设无法表示出来的为 x。</p>
+<p><span class="math display">\[
+x\equiv ma\pmod b \quad(1&lt;m&lt;b)\\ x=ma+nb\quad(1&lt;m&lt;b,n&lt;0)
+\]</span></p>
+<p>当 x 最大时，<span class="math inline">\(m=b-1,n=-1\)</span>，证毕。</p>
+<h2 id="p5092-usaco04opencube-stacking">P5092 [USACO04OPEN]Cube Stacking</h2>
+<p><a href="https://www.luogu.com.cn/record/41327125">题目</a></p>
+<p>并查集。</p>
+<p>在 x 和 fa 的边之间维护压缩的边数，路径压缩优化，再维护每个并查集的 size。</p>
+<h2 id="p2894-usaco08febhotel-g">P2894 [USACO08FEB]Hotel G</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2894">题目</a></p>
+<p>线段树。</p>
+<p>维护每个区间的最长连续区间和左端开头、右端开头的最长连续区间。</p>
+<p>二分最早的 r 使得 <span class="math inline">\([1,r]\)</span> 的最长连续区间长度大于 x，<span class="math inline">\(\Theta(n\log_2^2n)\)</span>。</p>
+<p>query 时直接左区间优先即可，<span class="math inline">\(\Theta(n\log_2n)\)</span>。</p>
+<h1 id="section-5">11.11</h1>
+<h2 id="p7076-动物园">P7076 动物园</h2>
+<p><a href="https://www.luogu.com.cn/problem/P7076">题目</a></p>
+<p>贪心（？），CSP2020 T2。</p>
+<p>将所有动物或起来，对于每一位，没有饲料或者有饲料并且已经购买，该位可以选或不选；有饲料且未购买，只能不选。</p>
+<p>把每一位的答案乘一下，坑点是开了 unsigned long long 也见祖宗，需要特判 <span class="math inline">\(2^{64}\)</span> 的情况。</p>
+<h1 id="section-6">11.12</h1>
+<h2 id="p7077-函数调用">P7077 函数调用</h2>
+<p><a href="https://www.luogu.com.cn/problem/P7077">题目</a></p>
+<p>拓扑 DP，CSP2020 T3。</p>
+<p>考场上写的线段树暴力，<del>好歹也是个不小的数据结构啊怎么才给 30 分！</del>其实是不错的题。</p>
+<p>可以发现单点加值，整体乘值，所有操作形成若干个 DAG，只要求最终序列，于是方向转向图论。</p>
+<p>设所有乘法之积为 <span class="math inline">\(mul\)</span>，每个点初始值的贡献一定是 <span class="math inline">\(a_i\times mul\)</span>。</p>
+<p>接下来考虑单点加和其之后的变化。每个单点加的贡献是后面所有乘法之积。</p>
+<p>那么先预处理每个点的及后面乘法的积 <span class="math inline">\(m_i\)</span>，然后按照操作序列倒着 DP 每个DAG 的贡献次数。</p>
+<p>再在 DAG 里倒着 DP，<span class="math inline">\(f_v\leftarrow f_v + f_u, f_u\leftarrow f_u\times m_v\)</span>，对于单点加的贡献就有 <span class="math inline">\(f_u\times val_u\)</span>。</p>
+]]></content>
+      <categories>
+        <category>刷题记录</category>
+      </categories>
+  </entry>
 </search>

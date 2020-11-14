@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/avatar.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="做题好慢啊。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20年11月 刷题记录">
+<meta property="og:url" content="http://example.com/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="做题好慢啊。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-14T11:03:50.000Z">
+<meta property="article:modified_time" content="2020-11-14T11:18:29.071Z">
+<meta property="article:author" content="RenaMoe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>20年11月 刷题记录 | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">提高效率qwq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20年11月 刷题记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-14 19:03:50 / 修改时间：19:18:29" itemprop="dateCreated datePublished" datetime="2020-11-14T19:03:50+08:00">2020-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">刷题记录</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>做题好慢啊。</p>
+<a id="more"></a>
+<h1 id="section">11.1</h1>
+<p>咕了。</p>
+<h1 id="section-1">11.2</h1>
+<h2 id="p3354-ioi2005riv-河流">P3354 [IOI2005]Riv 河流</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3354">题目</a></p>
+<p>树形背包 DP。</p>
+<p>设 <span class="math inline">\(f_{u,f,k},g_{u,f,k}\)</span> 表示 u 为根的子树以 f 为关键点、强制 / 不强制 u 为关键点、使用了 k 个关键点的最小花费。</p>
+<p><span class="math display">\[f_{u,f,k}\leftarrow f_{v,f,l}+f{u,f,k-l}\\g_{u,f,k}\leftarrow f_{v,u,l}+g_{u,f,k-l}\]</span></p>
+<p>复杂度 <span class="math inline">\(\Theta(n^4)\)</span>。</p>
+<h1 id="section-2">11.3</h1>
+<h2 id="acwing277-饼干">AcWing277 饼干</h2>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/279">题目</a></p>
+<p>简单 DP。</p>
+<p>先贪心地让怨气值大的在前，则分配饼干个数单调不增，设 <span class="math inline">\(f_{i,j}\)</span> 表示前 i 个人分 j 个饼干最优答案。</p>
+<p>简化状态，强制让最后一个人只得到 1 个，其他状态 <span class="math inline">\(f_{i,j}\Leftarrow f_{i,j-i}\)</span>。</p>
+<p>接下来只要考虑最后有多少个人同样分到 1 个就行。</p>
+<p>复杂度 <span class="math inline">\(\Theta(n^2m)\)</span>。</p>
+<h2 id="p6564-poi2007-堆积木klo">P6564 [POI2007] 堆积木KLO</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6564">题目</a></p>
+<p>CDQ，BIT，LIS 等均可。</p>
+<p><span class="math display">\[i&gt;j,\\ a_i&gt; a_j,\\ a_i-a_j\le i-j\]</span></p>
+<p>满足后两个条件时一定满足第一个条件，转化为二维偏序直接上 CDQ。</p>
+<p>因为一个 <span class="math inline">\(&gt;\)</span> 一个 <span class="math inline">\(\ge\)</span>，所以 <span class="math inline">\(i-a_i\)</span> 属性要作第一维。</p>
+<h2 id="p2175-小z的游戏分队">P2175 小Z的游戏分队</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2175">题目</a></p>
+<p>每个人向不信任的人连边，形成若干个二分图。</p>
+<p>以每个二分图两边人数差为权值，背包 DP 某个答案是否能出现。</p>
+<h1 id="section-3">11.4</h1>
+<h2 id="p1800-software">P1800 software</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1800">题目</a></p>
+<p>二分 + 背包 DP。</p>
+<p>明显答案是单调的，考虑怎么判定合法。</p>
+<p>在时间限制内，每个人固定了任务一的量，就能确定任务二的量，于是将一个人拆成 m 个物品。</p>
+<p>背包 DP 出 n 个人完成任务一时最多能够完成的任务二的量即可。</p>
+<h2 id="u139384-异或和">U139384 异或和</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/U139384">题目</a></p>
+<p>FWT。</p>
+<p>设 <span class="math inline">\(f^i(x)\)</span> 表示选 i 个数，异或和能否为 x，容易得到 <span class="math inline">\(f^1(x)\)</span>，通过 FWT 自卷即可转移。</p>
+<p>将选取最多的，转化为删去最少的使得异或和为零（前者）。</p>
+<p>设所有数异或和为 s，异或和能够为 s 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
+<p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 <span class="math inline">\(FWT/iFWT\)</span> 可以做到 <span class="math inline">\(\Theta(n\log_2^2n)\)</span>。</p>
+<p>丧心病狂的出题人 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
+<p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
+<p><span class="math display">\[
+\hat{F}*S=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T
+\]</span></p>
+<p>每次只要 <span class="math inline">\(\Theta(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\Theta(n\log_2n)\)</span>。</p>
+<h2 id="p3047-usaco12febnearby-cows-g">P3047 [USACO12FEB]Nearby Cows G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3047">题目</a></p>
+<p>换根 DP。</p>
+<p>先处理出 <span class="math inline">\(f_{u,i}\)</span> 表示以 u 为根的子树深度为 i 的点权和，<span class="math inline">\(\Theta(k)\)</span> 转移。此时 1 的 DP 值为答案。</p>
+<p>换根，每次将 u 的一个子树 v 贡献减去，分成两个独立的树，再由 u 转移到 v 即可。</p>
+<blockquote>
+<p>换根 DP 的特点是能够快速地将子树分离、改变父子关系后合并</p>
+</blockquote>
+<h1 id="section-4">11.5</h1>
+<h2 id="p4161-scoi2009游戏">P4161 [SCOI2009]游戏</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4161">题目</a></p>
+<p>数论，背包 DP。</p>
+<p>容易发现一个排列可以看成几个环，而变换回来的步数是这些环的 <span class="math inline">\(\operatorname{lcm}\)</span>。</p>
+<p>问题转化成：n 拆成若干个数的和，这些数的 <span class="math inline">\(\operatorname{lcm}\)</span> 的种数。</p>
+<p>将 <span class="math inline">\(\operatorname{lcm}\)</span> 唯一分解，每个质因子的指数为所有数该质因子的最大指数。</p>
+<p>那么 DP 每个质数不同质数的情况下的方案数，转化成完全背包。</p>
+<p>设 <span class="math inline">\(f_{i,j}\)</span> 表示到第 i 个质数，将 j 拆开的 <span class="math inline">\(\operatorname{lcm}\)</span> 种数，则 <span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\)</span>。</p>
+<p>因为无法处理 1，而 1 不影响 <span class="math inline">\(\operatorname{lcm}\)</span>，所以拆开的数的和不一定为 n，剩下的用 1 填满，最后答案为 <span class="math inline">\(\sum_{i=0}^n f_{cnt_p,i}\)</span>。</p>
+<h2 id="p6280-usaco20openexercise-g">P6280 [USACO20OPEN]Exercise G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6280">题目</a></p>
+<p>和上题一样，只不过是求 <span class="math inline">\(\operatorname{lcm}\)</span> 的和。</p>
+<p>每次 DP 时是一个新的素数，所以直接乘以上一个状态，<span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\times p_i^k\)</span>。</p>
+<h2 id="p4342-ioi1998polygon">P4342 [IOI1998]Polygon</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4342">题目</a></p>
+<p>区间 DP。</p>
+<p>题目唬人，但是容易看出来每次断成链后是个区间 DP，枚举断点后直接做，<span class="math inline">\(\Theta(n^4)\)</span> 可过。</p>
+<p>然后就 80 分 qwq。因为有乘法，而每个数可能为负，负负得正。</p>
+<p>于是同时维护最大值和最小值。</p>
+<h2 id="p4158-scoi2009粉刷匠">P4158 [SCOI2009]粉刷匠</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4158">题目</a></p>
+<p>简单 DP + 背包 DP。</p>
+<p>问题在于如何分配粉刷次数，先对于每一行单独处理，将不同粉刷次数的答案化为物品。</p>
+<p>设 <span class="math inline">\(f_{i,k}\)</span> 表示前 i 位粉刷 k 次最多正确个数，<span class="math inline">\(f_{i,k}\leftarrow f_{j,k-1}+\max\{s_0(j+1,i),s_1(j+1,i)\}\)</span>。</p>
+<p>然后对于 <span class="math inline">\(n\times m\)</span> 个物品进行背包即可。</p>
+<h2 id="p1092-虫食算">P1092 虫食算</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1092">题目</a></p>
+<p>搜索。</p>
+<p>正解好像是高斯消元，不会。</p>
+<p>从低位到高位开始搜，当三位中有两个确定时就可以推出第三个。</p>
+<p>还有一个剪枝，每确定一列，就扫一遍后面没搜的列，看在进不进位的情况下是否都矛盾。</p>
+<h2 id="p3951-小凯的疑惑">P3951 小凯的疑惑</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3951">题目</a></p>
+<p>数论。</p>
+<p>打表，发现 <span class="math inline">\(a&lt;b\)</span> 时答案是 <span class="math inline">\((a-1)\times b - a\)</span>。</p>
+<p>证明：设无法表示出来的为 x。</p>
+<p><span class="math display">\[
+x\equiv ma\pmod b \quad(1&lt;m&lt;b)\\ x=ma+nb\quad(1&lt;m&lt;b,n&lt;0)
+\]</span></p>
+<p>当 x 最大时，<span class="math inline">\(m=b-1,n=-1\)</span>，证毕。</p>
+<h2 id="p5092-usaco04opencube-stacking">P5092 [USACO04OPEN]Cube Stacking</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/41327125">题目</a></p>
+<p>并查集。</p>
+<p>在 x 和 fa 的边之间维护压缩的边数，路径压缩优化，再维护每个并查集的 size。</p>
+<h2 id="p2894-usaco08febhotel-g">P2894 [USACO08FEB]Hotel G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2894">题目</a></p>
+<p>线段树。</p>
+<p>维护每个区间的最长连续区间和左端开头、右端开头的最长连续区间。</p>
+<p>二分最早的 r 使得 <span class="math inline">\([1,r]\)</span> 的最长连续区间长度大于 x，<span class="math inline">\(\Theta(n\log_2^2n)\)</span>。</p>
+<p>query 时直接左区间优先即可，<span class="math inline">\(\Theta(n\log_2n)\)</span>。</p>
+<h1 id="section-5">11.11</h1>
+<h2 id="p7076-动物园">P7076 动物园</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7076">题目</a></p>
+<p>贪心（？），CSP2020 T2。</p>
+<p>将所有动物或起来，对于每一位，没有饲料或者有饲料并且已经购买，该位可以选或不选；有饲料且未购买，只能不选。</p>
+<p>把每一位的答案乘一下，坑点是开了 unsigned long long 也见祖宗，需要特判 <span class="math inline">\(2^{64}\)</span> 的情况。</p>
+<h1 id="section-6">11.12</h1>
+<h2 id="p7077-函数调用">P7077 函数调用</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7077">题目</a></p>
+<p>拓扑 DP，CSP2020 T3。</p>
+<p>考场上写的线段树暴力，<del>好歹也是个不小的数据结构啊怎么才给 30 分！</del>其实是不错的题。</p>
+<p>可以发现单点加值，整体乘值，所有操作形成若干个 DAG，只要求最终序列，于是方向转向图论。</p>
+<p>设所有乘法之积为 <span class="math inline">\(mul\)</span>，每个点初始值的贡献一定是 <span class="math inline">\(a_i\times mul\)</span>。</p>
+<p>接下来考虑单点加和其之后的变化。每个单点加的贡献是后面所有乘法之积。</p>
+<p>那么先预处理每个点的及后面乘法的积 <span class="math inline">\(m_i\)</span>，然后按照操作序列倒着 DP 每个DAG 的贡献次数。</p>
+<p>再在 DAG 里倒着 DP，<span class="math inline">\(f_v\leftarrow f_v + f_u, f_u\leftarrow f_u\times m_v\)</span>，对于单点加的贡献就有 <span class="math inline">\(f_u\times val_u\)</span>。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/14/20%E5%B9%B411%E6%9C%8813%E6%97%A5%E5%B0%8F%E6%B5%8B/" rel="prev" title="20年11月13日 小测">
+      <i class="fa fa-chevron-left"></i> 20年11月13日 小测
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2050/02/06/2020-02-06-%E6%80%BB%E7%BB%93-OI%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86/" rel="next" title="总结 OI中一些数学定理">
+      总结 OI中一些数学定理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text">11.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-1"><span class="nav-number">2.</span> <span class="nav-text">11.2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3354-ioi2005riv-%E6%B2%B3%E6%B5%81"><span class="nav-number">2.1.</span> <span class="nav-text">P3354 [IOI2005]Riv 河流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-2"><span class="nav-number">3.</span> <span class="nav-text">11.3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#acwing277-%E9%A5%BC%E5%B9%B2"><span class="nav-number">3.1.</span> <span class="nav-text">AcWing277 饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6564-poi2007-%E5%A0%86%E7%A7%AF%E6%9C%A8klo"><span class="nav-number">3.2.</span> <span class="nav-text">P6564 [POI2007] 堆积木KLO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2175-%E5%B0%8Fz%E7%9A%84%E6%B8%B8%E6%88%8F%E5%88%86%E9%98%9F"><span class="nav-number">3.3.</span> <span class="nav-text">P2175 小Z的游戏分队</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-3"><span class="nav-number">4.</span> <span class="nav-text">11.4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1800-software"><span class="nav-number">4.1.</span> <span class="nav-text">P1800 software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u139384-%E5%BC%82%E6%88%96%E5%92%8C"><span class="nav-number">4.2.</span> <span class="nav-text">U139384 异或和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3047-usaco12febnearby-cows-g"><span class="nav-number">4.3.</span> <span class="nav-text">P3047 [USACO12FEB]Nearby Cows G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-4"><span class="nav-number">5.</span> <span class="nav-text">11.5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4161-scoi2009%E6%B8%B8%E6%88%8F"><span class="nav-number">5.1.</span> <span class="nav-text">P4161 [SCOI2009]游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6280-usaco20openexercise-g"><span class="nav-number">5.2.</span> <span class="nav-text">P6280 [USACO20OPEN]Exercise G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4342-ioi1998polygon"><span class="nav-number">5.3.</span> <span class="nav-text">P4342 [IOI1998]Polygon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4158-scoi2009%E7%B2%89%E5%88%B7%E5%8C%A0"><span class="nav-number">5.4.</span> <span class="nav-text">P4158 [SCOI2009]粉刷匠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1092-%E8%99%AB%E9%A3%9F%E7%AE%97"><span class="nav-number">5.5.</span> <span class="nav-text">P1092 虫食算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3951-%E5%B0%8F%E5%87%AF%E7%9A%84%E7%96%91%E6%83%91"><span class="nav-number">5.6.</span> <span class="nav-text">P3951 小凯的疑惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p5092-usaco04opencube-stacking"><span class="nav-number">5.7.</span> <span class="nav-text">P5092 [USACO04OPEN]Cube Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2894-usaco08febhotel-g"><span class="nav-number">5.8.</span> <span class="nav-text">P2894 [USACO08FEB]Hotel G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-5"><span class="nav-number">6.</span> <span class="nav-text">11.11</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7076-%E5%8A%A8%E7%89%A9%E5%9B%AD"><span class="nav-number">6.1.</span> <span class="nav-text">P7076 动物园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-6"><span class="nav-number">7.</span> <span class="nav-text">11.12</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7077-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-number">7.1.</span> <span class="nav-text">P7077 函数调用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
