@@ -2066,42 +2066,6 @@ f(l,r)=\begin{cases}
       </tags>
   </entry>
   <entry>
-    <title>20年学习总结</title>
-    <url>/2000/09/27/2020-09-27-20%E5%B9%B4%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>既然不会做未来的学习计划，那就回头看看写写总结。</p>
-<p>开学这个月真的是什么都没干。</p>
-<p>从9月底才开始养成这个习惯，以前的不补了。</p>
-<p>进入正题：</p>
-<a id="more"></a>
-<h2 id="月">9月</h2>
-<ul>
-<li>27日
-<ul>
-<li>acwing课程重新学了数位dp</li>
-<li><a href="https://www.luogu.com.cn/problem/P2657">P2657「SCOI2009」 windy 数</a> 数位dp，重新写了一遍</li>
-<li><a href="https://loj.ac/problem/10166"><strong>loj#10166.</strong> 「一本通 5.3 练习 1」数字游戏</a> ~</li>
-<li><a href="https://loj.ac/problem/10167"><strong>loj#10167.</strong> 「一本通 5.3 练习 2」不要 62</a> ~</li>
-</ul></li>
-<li>28日
-<ul>
-<li>写、调 <a href="https://loj.ac/problem/10168"><strong>loj#10168.</strong> 「一本通 5.3 练习 3」恨 7 不成妻</a> 至今见过最复杂的数位dp，要维护没有数字7、数字和的模7值、数的模7值，答案求平方和</li>
-</ul></li>
-<li>29日
-<ul>
-<li>调过了那道数位dp</li>
-<li>复习一遍背包，yxc学长的集合角度分析很很清晰，懂了单调队列优化多重背包</li>
-</ul></li>
-<li>30日
-<ul>
-<li>复习网络流</li>
-</ul></li>
-</ul>
-]]></content>
-      <categories>
-        <category>总结</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSP2020 游记</title>
     <url>/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/</url>
     <content><![CDATA[<p>多图警告⚠️。</p>
@@ -2346,22 +2310,6 @@ a_i-a_j&amp;\le i-j
       <tags>
         <tag>数论</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>一些好的博客</title>
-    <url>/2000/10/24/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>qwq</p>
-<a id="more"></a>
-<ul>
-<li><a href="https://www.cnblogs.com/lhm-/p/12229463.html">lhm_ Tarjan 总结</a></li>
-<li><a href="https://www.luogu.com.cn/blog/command-block/bo-yi-lun-xiao-ji">Command_block 博弈论</a></li>
-<li><a href="https://www.xht37.com/%E4%BA%8C%E5%88%86%E5%9B%BE%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%B5%81-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">xht37 网络流与二分图</a></li>
-<li><a href="https://www.luogu.com.cn/blog/EternalAlexander/xuan-ku-hou-zhui-shu-mo-shu">EA 后缀树</a></li>
-<li><a href="https://www.luogu.com.cn/blog/command-block/xuan-ku-fan-yan-mo-shu">Command_block 反演</a></li>
-<li><a href="https://www.luogu.com.cn/blog/wjyyy/geometry1">wjyyy 计算几何</a></li>
-<li><a href="https://www.cnblogs.com/bztMinamoto/p/9489473.html">bztMinamoto 动态点分治</a></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>常用组合数</title>
