@@ -17,15 +17,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="包括卡特兰数、第一二类斯特林数等。">
+  <meta name="description" content="包括组合数、卡特兰数、第一二类斯特林数等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用组合数">
 <meta property="og:url" content="http://example.com/2020/10/24/%E6%80%BB%E7%BB%93-%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88%E6%95%B0/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="包括卡特兰数、第一二类斯特林数等。">
+<meta property="og:description" content="包括组合数、卡特兰数、第一二类斯特林数等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-24T01:58:14.000Z">
-<meta property="article:modified_time" content="2020-10-24T02:19:05.701Z">
+<meta property="article:modified_time" content="2020-11-21T11:29:23.249Z">
 <meta property="article:author" content="RenaMoe">
 <meta property="article:tag" content="组合数">
 <meta name="twitter:card" content="summary">
@@ -219,10 +219,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-24 09:58:14 / 修改时间：10:19:05" itemprop="dateCreated datePublished" datetime="2020-10-24T09:58:14+08:00">2020-10-24</time>
+              <time title="创建时间：2020-10-24 09:58:14" itemprop="dateCreated datePublished" datetime="2020-10-24T09:58:14+08:00">2020-10-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-21 19:29:23" itemprop="dateModified" datetime="2020-11-21T19:29:23+08:00">2020-11-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -262,8 +268,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>包括卡特兰数、第一二类斯特林数等。</p>
+        <p>包括组合数、卡特兰数、第一二类斯特林数等。</p>
 <a id="more"></a>
+<h2 id="组合数">组合数</h2>
+<p><span class="math display">\[
+\begin{align}
+\binom{n}{m}&amp;=\frac{n!}{(n-m)!m!}\\
+\binom{n}{m}&amp;=\binom{n-1}{m}+\binom{n-1}{m-1}
+\end{align}
+\]</span></p>
+<h3 id="插板法">插板法</h3>
+<blockquote>
+<p>将 <span class="math inline">\(n\)</span> 个相同物品分为 <span class="math inline">\(k\)</span> 组（非空）的方案数。</p>
+</blockquote>
+<p>对于 <span class="math inline">\(n\)</span> 个点，相邻两个有一个槽，插入 <span class="math inline">\(k-1\)</span> 个板，也就分成了 <span class="math inline">\(k\)</span> 组。</p>
+<p>所以答案为 <span class="math inline">\(\displaystyle \binom{n-1}{k-1}\)</span>。</p>
+<h3 id="多重集的组合数">多重集的组合数</h3>
+<blockquote>
+<p>从 <span class="math inline">\(n\)</span> 个数中选出 <span class="math inline">\(k\)</span> 个数组成多重集的方案数。</p>
+</blockquote>
+<p>等价于解 <span class="math inline">\(x_1+x_2+x_3+\cdots +x_n=k\)</span> 的非负整数解个数。</p>
+<p>答案： <span class="math display">\[
+\binom{n+k-1}{k-1}
+\]</span> 插板法：在原来的 <span class="math inline">\(n-1\)</span> 个槽基础上再加 <span class="math inline">\(k\)</span> 个槽，被选则表示该组为空。</p>
 <h2 id="卡特兰数">卡特兰数</h2>
 <p><a target="_blank" rel="noopener" href="https://oi-wiki.org/math/catalan/">详见OI Wiki</a></p>
 <table>
@@ -293,28 +320,28 @@
 </tbody>
 </table>
 <h3 id="常用公式">常用公式：</h3>
-<p>$$ H_n=</p>
-<p>\ \</p>
-<p>H_n=-</p>
-<p>\ \</p>
-H_n=
-<span class="math display">\[\begin{cases}
-
+<p><span class="math display">\[
+\begin{align}
+H_n&amp;=\frac{1}{n+1}\dbinom{2n}{n}
+\\
+H_n&amp;=\dbinom{2n}{n}-\dbinom{2n}{n-1}
+\\
+H_n&amp;=\begin{cases}
 \sum_{i=1}^{n}H_{i-1}H_{n-i} &amp;n\ge2,n\in\mathbb{N_{+}}\\
-
 1 &amp;n=0,1
-
-\end{cases}\]</span>
-<p>\ \</p>
-<p>H_n=H_{n-1}\ $$</p>
+\end{cases}
+\\
+H_n&amp;=\frac{4n-2}{n+1}H_{n-1}\\
+\end{align}
+\]</span></p>
 <h3 id="应用">应用</h3>
 <p><span class="math inline">\(H_n\)</span>：</p>
 <ol type="1">
-<li><p>表示由 n 个节点组成不同构二叉树的方案数。</p></li>
-<li><p>表示有 2n+1 个节点组成不同构满二叉树的方案数。</p></li>
-<li><p>表示通过连接顶点将 (n+2) 边的凸多边形分成三角形的方法个数。</p></li>
+<li><p>表示由 <span class="math inline">\(n\)</span> 个节点组成不同构二叉树的方案数。</p></li>
+<li><p>表示有 <span class="math inline">\(2n+1\)</span> 个节点组成不同构满二叉树的方案数。</p></li>
+<li><p>表示通过连接顶点将 <span class="math inline">\((n+2)\)</span> 边的凸多边形分成三角形的方法个数。</p></li>
 <li><p>表示在 <span class="math inline">\(n\times n\)</span> 的网格图中不越过对角线的路径条数。</p></li>
-<li><p>表示长度为 2n 的 dyck word 个数(有 n 个 X 与 n 个 Y 组成的字符串，满足前缀 X 的个数大于等于前 缀 Y 的个数)。</p></li>
+<li><p>表示长度为 <span class="math inline">\(2n\)</span> 的 <span class="math inline">\(\texttt{dyck word}\)</span> 个数(有 <span class="math inline">\(n\)</span> 个"X"与 <span class="math inline">\(n\)</span> 个"Y"组成的字符串，满足前缀“X”的个数大于等于前缀“Y”的个数)。</p></li>
 </ol>
 <h2 id="第一类斯特林数">第一类斯特林数</h2>
 <h2 id="第二类斯特林数">第二类斯特林数</h2>
@@ -402,7 +429,7 @@ H_n=
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">常用公式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">第一类斯特林数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">第二类斯特林数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">组合数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E6%9D%BF%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">插板法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E9%9B%86%E7%9A%84%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">多重集的组合数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">卡特兰数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%AC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">常用公式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">第一类斯特林数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">第二类斯特林数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,20 +445,20 @@ H_n=
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

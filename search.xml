@@ -2327,8 +2327,29 @@ a_i-a_j&amp;\le i-j
   <entry>
     <title>常用组合数</title>
     <url>/2020/10/24/%E6%80%BB%E7%BB%93-%E5%B8%B8%E7%94%A8%E7%BB%84%E5%90%88%E6%95%B0/</url>
-    <content><![CDATA[<p>包括卡特兰数、第一二类斯特林数等。</p>
+    <content><![CDATA[<p>包括组合数、卡特兰数、第一二类斯特林数等。</p>
 <a id="more"></a>
+<h2 id="组合数">组合数</h2>
+<p><span class="math display">\[
+\begin{align}
+\binom{n}{m}&amp;=\frac{n!}{(n-m)!m!}\\
+\binom{n}{m}&amp;=\binom{n-1}{m}+\binom{n-1}{m-1}
+\end{align}
+\]</span></p>
+<h3 id="插板法">插板法</h3>
+<blockquote>
+<p>将 <span class="math inline">\(n\)</span> 个相同物品分为 <span class="math inline">\(k\)</span> 组（非空）的方案数。</p>
+</blockquote>
+<p>对于 <span class="math inline">\(n\)</span> 个点，相邻两个有一个槽，插入 <span class="math inline">\(k-1\)</span> 个板，也就分成了 <span class="math inline">\(k\)</span> 组。</p>
+<p>所以答案为 <span class="math inline">\(\displaystyle \binom{n-1}{k-1}\)</span>。</p>
+<h3 id="多重集的组合数">多重集的组合数</h3>
+<blockquote>
+<p>从 <span class="math inline">\(n\)</span> 个数中选出 <span class="math inline">\(k\)</span> 个数组成多重集的方案数。</p>
+</blockquote>
+<p>等价于解 <span class="math inline">\(x_1+x_2+x_3+\cdots +x_n=k\)</span> 的非负整数解个数。</p>
+<p>答案： <span class="math display">\[
+\binom{n+k-1}{k-1}
+\]</span> 插板法：在原来的 <span class="math inline">\(n-1\)</span> 个槽基础上再加 <span class="math inline">\(k\)</span> 个槽，被选则表示该组为空。</p>
 <h2 id="卡特兰数">卡特兰数</h2>
 <p><a href="https://oi-wiki.org/math/catalan/">详见OI Wiki</a></p>
 <table>
@@ -2358,28 +2379,28 @@ a_i-a_j&amp;\le i-j
 </tbody>
 </table>
 <h3 id="常用公式">常用公式：</h3>
-<p>$$ H_n=</p>
-<p>\ \</p>
-<p>H_n=-</p>
-<p>\ \</p>
-H_n=
-<span class="math display">\[\begin{cases}
-
+<p><span class="math display">\[
+\begin{align}
+H_n&amp;=\frac{1}{n+1}\dbinom{2n}{n}
+\\
+H_n&amp;=\dbinom{2n}{n}-\dbinom{2n}{n-1}
+\\
+H_n&amp;=\begin{cases}
 \sum_{i=1}^{n}H_{i-1}H_{n-i} &amp;n\ge2,n\in\mathbb{N_{+}}\\
-
 1 &amp;n=0,1
-
-\end{cases}\]</span>
-<p>\ \</p>
-<p>H_n=H_{n-1}\ $$</p>
+\end{cases}
+\\
+H_n&amp;=\frac{4n-2}{n+1}H_{n-1}\\
+\end{align}
+\]</span></p>
 <h3 id="应用">应用</h3>
 <p><span class="math inline">\(H_n\)</span>：</p>
 <ol type="1">
-<li><p>表示由 n 个节点组成不同构二叉树的方案数。</p></li>
-<li><p>表示有 2n+1 个节点组成不同构满二叉树的方案数。</p></li>
-<li><p>表示通过连接顶点将 (n+2) 边的凸多边形分成三角形的方法个数。</p></li>
+<li><p>表示由 <span class="math inline">\(n\)</span> 个节点组成不同构二叉树的方案数。</p></li>
+<li><p>表示有 <span class="math inline">\(2n+1\)</span> 个节点组成不同构满二叉树的方案数。</p></li>
+<li><p>表示通过连接顶点将 <span class="math inline">\((n+2)\)</span> 边的凸多边形分成三角形的方法个数。</p></li>
 <li><p>表示在 <span class="math inline">\(n\times n\)</span> 的网格图中不越过对角线的路径条数。</p></li>
-<li><p>表示长度为 2n 的 dyck word 个数(有 n 个 X 与 n 个 Y 组成的字符串，满足前缀 X 的个数大于等于前 缀 Y 的个数)。</p></li>
+<li><p>表示长度为 <span class="math inline">\(2n\)</span> 的 <span class="math inline">\(\texttt{dyck word}\)</span> 个数(有 <span class="math inline">\(n\)</span> 个"X"与 <span class="math inline">\(n\)</span> 个"Y"组成的字符串，满足前缀“X”的个数大于等于前缀“Y”的个数)。</p></li>
 </ol>
 <h2 id="第一类斯特林数">第一类斯特林数</h2>
 <h2 id="第二类斯特林数">第二类斯特林数</h2>
@@ -2687,19 +2708,14 @@ H_n=
     <url>/2020/11/14/20%E5%B9%B411%E6%9C%88%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>做题好慢啊。</p>
 <a id="more"></a>
-<h1 id="section">11.1</h1>
-<p>咕了。</p>
-<h1 id="section-1">11.2</h1>
+<h1 id="日">2日</h1>
 <h2 id="p3354-ioi2005riv-河流">P3354 [IOI2005]Riv 河流</h2>
 <p><a href="https://www.luogu.com.cn/problem/P3354">题目</a></p>
 <p>树形背包 DP。</p>
 <p>设 <span class="math inline">\(f_{u,f,k},g_{u,f,k}\)</span> 表示 u 为根的子树以 f 为关键点、强制 / 不强制 u 为关键点、使用了 k 个关键点的最小花费。</p>
-<p><span class="math display">\[
-\begin{align} f_{u,f,k}&amp;\leftarrow f_{v,f,l}+f_{u,f,k-l}\\
-g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l}\end{align}
-\]</span></p>
+<p><span class="math display">\[\begin{aligned} f_{u,f,k}&amp;\leftarrow f_{v,f,l}+f{u,f,k-l}\\g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l} \end{aligned}\]</span></p>
 <p>复杂度 <span class="math inline">\(\mathcal O(n^4)\)</span>。</p>
-<h1 id="section-2">11.3</h1>
+<h1 id="日-1">3日</h1>
 <h2 id="acwing277-饼干">AcWing277 饼干</h2>
 <p><a href="https://www.acwing.com/problem/content/description/279">题目</a></p>
 <p>简单 DP。</p>
@@ -2710,16 +2726,14 @@ g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l}\end{align}
 <h2 id="p6564-poi2007-堆积木klo">P6564 [POI2007] 堆积木KLO</h2>
 <p><a href="https://www.luogu.com.cn/problem/P6564">题目</a></p>
 <p>CDQ，BIT，LIS 等均可。</p>
-<p><span class="math display">\[
-\begin{align}i&amp;&gt;j,\\ a_i&amp;&gt; a_j,\\ a_i-a_j&amp;\le i-j\end{align}
-\]</span></p>
+<p><span class="math display">\[\begin{aligned} i&amp;&gt;j,\\ a_i&amp;&gt; a_j,\\ a_i-a_j&amp;\le i-j \end{aligned}\]</span></p>
 <p>满足后两个条件时一定满足第一个条件，转化为二维偏序直接上 CDQ。</p>
 <p>因为一个 <span class="math inline">\(&gt;\)</span> 一个 <span class="math inline">\(\ge\)</span>，所以 <span class="math inline">\(i-a_i\)</span> 属性要作第一维。</p>
 <h2 id="p2175-小z的游戏分队">P2175 小Z的游戏分队</h2>
 <p><a href="https://www.luogu.com.cn/problem/P2175">题目</a></p>
 <p>每个人向不信任的人连边，形成若干个二分图。</p>
 <p>以每个二分图两边人数差为权值，背包 DP 某个答案是否能出现。</p>
-<h1 id="section-3">11.4</h1>
+<h1 id="日-2">4日</h1>
 <h2 id="p1800-software">P1800 software</h2>
 <p><a href="https://www.luogu.com.cn/problem/P1800">题目</a></p>
 <p>二分 + 背包 DP。</p>
@@ -2729,17 +2743,14 @@ g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l}\end{align}
 <h2 id="u139384-异或和">U139384 异或和</h2>
 <p><a href="https://www.luogu.com.cn/problem/U139384">题目</a></p>
 <p>FWT。</p>
-<p>设 <span class="math inline">\(f^i(x)\)</span> 表示选 i 个数，异或和能否为 x，容易得到 <span class="math inline">\(f^1(x)\)</span>，通过 FWT 自卷即可转移。</p>
+<p>设 <span class="math inline">\(f^i(x)\)</span> 表示选 <span class="math inline">\(i\)</span> 个数，异或和能否为 <span class="math inline">\(x\)</span>，容易得到 <span class="math inline">\(f^1(x)\)</span>，通过 FWT 自卷即可转移。</p>
 <p>将选取最多的，转化为删去最少的使得异或和为零（前者）。</p>
-<p>设所有数异或和为 s，异或和能够为 s 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
-<p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 <span class="math inline">\(FWT/iFWT\)</span> 可以做到 <span class="math inline">\(\mathcal O(n\log_2^2n)\)</span>。</p>
+<p>设所有数异或和为 <span class="math inline">\(s\)</span>，异或和能够为 <span class="math inline">\(s\)</span> 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
+<p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 FWT 和 iFWT 可以做到 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
 <p>丧心病狂的出题人 <a href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
 <p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
-<p><span class="math display">\[
-\begin{align}\hat{F}*S&amp;=\sum_{T\subseteq U}(-1)^{|S\cap T|}F_T \\
-F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T\end{align}
-\]</span></p>
-<p>每次只要 <span class="math inline">\(\mathcal O(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\mathcal O(n\log_2n)\)</span>。</p>
+<p><span class="math display">\[\begin{aligned} \hat{F}*S&amp;=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T \end{aligned}\]</span></p>
+<p>每次只要 <span class="math inline">\(\mathcal O(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
 <h2 id="p3047-usaco12febnearby-cows-g">P3047 [USACO12FEB]Nearby Cows G</h2>
 <p><a href="https://www.luogu.com.cn/problem/P3047">题目</a></p>
 <p>换根 DP。</p>
@@ -2748,7 +2759,7 @@ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T\end{align}
 <blockquote>
 <p>换根 DP 的特点是能够快速地将子树分离、改变父子关系后合并</p>
 </blockquote>
-<h1 id="section-4">11.5</h1>
+<h1 id="日-3">5日</h1>
 <h2 id="p4161-scoi2009游戏">P4161 [SCOI2009]游戏</h2>
 <p><a href="https://www.luogu.com.cn/problem/P4161">题目</a></p>
 <p>数论，背包 DP。</p>
@@ -2772,7 +2783,7 @@ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T\end{align}
 <p><a href="https://www.luogu.com.cn/problem/P4158">题目</a></p>
 <p>简单 DP + 背包 DP。</p>
 <p>问题在于如何分配粉刷次数，先对于每一行单独处理，将不同粉刷次数的答案化为物品。</p>
-<p>设 <span class="math inline">\(f_{i,k}\)</span> 表示前 i 位粉刷 k 次最多正确个数，<span class="math inline">\(f_{i,k}\leftarrow f_{j,k-1}+\max\{s_0(j+1,i),s_1(j+1,i)\}\)</span>。</p>
+<p>设 <span class="math inline">\(f_{i,k}\)</span> 表示前 <span class="math inline">\(i\)</span> 位粉刷 <span class="math inline">\(k\)</span> 次最多正确个数，<span class="math inline">\(f_{i,k}\leftarrow f_{j,k-1}+\max\{s_0(j+1,i),s_1(j+1,i)\}\)</span>。</p>
 <p>然后对于 <span class="math inline">\(n\times m\)</span> 个物品进行背包即可。</p>
 <h2 id="p1092-虫食算">P1092 虫食算</h2>
 <p><a href="https://www.luogu.com.cn/problem/P1092">题目</a></p>
@@ -2785,30 +2796,25 @@ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T\end{align}
 <p>数论。</p>
 <p>打表，发现 <span class="math inline">\(a&lt;b\)</span> 时答案是 <span class="math inline">\((a-1)\times b - a\)</span>。</p>
 <p>证明：设无法表示出来的为 x。</p>
-<p><span class="math display">\[
-\begin{align}
-x&amp;\equiv ma\pmod b &amp;(1&lt;m&lt;b)\\
-x&amp;=ma+nb&amp;(1&lt;m&lt;b,n&lt;0)
-\end{align}
-\]</span></p>
+<p><span class="math display">\[\begin{aligned} x&amp;\equiv ma\pmod b \quad&amp;(1&lt;m&lt;b)\\ x&amp;=ma+nb\quad&amp;(1&lt;m&lt;b,n&lt;0) \end{aligned}\]</span></p>
 <p>当 x 最大时，<span class="math inline">\(m=b-1,n=-1\)</span>，证毕。</p>
 <h2 id="p5092-usaco04opencube-stacking">P5092 [USACO04OPEN]Cube Stacking</h2>
 <p><a href="https://www.luogu.com.cn/record/41327125">题目</a></p>
 <p>并查集。</p>
-<p>在 x 和 fa 的边之间维护压缩的边数，路径压缩优化，再维护每个并查集的 size。</p>
+<p>在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(fa\)</span> 的边之间维护压缩的边数，路径压缩优化，再维护每个并查集的 size。</p>
 <h2 id="p2894-usaco08febhotel-g">P2894 [USACO08FEB]Hotel G</h2>
 <p><a href="https://www.luogu.com.cn/problem/P2894">题目</a></p>
 <p>线段树。</p>
 <p>维护每个区间的最长连续区间和左端开头、右端开头的最长连续区间。</p>
-<p>二分最早的 r 使得 <span class="math inline">\([1,r]\)</span> 的最长连续区间长度大于 x，<span class="math inline">\(\mathcal O(n\log_2^2n)\)</span>。</p>
-<p>query 时直接左区间优先即可，<span class="math inline">\(\mathcal O(n\log_2n)\)</span>。</p>
-<h1 id="section-5">11.11</h1>
+<p>二分最早的 r 使得 <span class="math inline">\([1,r]\)</span> 的最长连续区间长度大于 x，<span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<p>query 时直接左区间优先即可，<span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h1 id="日-4">11日</h1>
 <h2 id="p7076-动物园">P7076 动物园</h2>
 <p><a href="https://www.luogu.com.cn/problem/P7076">题目</a></p>
 <p>贪心（？），CSP2020 T2。</p>
 <p>将所有动物或起来，对于每一位，没有饲料或者有饲料并且已经购买，该位可以选或不选；有饲料且未购买，只能不选。</p>
 <p>把每一位的答案乘一下，坑点是开了 unsigned long long 也见祖宗，需要特判 <span class="math inline">\(2^{64}\)</span> 的情况。</p>
-<h1 id="section-6">11.12</h1>
+<h1 id="日-5">12日</h1>
 <h2 id="p7077-函数调用">P7077 函数调用</h2>
 <p><a href="https://www.luogu.com.cn/problem/P7077">题目</a></p>
 <p>拓扑 DP，CSP2020 T3。</p>
@@ -2818,6 +2824,32 @@ x&amp;=ma+nb&amp;(1&lt;m&lt;b,n&lt;0)
 <p>接下来考虑单点加和其之后的变化。每个单点加的贡献是后面所有乘法之积。</p>
 <p>那么先预处理每个点的及后面乘法的积 <span class="math inline">\(m_i\)</span>，然后按照操作序列倒着 DP 每个DAG 的贡献次数。</p>
 <p>再在 DAG 里倒着 DP，<span class="math inline">\(f_v\leftarrow f_v + f_u, f_u\leftarrow f_u\times m_v\)</span>，对于单点加的贡献就有 <span class="math inline">\(f_u\times val_u\)</span>。</p>
+<h1 id="日-6">17日</h1>
+<h2 id="p7078-贪吃蛇">P7078 贪吃蛇</h2>
+<p><a href="https://www.luogu.com.cn/problem/P7078">题目</a></p>
+<p>博弈论+单调性优化，CSP2020 T4。</p>
+<p>见<a href="https://renamoe.github.io/2020/11/17/题解-P7078-贪吃蛇">博客题解</a>。</p>
+<h1 id="日-7">20日</h1>
+<h2 id="cf455d-serega-and-fun">CF455D Serega and Fun</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF455D">题目</a></p>
+<p>平衡树或者分块。</p>
+<p>对于第一个操作可以用一棵 splay 轻松维护，称其为序列树。</p>
+<p>因为值域 <span class="math inline">\(\mathcal O(n)\)</span>，第二个操作考虑每个值维护一棵 splay，节点存其对应的序列树的编号。</p>
+<p>每次询问一个区间要求在某一棵 splay 里寻找区间内最靠左和最靠右的点，可以通过在序列树上查 rank 来二分，单次 <span class="math inline">\(\mathcal O(\log^2n)\)</span>。</p>
+<h2 id="s2oj41-新斯诺克">S2OJ#41 新斯诺克</h2>
+<p><a href="http://sjzezoj.com:9280/problem/41">题目</a></p>
+<p>归并排序就够了。</p>
+<p>可以让所有数减去 m，然后做前缀和，满足 <span class="math inline">\(j&lt;i, s_j&lt;s_i\)</span> 的一对点构成一个合法区间。</p>
+<p>二维偏序，可以做到 <span class="math inline">\(\mathcal O(n\log n)\)</span>。这个煞笔又写了个比别多个 <span class="math inline">\(\log\)</span> 的 CDQ 分治。</p>
+<h1 id="日-8">21日</h1>
+<h2 id="s2oj42-方舟连接">S2OJ#42 方舟连接</h2>
+<p><a href="http://sjzezoj.com:9280/problem/59">题目</a></p>
+<p>区间 DP + 四边形不等式优化。</p>
+<p>把路径看成一棵树，然后发现这是两两相邻子树合并，转化成一个序列就是区间 DP。</p>
+<p><span class="math inline">\(\mathcal O(n^3)\)</span> 过不去，简单证明一下 DP 为凸，套上经典的四边形不等式优化，降到 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<h2 id="s2oj60-a-simple-math-problem-vi">S2OJ#60 A Simple Math Problem VI</h2>
+<p><a href="http://sjzezoj.com:9280/problem/60">题目</a></p>
+<p>小数据裸完全背包。大数据特殊性质 <span class="math inline">\(a_i=1\)</span>，组合数问题 <a href="https://oi-wiki.org/math/combination/#1">见 OI wiki</a>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
@@ -2914,6 +2946,42 @@ x&amp;=ma+nb&amp;(1&lt;m&lt;b,n&lt;0)
       </categories>
       <tags>
         <tag>博弈论</tag>
+        <tag>单调性优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>总结 四边形不等式优化DP</title>
+    <url>/2020/11/21/%E6%80%BB%E7%BB%93-%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%BC%98%E5%8C%96DP/</url>
+    <content><![CDATA[<p>四边形不等式优化是对特定形式的状态转移方程进行优化的一种方法。</p>
+<a id="more"></a>
+<p>开坑！</p>
+<hr />
+<p>对于 2D1D 的 DP（比如石子合并一类的区间 DP）： <span class="math display">\[
+f_{i,j}=\min_{i\le k&lt;j}\{f_{i,k}+f_{k+1,j}\}+cost(i,j)
+\]</span> 可以通过四边形不等式从 <span class="math inline">\(\mathcal O(n^3)\)</span> 优化到 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<h2 id="step-1证明-cost-为凸">step 1：证明 cost 为凸</h2>
+<p>对于 <span class="math inline">\(i&lt;i+1\le j&lt;j+1\)</span>： <span class="math display">\[
+w(i,j)+w(i+1,j+1)\le w(i+1,j)+w(i,j+1)
+\]</span></p>
+<h2 id="step-2证明-dp-为凸">step 2：证明 DP 为凸</h2>
+<p>同理，对于 <span class="math inline">\(i&lt;i+1\le j&lt;j+1\)</span>： <span class="math display">\[
+f(i,j)+f(i+1,j+1)\le f(i+1,j)+f(i,j+1)
+\]</span></p>
+<h2 id="step-3证明决策单调性">step 3：证明决策单调性</h2>
+<p>设 <span class="math inline">\(g(i,j)\)</span> 为 <span class="math inline">\(f(i,j)\)</span> 的最优决策点： <span class="math display">\[
+g(i,j-1)\le g(i,j) \le g(i+1,j)
+\]</span></p>
+<h2 id="应用">应用</h2>
+<p><del>猜单调性后打表证明。</del></p>
+<p><del>发现不行就改改式子往上套。</del></p>
+<p>咕~</p>
+]]></content>
+      <categories>
+        <category>总结</category>
+        <category>DP</category>
+      </categories>
+      <tags>
+        <tag>单调性优化</tag>
       </tags>
   </entry>
 </search>
