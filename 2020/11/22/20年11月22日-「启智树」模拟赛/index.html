@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/avatar.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="数论 + 模拟 + 图论 + 带权并查集。 88 块钱的比赛竟然没好好打 QAQ。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20年11月22日 「启智树」模拟赛">
+<meta property="og:url" content="http://example.com/2020/11/22/20%E5%B9%B411%E6%9C%8822%E6%97%A5-%E3%80%8C%E5%90%AF%E6%99%BA%E6%A0%91%E3%80%8D%E6%A8%A1%E6%8B%9F%E8%B5%9B/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="数论 + 模拟 + 图论 + 带权并查集。 88 块钱的比赛竟然没好好打 QAQ。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.ax1x.com/2020/11/22/DGnDZn.png">
+<meta property="article:published_time" content="2020-11-22T12:44:51.000Z">
+<meta property="article:modified_time" content="2020-11-22T13:11:48.857Z">
+<meta property="article:author" content="RenaMoe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.ax1x.com/2020/11/22/DGnDZn.png">
+
+<link rel="canonical" href="http://example.com/2020/11/22/20%E5%B9%B411%E6%9C%8822%E6%97%A5-%E3%80%8C%E5%90%AF%E6%99%BA%E6%A0%91%E3%80%8D%E6%A8%A1%E6%8B%9F%E8%B5%9B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>20年11月22日 「启智树」模拟赛 | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">提高效率qwq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/22/20%E5%B9%B411%E6%9C%8822%E6%97%A5-%E3%80%8C%E5%90%AF%E6%99%BA%E6%A0%91%E3%80%8D%E6%A8%A1%E6%8B%9F%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20年11月22日 「启智树」模拟赛
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-22 20:44:51 / 修改时间：21:11:48" itemprop="dateCreated datePublished" datetime="2020-11-22T20:44:51+08:00">2020-11-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">模拟赛</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/22/20%E5%B9%B411%E6%9C%8822%E6%97%A5-%E3%80%8C%E5%90%AF%E6%99%BA%E6%A0%91%E3%80%8D%E6%A8%A1%E6%8B%9F%E8%B5%9B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/22/20%E5%B9%B411%E6%9C%8822%E6%97%A5-%E3%80%8C%E5%90%AF%E6%99%BA%E6%A0%91%E3%80%8D%E6%A8%A1%E6%8B%9F%E8%B5%9B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>数论 + 模拟 + 图论 + 带权并查集。</p>
+<p>88 块钱的比赛竟然没好好打 QAQ。</p>
+<a id="more"></a>
+<h1 id="a-等差数列">A 等差数列</h1>
+<blockquote>
+<p>给出两个等差数列 <span class="math inline">\(a,b\)</span>，求区间 <span class="math inline">\([l,r]\)</span> 中同时出现在两个等差数列的数的个数。</p>
+<p><span class="math inline">\(a_1,b_1\le 100, r\le 10^{18}\)</span>。</p>
+</blockquote>
+<p>数论。</p>
+<p>设 <span class="math inline">\(a,b\)</span> 的等差数列公差 <span class="math inline">\(d_1,d_2\)</span>，每 <span class="math inline">\(\operatorname{lcm}(d_1,d_2)\)</span> 就会出现一个符合条件的数，这个循环长度只有 <span class="math inline">\(10^4\)</span> 级别，暴力找即可。</p>
+<p>然后 <span class="math inline">\([1,n]\)</span> 的答案就是最小的符合条件的数到 <span class="math inline">\(n\)</span> 之间的循环机个数，上取整。</p>
+<p>最后答案差分一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL a, LL b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? gcd(b, a % b) : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LL a, aa, d1, b, bb, d2, l, r, fir, cc;</span><br><span class="line">LL sum[N];</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">solve</span><span class="params">(LL n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; fir) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> (LL)<span class="built_in">ceil</span>((<span class="keyword">double</span>)(n - fir + <span class="number">1</span>) / (<span class="keyword">double</span>)cc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(a), read(aa), read(b), read(bb), read(l), read(r);</span><br><span class="line">    <span class="keyword">if</span> (a &lt; b) swap(a, b), swap(aa, bb);</span><br><span class="line">    d1 = aa - a, d2 = bb - b;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = a; i &lt;= <span class="number">1e5</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((i - a) % d1 == <span class="number">0</span> &amp;&amp; (i - b) % d2 == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!fir) fir = i;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                cc = i - fir;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, solve(r) - solve(l<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="b-玩具">B 玩具</h1>
+<p><img src="https://s3.ax1x.com/2020/11/22/DGnDZn.png" /></p>
+<blockquote>
+<p><span class="math inline">\(n\le 10^6\)</span>。</p>
+<p>模拟题题目好长就不概括了。</p>
+</blockquote>
+<p>就是类似队列的思想预处理每个点到其之前 <span class="math inline">\(L\)</span> 个可行位置的长度，贪心地跳即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e6</span> + <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, B, L;</span><br><span class="line">LL ans;</span><br><span class="line">LL g[N];</span><br><span class="line"><span class="keyword">char</span> str[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; B) sum -= str[i - B] == <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">        sum += str[i] == <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= B &amp;&amp; sum &lt; L) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(L), read(B), read(n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, str+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (!check()) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;IMPOSSIBLE&quot;</span>), <span class="keyword">void</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">1</span>, r = L;</span><br><span class="line">    g[L] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = L + <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">            r = i, l++;</span><br><span class="line">            <span class="keyword">while</span> (str[l] == <span class="string">&#x27;0&#x27;</span>) l++;</span><br><span class="line">        &#125;</span><br><span class="line">        g[i] = l;</span><br><span class="line">    &#125;</span><br><span class="line">    l = L, r = B;</span><br><span class="line">    <span class="keyword">while</span> (r &lt; n) &#123;</span><br><span class="line">        ans += L;</span><br><span class="line">        l = r, r = g[r] + B - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l &lt; n) ans += L;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans + n - B);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="c-整除">C 整除</h1>
+<blockquote>
+<p>给定 <span class="math inline">\(k,m\)</span>，求一个最小的能被 <span class="math inline">\(m\)</span> 整除的 <span class="math inline">\(n\)</span>，保证 <span class="math inline">\(n\)</span> 的每一位数字都属于 <span class="math inline">\([0,k)\)</span>。</p>
+<p><span class="math inline">\(k\le 10,m\le 10^6\)</span>。</p>
+</blockquote>
+<p>图论。</p>
+<p>设 <span class="math inline">\(f_i\)</span> 表示 <span class="math inline">\(n \bmod m = i\)</span> 的最小的 <span class="math inline">\(n\)</span>，<span class="math inline">\(f_i\)</span> 可以向 <span class="math inline">\(f_i\times10+j\quad(j\in[0,k))\)</span> 连边。</p>
+<p>对每个点的出边从小到大 bfs，即可保证答案最小。</p>
+<p><span class="math inline">\(f_i\)</span> 存不下，只存最低位的前驱点即可，最后从 <span class="math inline">\(0\)</span> 点往回倒推。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> K, m;</span><br><span class="line"><span class="keyword">int</span> dis[N], ans[N], pre[N], q[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; e[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; output;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(K), read(m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; m; ++u) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; K; ++j) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = (u * <span class="number">10</span> + j) % m;</span><br><span class="line">            e[u].push_back(v);</span><br><span class="line">        &#125;</span><br><span class="line">        pre[u] = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(dis, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dis);</span><br><span class="line">    <span class="keyword">int</span> ql = <span class="number">1</span>, qr = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">1</span>; u &lt; K; ++u) &#123;</span><br><span class="line">        ans[u] = u;</span><br><span class="line">        dis[u] = <span class="number">0</span>;</span><br><span class="line">        q[++qr] = u;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (ql &lt;= qr) &#123;</span><br><span class="line">        <span class="keyword">int</span> u = q[ql++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; e[u].size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = e[u][i];</span><br><span class="line">            <span class="keyword">if</span> (dis[v] &gt; dis[u] + <span class="number">1</span>) &#123;</span><br><span class="line">                ans[v] = i;</span><br><span class="line">                dis[v] = dis[u] + <span class="number">1</span>;</span><br><span class="line">                pre[v] = u;</span><br><span class="line">                q[++qr] = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u != <span class="number">-1</span>; u = pre[u]) &#123;</span><br><span class="line">        output.push_back(ans[u] + <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = output.size() - <span class="number">1</span>; ~i; --i)</span><br><span class="line">        <span class="built_in">putchar</span>(output[i]);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="d-集合">D 集合</h1>
+<p>类似 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF571D">CF571D Campus</a>。</p>
+<p>咕~</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/21/%E6%80%BB%E7%BB%93-%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%BC%98%E5%8C%96DP/" rel="prev" title="总结 四边形不等式优化DP">
+      <i class="fa fa-chevron-left"></i> 总结 四边形不等式优化DP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2050/02/06/2020-02-06-%E6%80%BB%E7%BB%93-OI%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86/" rel="next" title="总结 OI中一些数学定理">
+      总结 OI中一些数学定理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#a-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">A 等差数列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#b-%E7%8E%A9%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">B 玩具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-%E6%95%B4%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">C 整除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#d-%E9%9B%86%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">D 集合</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
