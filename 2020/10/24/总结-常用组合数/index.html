@@ -25,7 +25,7 @@
 <meta property="og:description" content="包括组合数、卡特兰数、第一二类斯特林数等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-24T01:58:14.000Z">
-<meta property="article:modified_time" content="2020-11-21T11:29:23.249Z">
+<meta property="article:modified_time" content="2020-11-22T05:34:39.247Z">
 <meta property="article:author" content="RenaMoe">
 <meta property="article:tag" content="组合数">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-21 19:29:23" itemprop="dateModified" datetime="2020-11-21T19:29:23+08:00">2020-11-21</time>
+                <time title="修改时间：2020-11-22 13:34:39" itemprop="dateModified" datetime="2020-11-22T13:34:39+08:00">2020-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -344,7 +344,13 @@ H_n&amp;=\frac{4n-2}{n+1}H_{n-1}\\
 <li><p>表示长度为 <span class="math inline">\(2n\)</span> 的 <span class="math inline">\(\texttt{dyck word}\)</span> 个数(有 <span class="math inline">\(n\)</span> 个"X"与 <span class="math inline">\(n\)</span> 个"Y"组成的字符串，满足前缀“X”的个数大于等于前缀“Y”的个数)。</p></li>
 </ol>
 <h2 id="第一类斯特林数">第一类斯特林数</h2>
+<p>表示将 <span class="math inline">\(n\)</span> 个两两不同的元素，划分为 <span class="math inline">\(k\)</span> 个非空圆排列的方案数。 <span class="math display">\[
+\begin{bmatrix}n\\k\end{bmatrix}=\begin{bmatrix}n-1\\k-1\end{bmatrix}+(n-1)\begin{bmatrix}n-1\\k\end{bmatrix}
+\]</span> 边界 <span class="math inline">\(\displaystyle \begin{bmatrix}n\\0\end{bmatrix}=[n=0]\)</span>。</p>
 <h2 id="第二类斯特林数">第二类斯特林数</h2>
+<p>表示将 <span class="math inline">\(n\)</span> 个两两不同的元素，划分为 <span class="math inline">\(k\)</span> 个非空子集的方案数。 <span class="math display">\[
+\begin{Bmatrix}n\\k\end{Bmatrix}=\begin{Bmatrix}n-1\\k-1\end{Bmatrix}+k\begin{Bmatrix}n-1\\k\end{Bmatrix}
+\]</span> 边界 <span class="math inline">\(\displaystyle \begin{Bmatrix}n\\0\end{Bmatrix}=[n=0]\)</span>。</p>
 
     </div>
 

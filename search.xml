@@ -2403,7 +2403,13 @@ H_n&amp;=\frac{4n-2}{n+1}H_{n-1}\\
 <li><p>表示长度为 <span class="math inline">\(2n\)</span> 的 <span class="math inline">\(\texttt{dyck word}\)</span> 个数(有 <span class="math inline">\(n\)</span> 个"X"与 <span class="math inline">\(n\)</span> 个"Y"组成的字符串，满足前缀“X”的个数大于等于前缀“Y”的个数)。</p></li>
 </ol>
 <h2 id="第一类斯特林数">第一类斯特林数</h2>
+<p>表示将 <span class="math inline">\(n\)</span> 个两两不同的元素，划分为 <span class="math inline">\(k\)</span> 个非空圆排列的方案数。 <span class="math display">\[
+\begin{bmatrix}n\\k\end{bmatrix}=\begin{bmatrix}n-1\\k-1\end{bmatrix}+(n-1)\begin{bmatrix}n-1\\k\end{bmatrix}
+\]</span> 边界 <span class="math inline">\(\displaystyle \begin{bmatrix}n\\0\end{bmatrix}=[n=0]\)</span>。</p>
 <h2 id="第二类斯特林数">第二类斯特林数</h2>
+<p>表示将 <span class="math inline">\(n\)</span> 个两两不同的元素，划分为 <span class="math inline">\(k\)</span> 个非空子集的方案数。 <span class="math display">\[
+\begin{Bmatrix}n\\k\end{Bmatrix}=\begin{Bmatrix}n-1\\k-1\end{Bmatrix}+k\begin{Bmatrix}n-1\\k\end{Bmatrix}
+\]</span> 边界 <span class="math inline">\(\displaystyle \begin{Bmatrix}n\\0\end{Bmatrix}=[n=0]\)</span>。</p>
 ]]></content>
       <categories>
         <category>总结</category>
