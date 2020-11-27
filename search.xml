@@ -3077,4 +3077,42 @@ a_i-a_j&amp;\le i-j
         <tag>CDQ分治</tag>
       </tags>
   </entry>
+  <entry>
+    <title>题解 GYM102331B Bitwise Xor</title>
+    <url>/2020/11/27/%E9%A2%98%E8%A7%A3-GYM102331B-Bitwise-Xor/</url>
+    <content><![CDATA[<p>jiangly contest T3。</p>
+<p>用 01-trie 优化 DP。</p>
+<a id="more"></a>
+<h2 id="题意">题意</h2>
+<p><a href="https://codeforces.com/gym/102331/problem/B">题目</a></p>
+<blockquote>
+<p>给出长为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(x\)</span>，若一个 <span class="math inline">\(a\)</span> 的长为 <span class="math inline">\(k\)</span> 的子序列 <span class="math inline">\(b\)</span> 满足对于 <span class="math inline">\(b_i \operatorname{xor} b_j \ge x(1\le i &lt; j\le k)\)</span>，则是合法的序列，求 <span class="math inline">\(a\)</span> 的合法序列方案数。</p>
+<p><span class="math inline">\(1\le n\le 3\times 10^5,0\le a_i\le 2^{60}-1\)</span>。</p>
+</blockquote>
+<h2 id="思路">思路</h2>
+<p><span class="math inline">\(b\)</span> 的条件要求 <span class="math inline">\(b_i \operatorname{xor} b_j\)</span> 的最小值大于等于 <span class="math inline">\(x\)</span>，条件很严苛。</p>
+<p>但是将 <span class="math inline">\(b\)</span> 排序后，这个最小值只能出现在相邻两项的异或值。</p>
+<figure>
+<img src="https://s3.ax1x.com/2020/11/27/DrNPN4.png" alt="证明 by jiangly" /><figcaption aria-hidden="true">证明 by jiangly</figcaption>
+</figure>
+<p>于是我们只要保证相邻两项异或值大于等于 <span class="math inline">\(x\)</span>。（考场上看错题的）</p>
+<p>可以轻松的到 <span class="math inline">\(\mathcal O(n^2)\)</span> 的 DP 转移方程： <span class="math display">\[
+f_i\leftarrow 1+\sum_{1\le j&lt; i}[a_i \operatorname{xor} a_j\ge x]f_j
+\]</span> 考虑从异或入手，可以想到 01-trie。</p>
+<p>在 01-trie 上节点存子树权值和，每次查询符合条件的 <span class="math inline">\(\sum f_j\)</span> 并插入 <span class="math inline">\(a_i\)</span> 权值为 <span class="math inline">\(f_i\)</span>。</p>
+<p>如何查询？</p>
+<p>我们令 <span class="math inline">\(a_i \operatorname{xor} a_j=x\)</span>，在 trie 上 <span class="math inline">\(a_j\)</span> 的这条路径上，对于从高到低每一位，设这一位 <span class="math inline">\(a_j\)</span> 为 <span class="math inline">\(a\)</span>，<span class="math inline">\(a_j\)</span> 为 <span class="math inline">\(b\)</span>，<span class="math inline">\(x\)</span> 为 <span class="math inline">\(c\)</span>。</p>
+<p>如果 <span class="math inline">\(c\)</span> 为 <span class="math inline">\(0\)</span>，那么这一位可以为 <span class="math inline">\(1\)</span>，加上 <span class="math inline">\(a \operatorname{xor} 1\)</span> 的子树。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n\log a)\)</span>。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span> + <span class="number">9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P = <span class="number">998244353</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, tot;</span><br><span class="line">LL k, ans;</span><br><span class="line">LL a[N], sum[N*<span class="number">60</span>], ch[N*<span class="number">60</span>][<span class="number">2</span>], f[N];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(LL x, LL val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">61</span>; ~i; --i) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (!ch[p][c]) ch[p][c] = ++tot;</span><br><span class="line">        p = ch[p][c];</span><br><span class="line">        (sum[p] += val) %= P;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">query</span><span class="params">(LL x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">61</span>; ~i; --i) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="number">1</span>, d = (k &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (!d) (res += sum[ch[p][c ^ <span class="number">1</span>]]) %= P;</span><br><span class="line">        p = ch[p][c ^ d];</span><br><span class="line">        <span class="keyword">if</span> (!p) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    (res += sum[p]) %= P;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(k);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(a[i]);</span><br><span class="line">    sort(a+<span class="number">1</span>, a+n+<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    tot = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        f[i] = (query(a[i]) + <span class="number">1</span>) % P;</span><br><span class="line">        insert(a[i], f[i]);</span><br><span class="line">        (ans += f[i]) %= P;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>01-trie</tag>
+      </tags>
+  </entry>
 </search>
