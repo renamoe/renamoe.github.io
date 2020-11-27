@@ -970,7 +970,7 @@ a^{i*t}\equiv b*a^j\pmod p
   </entry>
   <entry>
     <title>总结 OI中一些数学定理</title>
-    <url>/2050/02/06/2020-02-06-%E6%80%BB%E7%BB%93-OI%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86/</url>
+    <url>/2020/10/06/2020-02-06-%E6%80%BB%E7%BB%93-OI%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E5%AE%9A%E7%90%86/</url>
     <content><![CDATA[<p>这里放一些数学公式定理，防止健忘</p>
 <a id="more"></a>
 <h2 id="matrix-tree-定理">Matrix Tree 定理</h2>
