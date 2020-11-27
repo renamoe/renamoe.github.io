@@ -17,20 +17,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这里是栈的做法 递归快写吐了，决心用栈，结果调了半天。。。">
+  <meta name="description" content="题目 求不定方程 \[\frac{1}{x} + \frac{1}{y} &#x3D; \frac{1}{n!}\] 的正整数解(x,y)的数目。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 P1322 【logo语言】">
-<meta property="og:url" content="http://example.com/2019/12/24/sol_P1322/index.html">
+<meta property="og:title" content="题解 P4167 [Violet]樱花">
+<meta property="og:url" content="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P4167-Violet-%E6%A8%B1%E8%8A%B1/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="这里是栈的做法 递归快写吐了，决心用栈，结果调了半天。。。">
+<meta property="og:description" content="题目 求不定方程 \[\frac{1}{x} + \frac{1}{y} &#x3D; \frac{1}{n!}\] 的正整数解(x,y)的数目。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-24T13:41:00.000Z">
-<meta property="article:modified_time" content="2020-07-28T06:04:45.000Z">
+<meta property="article:published_time" content="2019-12-25T13:41:07.000Z">
+<meta property="article:modified_time" content="2020-11-27T08:10:07.394Z">
 <meta property="article:author" content="RenaMoe">
-<meta property="article:tag" content="栈">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2019/12/24/sol_P1322/">
+<link rel="canonical" href="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P4167-Violet-%E6%A8%B1%E8%8A%B1/">
 
 
 <script id="page-configurations">
@@ -43,7 +43,7 @@
   };
 </script>
 
-  <title>题解 P1322 【logo语言】 | RenaMoe's Blog</title>
+  <title>题解 P4167 [Violet]樱花 | RenaMoe's Blog</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/24/sol_P1322/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P4167-Violet-%E6%A8%B1%E8%8A%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          题解 P1322 【logo语言】
+          题解 P4167 [Violet]樱花
         </h1>
 
         <div class="post-meta">
@@ -220,20 +220,24 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-24 21:41:00" itemprop="dateCreated datePublished" datetime="2019-12-24T21:41:00+08:00">2019-12-24</time>
+              <time title="创建时间：2019-12-25 21:41:07" itemprop="dateCreated datePublished" datetime="2019-12-25T21:41:07+08:00">2019-12-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-28 14:04:45" itemprop="dateModified" datetime="2020-07-28T14:04:45+08:00">2020-07-28</time>
+                <time title="修改时间：2020-11-27 16:10:07" itemprop="dateModified" datetime="2020-11-27T16:10:07+08:00">2020-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
+                </span>
+                  ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
                 </span>
@@ -248,8 +252,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/24/sol_P1322/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/24/sol_P1322/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/25/%E9%A2%98%E8%A7%A3-P4167-Violet-%E6%A8%B1%E8%8A%B1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/25/%E9%A2%98%E8%A7%A3-P4167-Violet-%E6%A8%B1%E8%8A%B1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -264,15 +268,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>这里是栈的做法</strong></p>
-<p>递归快写吐了，决心用栈，结果调了半天。。。</p>
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/problem/P4167">题目</a></p>
+<p>求不定方程</p>
+<p><span class="math display">\[\frac{1}{x} + \frac{1}{y} = \frac{1}{n!}\]</span></p>
+<p>的正整数解(x,y)的数目。</p>
+</blockquote>
 <a id="more"></a>
-<p>应该都能想到，FD就加，BF就减，REPEAT就压栈，']'就弹栈</p>
-<p>手写栈比较舒服，<del>用STL的stack有点丑</del></p>
-<p><strong>细节太重要了</strong></p>
-<p>敲的时候应该注意：读入是否从有效字符开始（用char[]的注意）、']'的读入、用过的那层栈要清空。。。</p>
-<p><del>都是废话，自己写写就知道了</del></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> BANANA &#123;<span class="comment">//防止命名冲突</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;<span class="comment">// 快读</span></span><br><span class="line">    <span class="keyword">int</span> re = <span class="number">0</span>, k = <span class="number">1</span>; <span class="keyword">char</span> in = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(in)) &#123; <span class="keyword">if</span> (in == <span class="string">&#x27;-&#x27;</span>) k = <span class="number">-1</span>; in = getchar(); &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(in)) re = re * <span class="number">10</span> + in - <span class="string">&#x27;0&#x27;</span>, in = getchar();</span><br><span class="line">    <span class="keyword">return</span> re * k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[<span class="number">305</span>], k[<span class="number">305</span>];<span class="comment">// stack：栈，k：这一层栈repeat的次数</span></span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">num</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;<span class="comment">// 把s串开头的数字提出来</span></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; <span class="built_in">isdigit</span>(s[i]); i++)</span><br><span class="line">        ans = ans * <span class="number">10</span> + s[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> top = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; s) &#123;<span class="comment">// ctrl+z结束</span></span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;F&#x27;</span>) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">            <span class="built_in">stack</span>[top] += num(s);</span><br><span class="line">            <span class="keyword">int</span> len = s.size() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (s[len] == <span class="string">&#x27;]&#x27;</span>)<span class="comment">// 结尾有&#x27;]&#x27;要退栈</span></span><br><span class="line">                <span class="built_in">stack</span>[top<span class="number">-1</span>] += k[top<span class="number">-1</span>] * <span class="built_in">stack</span>[top], top--, len--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;B&#x27;</span>) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">            <span class="built_in">stack</span>[top] -= num(s);</span><br><span class="line">            <span class="keyword">int</span> len = s.size() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (s[len] == <span class="string">&#x27;]&#x27;</span>)</span><br><span class="line">                <span class="built_in">stack</span>[top<span class="number">-1</span>] += k[top<span class="number">-1</span>] * <span class="built_in">stack</span>[top], top--, len--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;R&#x27;</span>) &#123;</span><br><span class="line">            k[top] = read();</span><br><span class="line">            top++;</span><br><span class="line">            <span class="built_in">stack</span>[top] = <span class="number">0</span>;<span class="comment">// 用之前清空（之前因为这个WA了</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 特判&quot;[]&quot;里什么都没有的</span></span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;<span class="comment">// 前面已经读入了&#x27;[&#x27;，所以从0开始</span></span><br><span class="line">            <span class="keyword">while</span> (s[i] == <span class="string">&#x27;]&#x27;</span> &amp;&amp; i &lt; s.size())</span><br><span class="line">                <span class="built_in">stack</span>[top<span class="number">-1</span>] += k[top<span class="number">-1</span>] * <span class="built_in">stack</span>[top], top--, i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">abs</span>(<span class="built_in">stack</span>[<span class="number">1</span>]));<span class="comment">// 注意是距离（绝对值）</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BANANA::main();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>先开始<del>万恶的</del>推式子。。。</p>
+<p>原式：</p>
+<p><span class="math display">\[\frac{1}{x} + \frac{1}{y} = \frac{1}{n!}\]</span></p>
+<p>通个分：</p>
+<p><span class="math display">\[xy - n!x - n!y= 0\]</span></p>
+<p>补点东西：</p>
+<p><span class="math display">\[xy - n!x - n!y + (n!)^2= (n!)^2\]</span></p>
+<p><span class="math display">\[(n! - x)(n! - y) = (n!)^2\]</span></p>
+<p>此时答案就是<span class="math inline">\((n!)^2\)</span>的约数个数</p>
+<hr />
+<p>统计<span class="math inline">\(n!\)</span>的约数个数：</p>
+<p>把1~n质因数分解，统计各质因子的幂数和即可</p>
+<p>再用唯一分解定理统计</p>
+<p>注意线性筛素数时记录每一个数的最小质因子，分解就具体看代码</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>; T k = <span class="number">1</span>; <span class="keyword">char</span> in = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(in)) &#123; <span class="keyword">if</span> (in == <span class="string">&#x27;-&#x27;</span>) k = <span class="number">-1</span>; in = getchar(); &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(in)) x = x * <span class="number">10</span> + in - <span class="string">&#x27;0&#x27;</span>, in = getchar();</span><br><span class="line">    x *= k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">ll n, ans;</span><br><span class="line"><span class="keyword">int</span> cnt[N], g[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pri;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">make_prime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            pri.push_back(i), g[i] = pri.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; pri.size() &amp;&amp; i * pri[j] &lt;= n; ++j) &#123;</span><br><span class="line">            vis[i*pri[j]] = <span class="literal">true</span>;</span><br><span class="line">            g[i*pri[j]] = j;</span><br><span class="line">            <span class="keyword">if</span> (i % pri[j] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    make_prime();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = i;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">1</span>)</span><br><span class="line">            cnt[g[x]]++, x /= pri[g[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= pri.size(); ++i)</span><br><span class="line">        <span class="keyword">if</span> (cnt[i])</span><br><span class="line">            ans = (ans * (cnt[i] * <span class="number">2</span> + <span class="number">1</span>)) % MOD;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -282,7 +301,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%A0%88/" rel="tag"># 栈</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
           </div>
 
         
@@ -290,10 +309,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2019/12/25/%E9%80%9A%E8%BF%87namespace%E9%98%B2%E6%AD%A2%E5%91%BD%E5%90%8D%E5%86%B2%E7%AA%81/" rel="next" title="通过namespace防止命名冲突">
-      通过namespace防止命名冲突 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/24/%E9%A2%98%E8%A7%A3-P1322-logo%E8%AF%AD%E8%A8%80/" rel="prev" title="题解 P1322 logo语言">
+      <i class="fa fa-chevron-left"></i> 题解 P1322 logo语言
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/25/%E9%A2%98%E8%A7%A3-P3538-POI2012-OKR-A-Horrible-Poem/" rel="next" title="题解 P3538 [POI2012]OKR-A Horrible Poem">
+      题解 P3538 [POI2012]OKR-A Horrible Poem <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -354,6 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -369,7 +392,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

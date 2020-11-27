@@ -17,20 +17,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目 珍爱头发，远离状压 首先如果没做过状压的话，出门右转">
+  <meta name="description" content="洗牌??? 吐槽一下题目的图片，差点误导了我 这么麻烦的题面当然先模拟啦。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="题解 P2704 【[NOI2001]炮兵阵地】">
-<meta property="og:url" content="http://example.com/2019/12/25/sol_P2704/index.html">
+<meta property="og:title" content="题解 P2054 [AHOI2005]洗牌">
+<meta property="og:url" content="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P2054-AHOI2005%E6%B4%97%E7%89%8C/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="题目 珍爱头发，远离状压 首先如果没做过状压的话，出门右转">
+<meta property="og:description" content="洗牌??? 吐槽一下题目的图片，差点误导了我 这么麻烦的题面当然先模拟啦。。。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-25T13:41:07.000Z">
-<meta property="article:modified_time" content="2020-07-28T06:05:02.000Z">
+<meta property="article:modified_time" content="2020-11-27T08:08:30.326Z">
 <meta property="article:author" content="RenaMoe">
-<meta property="article:tag" content="状压DP">
+<meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2019/12/25/sol_P2704/">
+<link rel="canonical" href="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P2054-AHOI2005%E6%B4%97%E7%89%8C/">
 
 
 <script id="page-configurations">
@@ -43,7 +43,7 @@
   };
 </script>
 
-  <title>题解 P2704 【[NOI2001]炮兵阵地】 | RenaMoe's Blog</title>
+  <title>题解 P2054 [AHOI2005]洗牌 | RenaMoe's Blog</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/25/sol_P2704/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/25/%E9%A2%98%E8%A7%A3-P2054-AHOI2005%E6%B4%97%E7%89%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          题解 P2704 【[NOI2001]炮兵阵地】
+          题解 P2054 [AHOI2005]洗牌
         </h1>
 
         <div class="post-meta">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-28 14:05:02" itemprop="dateModified" datetime="2020-07-28T14:05:02+08:00">2020-07-28</time>
+                <time title="修改时间：2020-11-27 16:08:30" itemprop="dateModified" datetime="2020-11-27T16:08:30+08:00">2020-11-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,11 +235,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
+                  <a href="/categories/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DP/" itemprop="url" rel="index"><span itemprop="name">DP</span></a>
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">题解</span></a>
                 </span>
             </span>
 
@@ -252,8 +252,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/25/sol_P2704/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/25/sol_P2704/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/25/%E9%A2%98%E8%A7%A3-P2054-AHOI2005%E6%B4%97%E7%89%8C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/25/%E9%A2%98%E8%A7%A3-P2054-AHOI2005%E6%B4%97%E7%89%8C/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -268,25 +268,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://www.luogu.org/problem/P2704">题目</a></p>
-<p><del>珍爱头发，远离状压</del></p>
-<p>首先如果没做过状压的话，出门<a target="_blank" rel="noopener" href="https://www.luogu.org/problem/P1879">右转</a></p>
+        <p>洗牌???</p>
+<p><del>吐槽一下题目的图片，差点误导了我</del></p>
+<p>这么麻烦的题面当然先模拟啦。。。</p>
 <a id="more"></a>
-<hr />
-<h2 id="思路">思路</h2>
-<p>这道题。。。数据范围很状压</p>
-<p><del>显然</del>，把每一行的地图（有山为1，否则为0）压到一个数里</p>
-<p>把枚举的状态压成有炮为1，否则为0</p>
-<p><strong>把有解的情况存下来</strong>，便于枚举，并预处理每种情况的炮兵个数</p>
-<p>现在<strong>用<span class="math inline">\(f_{i,j,k}\)</span>表示第<span class="math inline">\(i\)</span>行是状态<span class="math inline">\(j\)</span>，是由状态<span class="math inline">\(k\)</span>转移来的，最大的炮兵个数</strong></p>
-<p>单独处理第一行和第二行</p>
-<p>后面<span class="math inline">\(dp\)</span>的时候注意:</p>
-<p>如何使一列中的每三行只有一个炮兵？</p>
-<p>保证<span class="math inline">\(k1\)</span> &amp; <span class="math inline">\(k2\)</span>, <span class="math inline">\(k2\)</span> &amp; <span class="math inline">\(k3\)</span>, <span class="math inline">\(k1\)</span> &amp; <span class="math inline">\(k3\)</span>都为0即可（显然）</p>
-<p>另外，空间有点。。。建议<strong>滚动数组</strong></p>
-<hr />
-<h2 id="代码">代码</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>; T k = <span class="number">1</span>; <span class="keyword">char</span> in = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(in)) &#123; <span class="keyword">if</span> (in == <span class="string">&#x27;-&#x27;</span>) k = <span class="number">-1</span>; in = getchar(); &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(in)) x = x * <span class="number">10</span> + in - <span class="string">&#x27;0&#x27;</span>, in = getchar();</span><br><span class="line">    x *= k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">1</span>&lt;&lt;<span class="number">11</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">105</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, maxn, ans;</span><br><span class="line"><span class="keyword">int</span> mp[N], f[<span class="number">3</span>][M][M];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; d, v;<span class="comment">// 可行状态的对应的炮兵个数</span></span><br><span class="line"><span class="keyword">char</span> in[<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算每种情况的炮兵个数</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> re = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">30</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (x &amp; (<span class="number">1</span> &lt;&lt; i))</span><br><span class="line">            re++;</span><br><span class="line">    <span class="keyword">return</span> re;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(m);</span><br><span class="line">    maxn = (<span class="number">1</span> &lt;&lt; m) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, in);</span><br><span class="line">        <span class="comment">//处理地图</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j)</span><br><span class="line">            <span class="keyword">if</span> (in[j] == <span class="string">&#x27;H&#x27;</span>)</span><br><span class="line">                mp[i] |= <span class="number">1</span> &lt;&lt; j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 预处理可行状态</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= maxn; ++i)</span><br><span class="line">        <span class="keyword">if</span> ((i &amp; (i &gt;&gt; <span class="number">1</span>)) == <span class="number">0</span> &amp;&amp; (i &amp; (i &gt;&gt; <span class="number">2</span>)) == <span class="number">0</span>)</span><br><span class="line">            d.push_back(i), v.push_back(count(i));</span><br><span class="line">    <span class="comment">// 单独处理一二行</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d.size(); ++i)</span><br><span class="line">        <span class="keyword">if</span> ((d[i] &amp; mp[<span class="number">0</span>]) == <span class="number">0</span>)<span class="comment">// 一贯的保证可行</span></span><br><span class="line">            f[<span class="number">0</span>][d[i]][<span class="number">0</span>] = v[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d.size(); ++i)</span><br><span class="line">        <span class="keyword">if</span> ((d[i] &amp; mp[<span class="number">1</span>]) == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; d.size(); ++j)</span><br><span class="line">                <span class="keyword">if</span> ((d[j] &amp; d[i]) == <span class="number">0</span>)</span><br><span class="line">                    f[<span class="number">1</span>][d[i]][d[j]] = max(f[<span class="number">1</span>][d[i]][d[j]], f[<span class="number">0</span>][d[j]][<span class="number">0</span>] + v[i]);</span><br><span class="line">    <span class="comment">// 愉快的dp</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i)<span class="comment">// 行数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; d.size(); ++j)<span class="comment">// 该行</span></span><br><span class="line">            <span class="keyword">if</span> ((d[j] &amp; mp[i]) == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; d.size(); ++k)<span class="comment">// 上一行</span></span><br><span class="line">                    <span class="keyword">if</span> ((d[k] &amp; d[j]) == <span class="number">0</span>)</span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l &lt; d.size(); ++l)<span class="comment">// 上二行</span></span><br><span class="line">                            <span class="keyword">if</span> ((d[l] &amp; d[k]) == <span class="number">0</span> &amp;&amp; (d[l] &amp; d[j]) == <span class="number">0</span>)</span><br><span class="line">                                f[i%<span class="number">3</span>][d[j]][d[k]] = max(f[i%<span class="number">3</span>][d[j]][d[k]], f[(i<span class="number">-1</span>)%<span class="number">3</span>][d[k]][d[l]] + v[j]);<span class="comment">// 重点</span></span><br><span class="line">    <span class="comment">// 统计最后一行的最大值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; d.size(); ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; d.size(); ++j)</span><br><span class="line">            ans = max(ans, f[(n<span class="number">-1</span>)%<span class="number">3</span>][d[i]][d[j]]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打表发现每次洗牌后第 <span class="math inline">\(i\)</span> 张牌会转移到第 <span class="math inline">\(2*i \%(n+1)\)</span> 的位置上</p>
+<p>即在<span class="math inline">\(\mod{n+1}\)</span>意义下，<span class="math inline">\(i\)</span> 和 <span class="math inline">\(2i\)</span> 是同余的</p>
+<p>so，可以列出一个同余方程：</p>
+<p><span class="math inline">\(i * 2^{m} \equiv l\pmod {n+1}\)</span></p>
+<p>再转化为</p>
+<p><span class="math display">\[2 ^ {m} * i + (n+1) * k = l\]</span></p>
+<p><span class="math display">\[2^{m} * \frac{i}{l} + (n+1) * \frac{k}{l} = 1\]</span></p>
+<p>此时利用<span class="math inline">\(exgcd\)</span>完美地算出<span class="math inline">\(\frac{i}{l}\)</span>，乘上<span class="math inline">\(l\)</span>即可</p>
+<p><strong>注意：</strong>范围1e10，如果直接乘会gg，要用快速乘，和快速幂差不多</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;<span class="comment">// 快读</span></span><br><span class="line">    x = <span class="number">0</span>; T k = <span class="number">1</span>; <span class="keyword">char</span> in = getchar();</span><br><span class="line">    <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(in)) &#123; <span class="keyword">if</span> (in == <span class="string">&#x27;-&#x27;</span>) k = <span class="number">-1</span>; in = getchar(); &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">isdigit</span>(in)) x = x * <span class="number">10</span> + in - <span class="string">&#x27;0&#x27;</span>, in = getchar();</span><br><span class="line">    x *= k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;<span class="comment">// 开long long</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 快速乘</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">mul</span><span class="params">(ll a, ll b, ll p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将乘法变为加法，二进制优化，边加边模</span></span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ans = (ans + a) % p;</span><br><span class="line">        a = (a + a) % p;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 快速幂，其实只要写针对2的整次幂就行，这里犯懒。。。</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">q_pow</span><span class="params">(ll a, ll b, ll p)</span> </span>&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>)</span><br><span class="line">            ans = mul(ans, a, p) % p;</span><br><span class="line">        a = mul(a, a, p) % p, b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 标配扩欧</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(ll a, ll b, ll &amp;x, ll &amp;y, ll &amp;g)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!b)</span><br><span class="line">        x = <span class="number">1</span>, y = <span class="number">0</span>, g = a;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        exgcd(b, a%b, y, x, g);</span><br><span class="line">        y -= a / b * x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ll n, m, l, x, y, g, t;</span><br><span class="line">    read(n), read(m), read(l);</span><br><span class="line">    t = q_pow(<span class="number">2</span>, m, n+<span class="number">1</span>);<span class="comment">// 2的m次幂</span></span><br><span class="line">    exgcd(t, n+<span class="number">1</span>, x, y, g);</span><br><span class="line">    x = (x % (n+<span class="number">1</span>) + n+<span class="number">1</span>) % (n+<span class="number">1</span>);<span class="comment">// 注意exgcd后解可能为负</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, mul(x, l, n+<span class="number">1</span>));<span class="comment">// 乘上l</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -296,7 +291,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" rel="tag"># 状压DP</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
           </div>
 
         
@@ -305,12 +300,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/25/sol_P3538/" rel="prev" title="题解 P3538 【[POI2012]OKR-A Horrible Poem】">
-      <i class="fa fa-chevron-left"></i> 题解 P3538 【[POI2012]OKR-A Horrible Poem】
+    <a href="/2019/12/25/%E9%A2%98%E8%A7%A3-P2704-NOI2001%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/" rel="prev" title="题解 P2704 [NOI2001]炮兵阵地">
+      <i class="fa fa-chevron-left"></i> 题解 P2704 [NOI2001]炮兵阵地
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/25/sol_P2054/" rel="next" title="题解 P2054 【[AHOI2005]洗牌】">
-      题解 P2054 【[AHOI2005]洗牌】 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/25/%E9%80%9A%E8%BF%87namespace%E9%98%B2%E6%AD%A2%E5%91%BD%E5%90%8D%E5%86%B2%E7%AA%81/" rel="next" title="通过namespace防止命名冲突">
+      通过namespace防止命名冲突 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -371,7 +366,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,7 +381,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
