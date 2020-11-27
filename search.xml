@@ -2645,6 +2645,23 @@ H_n&amp;=\frac{4n-2}{n+1}H_{n-1}\\
 <h2 id="s2oj60-a-simple-math-problem-vi">S2OJ#60 A Simple Math Problem VI</h2>
 <p><a href="http://sjzezoj.com:9280/problem/60">题目</a></p>
 <p>小数据裸完全背包。大数据特殊性质 <span class="math inline">\(a_i=1\)</span>，组合数问题 <a href="https://oi-wiki.org/math/combination/#1">见 OI wiki</a>。</p>
+<h1 id="日-9">22日</h1>
+<h2 id="p4093-heoi2016tjoi2016序列">P4093 [HEOI2016/TJOI2016]序列</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4093">题目</a></p>
+<p>CDQ 分治。</p>
+<p>设 <span class="math inline">\(mi_i=\min\{val_i,w_i\},ma_i=\max\{val_i,w_i\}\)</span>，求 LIS 的时候转移的条件为：</p>
+<p><span class="math inline">\(\begin{aligned} j&amp;&lt;i\\ val_j&amp;\le mi_i\\ ma_j&amp;\le val_i \end{aligned}\)</span></p>
+<p>CDQ 分治，左右分别按上边对应的属性排序；优先递归处理左区间。复杂度 <span class="math inline">\(\mathcal O(n\log^2 n)\)</span>。</p>
+<h1 id="日-10">26日</h1>
+<h2 id="cf571d-campus">CF571D Campus</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF571D">题目</a></p>
+<p>转化成树上问题 + 树状数组上二分技巧。</p>
+<p><a href="http://localhost:4000/2020/11/26/题解-CF571D-Campus/">见博客</a></p>
+<h1 id="日-11">27日</h1>
+<h2 id="gym102331b-bitwise-xor">GYM102331B Bitwise Xor</h2>
+<p><a href="https://codeforces.com/gym/102331/problem/B">题目</a></p>
+<p>简单 DP + 01-trie。</p>
+<p><a href="https://renamoe.github.io/2020/11/27/题解-GYM102331B-Bitwise-Xor/">见博客</a></p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
