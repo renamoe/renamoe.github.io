@@ -1194,7 +1194,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #41fff1;
+  background: #c2ffd9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2573,7 +2573,7 @@ mjx-container + br {
   padding: 0;
 }
 body {
-  background: url("https://renamoe.gitee.io/picture/20201024.png");
+  background: url("https://renamoe.gitee.io/picture/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
