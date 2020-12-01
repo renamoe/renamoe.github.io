@@ -25,7 +25,7 @@
 <meta property="og:description" content="做题好慢啊。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-14T11:03:50.000Z">
-<meta property="article:modified_time" content="2020-11-27T11:43:01.529Z">
+<meta property="article:modified_time" content="2020-12-01T07:39:01.743Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-27 19:43:01" itemprop="dateModified" datetime="2020-11-27T19:43:01+08:00">2020-11-27</time>
+                <time title="修改时间：2020-12-01 15:39:01" itemprop="dateModified" datetime="2020-12-01T15:39:01+08:00">2020-12-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -424,6 +424,190 @@
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/102331/problem/B">题目</a></p>
 <p>简单 DP + 01-trie。</p>
 <p><a target="_blank" rel="noopener" href="https://renamoe.github.io/2020/11/27/题解-GYM102331B-Bitwise-Xor/">见博客</a></p>
+<h1 id="日-12">2日</h1>
+<h2 id="p3354-ioi2005riv-河流-1">P3354 [IOI2005]Riv 河流</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3354">题目</a></p>
+<p>树形背包 DP。</p>
+<p>设 <span class="math inline">\(f_{u,f,k},g_{u,f,k}\)</span> 表示 u 为根的子树以 f 为关键点、强制 / 不强制 u 为关键点、使用了 k 个关键点的最小花费。</p>
+<p><span class="math display">\[\begin{aligned} f_{u,f,k}&amp;\leftarrow f_{v,f,l}+f{u,f,k-l}\\g_{u,f,k}&amp;\leftarrow f_{v,u,l}+g_{u,f,k-l} \end{aligned}\]</span></p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n^4)\)</span>。</p>
+<h1 id="日-13">3日</h1>
+<h2 id="acwing277-饼干-1">AcWing277 饼干</h2>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/279">题目</a></p>
+<p>简单 DP。</p>
+<p>先贪心地让怨气值大的在前，则分配饼干个数单调不增，设 <span class="math inline">\(f_{i,j}\)</span> 表示前 i 个人分 j 个饼干最优答案。</p>
+<p>简化状态，强制让最后一个人只得到 1 个，其他状态 <span class="math inline">\(f_{i,j}\Leftarrow f_{i,j-i}\)</span>。</p>
+<p>接下来只要考虑最后有多少个人同样分到 1 个就行。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n^2m)\)</span>。</p>
+<h2 id="p6564-poi2007-堆积木klo-1">P6564 [POI2007] 堆积木KLO</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6564">题目</a></p>
+<p>CDQ，BIT，LIS 等均可。</p>
+<p><span class="math display">\[\begin{aligned} i&amp;&gt;j,\\ a_i&amp;&gt; a_j,\\ a_i-a_j&amp;\le i-j \end{aligned}\]</span></p>
+<p>满足后两个条件时一定满足第一个条件，转化为二维偏序直接上 CDQ。</p>
+<p>因为一个 <span class="math inline">\(&gt;\)</span> 一个 <span class="math inline">\(\ge\)</span>，所以 <span class="math inline">\(i-a_i\)</span> 属性要作第一维。</p>
+<h2 id="p2175-小z的游戏分队-1">P2175 小Z的游戏分队</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2175">题目</a></p>
+<p>每个人向不信任的人连边，形成若干个二分图。</p>
+<p>以每个二分图两边人数差为权值，背包 DP 某个答案是否能出现。</p>
+<h1 id="日-14">4日</h1>
+<h2 id="p1800-software-1">P1800 software</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1800">题目</a></p>
+<p>二分 + 背包 DP。</p>
+<p>明显答案是单调的，考虑怎么判定合法。</p>
+<p>在时间限制内，每个人固定了任务一的量，就能确定任务二的量，于是将一个人拆成 m 个物品。</p>
+<p>背包 DP 出 n 个人完成任务一时最多能够完成的任务二的量即可。</p>
+<h2 id="u139384-异或和-1">U139384 异或和</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/U139384">题目</a></p>
+<p>FWT。</p>
+<p>设 <span class="math inline">\(f^i(x)\)</span> 表示选 <span class="math inline">\(i\)</span> 个数，异或和能否为 <span class="math inline">\(x\)</span>，容易得到 <span class="math inline">\(f^1(x)\)</span>，通过 FWT 自卷即可转移。</p>
+<p>将选取最多的，转化为删去最少的使得异或和为零（前者）。</p>
+<p>设所有数异或和为 <span class="math inline">\(s\)</span>，异或和能够为 <span class="math inline">\(s\)</span> 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
+<p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 FWT 和 iFWT 可以做到 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<p>丧心病狂的出题人 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
+<p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
+<p><span class="math display">\[\begin{aligned} \hat{F}*S&amp;=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T \end{aligned}\]</span></p>
+<p>每次只要 <span class="math inline">\(\mathcal O(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="p3047-usaco12febnearby-cows-g-1">P3047 [USACO12FEB]Nearby Cows G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3047">题目</a></p>
+<p>换根 DP。</p>
+<p>先处理出 <span class="math inline">\(f_{u,i}\)</span> 表示以 u 为根的子树深度为 i 的点权和，<span class="math inline">\(\mathcal O(k)\)</span> 转移。此时 1 的 DP 值为答案。</p>
+<p>换根，每次将 u 的一个子树 v 贡献减去，分成两个独立的树，再由 u 转移到 v 即可。</p>
+<blockquote>
+<p>换根 DP 的特点是能够快速地将子树分离、改变父子关系后合并</p>
+</blockquote>
+<h1 id="日-15">5日</h1>
+<h2 id="p4161-scoi2009游戏-1">P4161 [SCOI2009]游戏</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4161">题目</a></p>
+<p>数论，背包 DP。</p>
+<p>容易发现一个排列可以看成几个环，而变换回来的步数是这些环的 <span class="math inline">\(\operatorname{lcm}\)</span>。</p>
+<p>问题转化成：n 拆成若干个数的和，这些数的 <span class="math inline">\(\operatorname{lcm}\)</span> 的种数。</p>
+<p>将 <span class="math inline">\(\operatorname{lcm}\)</span> 唯一分解，每个质因子的指数为所有数该质因子的最大指数。</p>
+<p>那么 DP 每个质数不同质数的情况下的方案数，转化成完全背包。</p>
+<p>设 <span class="math inline">\(f_{i,j}\)</span> 表示到第 i 个质数，将 j 拆开的 <span class="math inline">\(\operatorname{lcm}\)</span> 种数，则 <span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\)</span>。</p>
+<p>因为无法处理 1，而 1 不影响 <span class="math inline">\(\operatorname{lcm}\)</span>，所以拆开的数的和不一定为 n，剩下的用 1 填满，最后答案为 <span class="math inline">\(\sum_{i=0}^n f_{cnt_p,i}\)</span>。</p>
+<h2 id="p6280-usaco20openexercise-g-1">P6280 [USACO20OPEN]Exercise G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6280">题目</a></p>
+<p>和上题一样，只不过是求 <span class="math inline">\(\operatorname{lcm}\)</span> 的和。</p>
+<p>每次 DP 时是一个新的素数，所以直接乘以上一个状态，<span class="math inline">\(f_{i,j}\leftarrow f_{i-1,j}+f_{i-1,j-p_i^k}\times p_i^k\)</span>。</p>
+<h2 id="p4342-ioi1998polygon-1">P4342 [IOI1998]Polygon</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4342">题目</a></p>
+<p>区间 DP。</p>
+<p>题目唬人，但是容易看出来每次断成链后是个区间 DP，枚举断点后直接做，<span class="math inline">\(\mathcal O(n^4)\)</span> 可过。</p>
+<p>然后就 80 分 qwq。因为有乘法，而每个数可能为负，负负得正。</p>
+<p>于是同时维护最大值和最小值。</p>
+<h2 id="p4158-scoi2009粉刷匠-1">P4158 [SCOI2009]粉刷匠</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4158">题目</a></p>
+<p>简单 DP + 背包 DP。</p>
+<p>问题在于如何分配粉刷次数，先对于每一行单独处理，将不同粉刷次数的答案化为物品。</p>
+<p>设 <span class="math inline">\(f_{i,k}\)</span> 表示前 <span class="math inline">\(i\)</span> 位粉刷 <span class="math inline">\(k\)</span> 次最多正确个数，<span class="math inline">\(f_{i,k}\leftarrow f_{j,k-1}+\max\{s_0(j+1,i),s_1(j+1,i)\}\)</span>。</p>
+<p>然后对于 <span class="math inline">\(n\times m\)</span> 个物品进行背包即可。</p>
+<h2 id="p1092-虫食算-1">P1092 虫食算</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1092">题目</a></p>
+<p>搜索。</p>
+<p>正解好像是高斯消元，不会。</p>
+<p>从低位到高位开始搜，当三位中有两个确定时就可以推出第三个。</p>
+<p>还有一个剪枝，每确定一列，就扫一遍后面没搜的列，看在进不进位的情况下是否都矛盾。</p>
+<h2 id="p3951-小凯的疑惑-1">P3951 小凯的疑惑</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3951">题目</a></p>
+<p>数论。</p>
+<p>打表，发现 <span class="math inline">\(a&lt;b\)</span> 时答案是 <span class="math inline">\((a-1)\times b - a\)</span>。</p>
+<p>证明：设无法表示出来的为 x。</p>
+<p><span class="math display">\[\begin{aligned} x&amp;\equiv ma\pmod b \quad&amp;(1&lt;m&lt;b)\\ x&amp;=ma+nb\quad&amp;(1&lt;m&lt;b,n&lt;0) \end{aligned}\]</span></p>
+<p>当 x 最大时，<span class="math inline">\(m=b-1,n=-1\)</span>，证毕。</p>
+<h2 id="p5092-usaco04opencube-stacking-1">P5092 [USACO04OPEN]Cube Stacking</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/41327125">题目</a></p>
+<p>并查集。</p>
+<p>在 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(fa\)</span> 的边之间维护压缩的边数，路径压缩优化，再维护每个并查集的 size。</p>
+<h2 id="p2894-usaco08febhotel-g-1">P2894 [USACO08FEB]Hotel G</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2894">题目</a></p>
+<p>线段树。</p>
+<p>维护每个区间的最长连续区间和左端开头、右端开头的最长连续区间。</p>
+<p>二分最早的 r 使得 <span class="math inline">\([1,r]\)</span> 的最长连续区间长度大于 x，<span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<p>query 时直接左区间优先即可，<span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h1 id="日-16">11日</h1>
+<h2 id="p7076-动物园-1">P7076 动物园</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7076">题目</a></p>
+<p>贪心（？），CSP2020 T2。</p>
+<p>将所有动物或起来，对于每一位，没有饲料或者有饲料并且已经购买，该位可以选或不选；有饲料且未购买，只能不选。</p>
+<p>把每一位的答案乘一下，坑点是开了 unsigned long long 也见祖宗，需要特判 <span class="math inline">\(2^{64}\)</span> 的情况。</p>
+<h1 id="日-17">12日</h1>
+<h2 id="p7077-函数调用-1">P7077 函数调用</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7077">题目</a></p>
+<p>拓扑 DP，CSP2020 T3。</p>
+<p>考场上写的线段树暴力，<del>好歹也是个不小的数据结构啊怎么才给 30 分！</del>其实是不错的题。</p>
+<p>可以发现单点加值，整体乘值，所有操作形成若干个 DAG，只要求最终序列，于是方向转向图论。</p>
+<p>设所有乘法之积为 <span class="math inline">\(mul\)</span>，每个点初始值的贡献一定是 <span class="math inline">\(a_i\times mul\)</span>。</p>
+<p>接下来考虑单点加和其之后的变化。每个单点加的贡献是后面所有乘法之积。</p>
+<p>那么先预处理每个点的及后面乘法的积 <span class="math inline">\(m_i\)</span>，然后按照操作序列倒着 DP 每个DAG 的贡献次数。</p>
+<p>再在 DAG 里倒着 DP，<span class="math inline">\(f_v\leftarrow f_v + f_u, f_u\leftarrow f_u\times m_v\)</span>，对于单点加的贡献就有 <span class="math inline">\(f_u\times val_u\)</span>。</p>
+<h1 id="日-18">17日</h1>
+<h2 id="p7078-贪吃蛇-1">P7078 贪吃蛇</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P7078">题目</a></p>
+<p>博弈论+单调性优化，CSP2020 T4。</p>
+<p>见<a target="_blank" rel="noopener" href="https://renamoe.github.io/2020/11/17/题解-P7078-贪吃蛇">博客题解</a>。</p>
+<h1 id="日-19">20日</h1>
+<h2 id="cf455d-serega-and-fun-1">CF455D Serega and Fun</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF455D">题目</a></p>
+<p>平衡树或者分块。</p>
+<p>对于第一个操作可以用一棵 splay 轻松维护，称其为序列树。</p>
+<p>因为值域 <span class="math inline">\(\mathcal O(n)\)</span>，第二个操作考虑每个值维护一棵 splay，节点存其对应的序列树的编号。</p>
+<p>每次询问一个区间要求在某一棵 splay 里寻找区间内最靠左和最靠右的点，可以通过在序列树上查 rank 来二分，单次 <span class="math inline">\(\mathcal O(\log^2n)\)</span>。</p>
+<h2 id="s2oj41-新斯诺克-1">S2OJ#41 新斯诺克</h2>
+<p><a target="_blank" rel="noopener" href="http://sjzezoj.com:9280/problem/41">题目</a></p>
+<p>归并排序就够了。</p>
+<p>可以让所有数减去 m，然后做前缀和，满足 <span class="math inline">\(j&lt;i, s_j&lt;s_i\)</span> 的一对点构成一个合法区间。</p>
+<p>二维偏序，可以做到 <span class="math inline">\(\mathcal O(n\log n)\)</span>。这个煞笔又写了个比别多个 <span class="math inline">\(\log\)</span> 的 CDQ 分治。</p>
+<h1 id="日-20">21日</h1>
+<h2 id="s2oj42-方舟连接-1">S2OJ#42 方舟连接</h2>
+<p><a target="_blank" rel="noopener" href="http://sjzezoj.com:9280/problem/59">题目</a></p>
+<p>区间 DP + 四边形不等式优化。</p>
+<p>把路径看成一棵树，然后发现这是两两相邻子树合并，转化成一个序列就是区间 DP。</p>
+<p><span class="math inline">\(\mathcal O(n^3)\)</span> 过不去，简单证明一下 DP 为凸，套上经典的四边形不等式优化，降到 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<h2 id="s2oj60-a-simple-math-problem-vi-1">S2OJ#60 A Simple Math Problem VI</h2>
+<p><a target="_blank" rel="noopener" href="http://sjzezoj.com:9280/problem/60">题目</a></p>
+<p>小数据裸完全背包。大数据特殊性质 <span class="math inline">\(a_i=1\)</span>，组合数问题 <a target="_blank" rel="noopener" href="https://oi-wiki.org/math/combination/#1">见 OI wiki</a>。</p>
+<h1 id="日-21">22日</h1>
+<h2 id="p4093-heoi2016tjoi2016序列-1">P4093 [HEOI2016/TJOI2016]序列</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4093">题目</a></p>
+<p>CDQ 分治。</p>
+<p>设 <span class="math inline">\(mi_i=\min\{val_i,w_i\},ma_i=\max\{val_i,w_i\}\)</span>，求 LIS 的时候转移的条件为：</p>
+<p><span class="math inline">\(\begin{aligned} j&amp;&lt;i\\ val_j&amp;\le mi_i\\ ma_j&amp;\le val_i \end{aligned}\)</span></p>
+<p>CDQ 分治，左右分别按上边对应的属性排序；优先递归处理左区间。复杂度 <span class="math inline">\(\mathcal O(n\log^2 n)\)</span>。</p>
+<h1 id="日-22">26日</h1>
+<h2 id="cf571d-campus-1">CF571D Campus</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF571D">题目</a></p>
+<p>转化成树上问题 + 树状数组上二分技巧。</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/2020/11/26/题解-CF571D-Campus/">见博客</a></p>
+<h1 id="日-23">27日</h1>
+<h2 id="gym102331b-bitwise-xor-1">GYM102331B Bitwise Xor</h2>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/102331/problem/B">题目</a></p>
+<p>简单 DP + 01-trie。</p>
+<p><a target="_blank" rel="noopener" href="https://renamoe.github.io/2020/11/27/题解-GYM102331B-Bitwise-Xor/">见博客</a></p>
+<h1 id="日-24">28日</h1>
+<h2 id="s2oj61-连续段的期望">S2OJ#61 连续段的期望</h2>
+<p><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/61">题目</a></p>
+<p>二进制优化。</p>
+<p><span class="math inline">\(\operatorname{xor,or,and}\)</span> 操作每一位互不影响，可以把每一位分开做（常规套路），其实也是其中 <span class="math inline">\(30\)</span> 分部分分的意义。</p>
+<p>对于一个 01 串：</p>
+<ul>
+<li><span class="math inline">\(\operatorname{xor}\)</span>，每个和为奇数的区间贡献为 <span class="math inline">\(1\)</span>，通过类似差分的技巧扫一遍即可；</li>
+<li><span class="math inline">\(\operatorname{and}\)</span>，区间内全为 <span class="math inline">\(1\)</span> 贡献为 <span class="math inline">\(1\)</span>，所有每个连续为 <span class="math inline">\(1\)</span> 的段贡献为 <span class="math inline">\(len^2\)</span>；</li>
+<li><span class="math inline">\(\operatorname{or}\)</span>，反过来想，区间全为 <span class="math inline">\(0\)</span> 的没有贡献。</li>
+</ul>
+<p>记得每一位的答案乘上 <span class="math inline">\(2^i\)</span>。</p>
+<h1 id="日-25">29日</h1>
+<h2 id="s2oj52-练习曲">S2OJ#52 练习曲</h2>
+<p><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/52">题目</a></p>
+<p>简单 DP。</p>
+<p>不修改的话 DP 方程：<span class="math inline">\(\displaystyle f_i=\min_{i-L\le j&lt;i}\{f_j\}+w(j+1,i)\)</span>，其中 <span class="math inline">\(\displaystyle w(j,i)=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1\)</span>。</p>
+<p>修改的话，发现一个点只影响 <span class="math inline">\(2L\)</span> 个 DP 值，那么预处理正着和倒着分别 DP 一遍，处理影响的一段后拼接得到答案。</p>
+<p>可以发现 <span class="math inline">\(f_i\)</span> 是单调不降的。从 <span class="math inline">\((x-L,x]\)</span> 中固定一个起点，当 <span class="math inline">\(x\)</span> 所在段权值一定时，这一段越长越好。</p>
+<p>所以每次只要 <span class="math inline">\(\mathcal O(L)\)</span> 处理即可，复杂度 <span class="math inline">\(\mathcal O((n+q)L)\)</span>。其实觉得过不了的。</p>
+<h1 id="日-26">30日</h1>
+<h2 id="cf1175e-minimal-segment-cover">CF1175E Minimal Segment Cover</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF1175E">题目</a></p>
+<p>倍增。</p>
+<p>设 <span class="math inline">\(f_{i,j}\)</span> 表示从 <span class="math inline">\(i\)</span> 点走 <span class="math inline">\(j\)</span> 条线段能够到达最远的点，每次询问 <span class="math inline">\(\mathcal O(\log n)\)</span> 跳到最远的不超过区间右端，再跳一条线段就是答案。</p>
 
     </div>
 
@@ -505,7 +689,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-number">1.</span> <span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3354-ioi2005riv-%E6%B2%B3%E6%B5%81"><span class="nav-number">1.1.</span> <span class="nav-text">P3354 [IOI2005]Riv 河流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-number">2.</span> <span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#acwing277-%E9%A5%BC%E5%B9%B2"><span class="nav-number">2.1.</span> <span class="nav-text">AcWing277 饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6564-poi2007-%E5%A0%86%E7%A7%AF%E6%9C%A8klo"><span class="nav-number">2.2.</span> <span class="nav-text">P6564 [POI2007] 堆积木KLO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2175-%E5%B0%8Fz%E7%9A%84%E6%B8%B8%E6%88%8F%E5%88%86%E9%98%9F"><span class="nav-number">2.3.</span> <span class="nav-text">P2175 小Z的游戏分队</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-number">3.</span> <span class="nav-text">4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1800-software"><span class="nav-number">3.1.</span> <span class="nav-text">P1800 software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u139384-%E5%BC%82%E6%88%96%E5%92%8C"><span class="nav-number">3.2.</span> <span class="nav-text">U139384 异或和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3047-usaco12febnearby-cows-g"><span class="nav-number">3.3.</span> <span class="nav-text">P3047 [USACO12FEB]Nearby Cows G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-number">4.</span> <span class="nav-text">5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4161-scoi2009%E6%B8%B8%E6%88%8F"><span class="nav-number">4.1.</span> <span class="nav-text">P4161 [SCOI2009]游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6280-usaco20openexercise-g"><span class="nav-number">4.2.</span> <span class="nav-text">P6280 [USACO20OPEN]Exercise G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4342-ioi1998polygon"><span class="nav-number">4.3.</span> <span class="nav-text">P4342 [IOI1998]Polygon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4158-scoi2009%E7%B2%89%E5%88%B7%E5%8C%A0"><span class="nav-number">4.4.</span> <span class="nav-text">P4158 [SCOI2009]粉刷匠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1092-%E8%99%AB%E9%A3%9F%E7%AE%97"><span class="nav-number">4.5.</span> <span class="nav-text">P1092 虫食算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3951-%E5%B0%8F%E5%87%AF%E7%9A%84%E7%96%91%E6%83%91"><span class="nav-number">4.6.</span> <span class="nav-text">P3951 小凯的疑惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p5092-usaco04opencube-stacking"><span class="nav-number">4.7.</span> <span class="nav-text">P5092 [USACO04OPEN]Cube Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2894-usaco08febhotel-g"><span class="nav-number">4.8.</span> <span class="nav-text">P2894 [USACO08FEB]Hotel G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-number">5.</span> <span class="nav-text">11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7076-%E5%8A%A8%E7%89%A9%E5%9B%AD"><span class="nav-number">5.1.</span> <span class="nav-text">P7076 动物园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-5"><span class="nav-number">6.</span> <span class="nav-text">12日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7077-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">P7077 函数调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-6"><span class="nav-number">7.</span> <span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7078-%E8%B4%AA%E5%90%83%E8%9B%87"><span class="nav-number">7.1.</span> <span class="nav-text">P7078 贪吃蛇</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-7"><span class="nav-number">8.</span> <span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf455d-serega-and-fun"><span class="nav-number">8.1.</span> <span class="nav-text">CF455D Serega and Fun</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj41-%E6%96%B0%E6%96%AF%E8%AF%BA%E5%85%8B"><span class="nav-number">8.2.</span> <span class="nav-text">S2OJ#41 新斯诺克</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-8"><span class="nav-number">9.</span> <span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj42-%E6%96%B9%E8%88%9F%E8%BF%9E%E6%8E%A5"><span class="nav-number">9.1.</span> <span class="nav-text">S2OJ#42 方舟连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj60-a-simple-math-problem-vi"><span class="nav-number">9.2.</span> <span class="nav-text">S2OJ#60 A Simple Math Problem VI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-9"><span class="nav-number">10.</span> <span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4093-heoi2016tjoi2016%E5%BA%8F%E5%88%97"><span class="nav-number">10.1.</span> <span class="nav-text">P4093 [HEOI2016&#x2F;TJOI2016]序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-10"><span class="nav-number">11.</span> <span class="nav-text">26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf571d-campus"><span class="nav-number">11.1.</span> <span class="nav-text">CF571D Campus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-11"><span class="nav-number">12.</span> <span class="nav-text">27日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gym102331b-bitwise-xor"><span class="nav-number">12.1.</span> <span class="nav-text">GYM102331B Bitwise Xor</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-number">1.</span> <span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3354-ioi2005riv-%E6%B2%B3%E6%B5%81"><span class="nav-number">1.1.</span> <span class="nav-text">P3354 [IOI2005]Riv 河流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-number">2.</span> <span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#acwing277-%E9%A5%BC%E5%B9%B2"><span class="nav-number">2.1.</span> <span class="nav-text">AcWing277 饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6564-poi2007-%E5%A0%86%E7%A7%AF%E6%9C%A8klo"><span class="nav-number">2.2.</span> <span class="nav-text">P6564 [POI2007] 堆积木KLO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2175-%E5%B0%8Fz%E7%9A%84%E6%B8%B8%E6%88%8F%E5%88%86%E9%98%9F"><span class="nav-number">2.3.</span> <span class="nav-text">P2175 小Z的游戏分队</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-number">3.</span> <span class="nav-text">4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1800-software"><span class="nav-number">3.1.</span> <span class="nav-text">P1800 software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u139384-%E5%BC%82%E6%88%96%E5%92%8C"><span class="nav-number">3.2.</span> <span class="nav-text">U139384 异或和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3047-usaco12febnearby-cows-g"><span class="nav-number">3.3.</span> <span class="nav-text">P3047 [USACO12FEB]Nearby Cows G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-number">4.</span> <span class="nav-text">5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4161-scoi2009%E6%B8%B8%E6%88%8F"><span class="nav-number">4.1.</span> <span class="nav-text">P4161 [SCOI2009]游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6280-usaco20openexercise-g"><span class="nav-number">4.2.</span> <span class="nav-text">P6280 [USACO20OPEN]Exercise G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4342-ioi1998polygon"><span class="nav-number">4.3.</span> <span class="nav-text">P4342 [IOI1998]Polygon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4158-scoi2009%E7%B2%89%E5%88%B7%E5%8C%A0"><span class="nav-number">4.4.</span> <span class="nav-text">P4158 [SCOI2009]粉刷匠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1092-%E8%99%AB%E9%A3%9F%E7%AE%97"><span class="nav-number">4.5.</span> <span class="nav-text">P1092 虫食算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3951-%E5%B0%8F%E5%87%AF%E7%9A%84%E7%96%91%E6%83%91"><span class="nav-number">4.6.</span> <span class="nav-text">P3951 小凯的疑惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p5092-usaco04opencube-stacking"><span class="nav-number">4.7.</span> <span class="nav-text">P5092 [USACO04OPEN]Cube Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2894-usaco08febhotel-g"><span class="nav-number">4.8.</span> <span class="nav-text">P2894 [USACO08FEB]Hotel G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-number">5.</span> <span class="nav-text">11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7076-%E5%8A%A8%E7%89%A9%E5%9B%AD"><span class="nav-number">5.1.</span> <span class="nav-text">P7076 动物园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-5"><span class="nav-number">6.</span> <span class="nav-text">12日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7077-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">P7077 函数调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-6"><span class="nav-number">7.</span> <span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7078-%E8%B4%AA%E5%90%83%E8%9B%87"><span class="nav-number">7.1.</span> <span class="nav-text">P7078 贪吃蛇</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-7"><span class="nav-number">8.</span> <span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf455d-serega-and-fun"><span class="nav-number">8.1.</span> <span class="nav-text">CF455D Serega and Fun</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj41-%E6%96%B0%E6%96%AF%E8%AF%BA%E5%85%8B"><span class="nav-number">8.2.</span> <span class="nav-text">S2OJ#41 新斯诺克</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-8"><span class="nav-number">9.</span> <span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj42-%E6%96%B9%E8%88%9F%E8%BF%9E%E6%8E%A5"><span class="nav-number">9.1.</span> <span class="nav-text">S2OJ#42 方舟连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj60-a-simple-math-problem-vi"><span class="nav-number">9.2.</span> <span class="nav-text">S2OJ#60 A Simple Math Problem VI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-9"><span class="nav-number">10.</span> <span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4093-heoi2016tjoi2016%E5%BA%8F%E5%88%97"><span class="nav-number">10.1.</span> <span class="nav-text">P4093 [HEOI2016&#x2F;TJOI2016]序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-10"><span class="nav-number">11.</span> <span class="nav-text">26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf571d-campus"><span class="nav-number">11.1.</span> <span class="nav-text">CF571D Campus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-11"><span class="nav-number">12.</span> <span class="nav-text">27日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gym102331b-bitwise-xor"><span class="nav-number">12.1.</span> <span class="nav-text">GYM102331B Bitwise Xor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-12"><span class="nav-number">13.</span> <span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3354-ioi2005riv-%E6%B2%B3%E6%B5%81-1"><span class="nav-number">13.1.</span> <span class="nav-text">P3354 [IOI2005]Riv 河流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-13"><span class="nav-number">14.</span> <span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#acwing277-%E9%A5%BC%E5%B9%B2-1"><span class="nav-number">14.1.</span> <span class="nav-text">AcWing277 饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6564-poi2007-%E5%A0%86%E7%A7%AF%E6%9C%A8klo-1"><span class="nav-number">14.2.</span> <span class="nav-text">P6564 [POI2007] 堆积木KLO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2175-%E5%B0%8Fz%E7%9A%84%E6%B8%B8%E6%88%8F%E5%88%86%E9%98%9F-1"><span class="nav-number">14.3.</span> <span class="nav-text">P2175 小Z的游戏分队</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-14"><span class="nav-number">15.</span> <span class="nav-text">4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1800-software-1"><span class="nav-number">15.1.</span> <span class="nav-text">P1800 software</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u139384-%E5%BC%82%E6%88%96%E5%92%8C-1"><span class="nav-number">15.2.</span> <span class="nav-text">U139384 异或和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3047-usaco12febnearby-cows-g-1"><span class="nav-number">15.3.</span> <span class="nav-text">P3047 [USACO12FEB]Nearby Cows G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-15"><span class="nav-number">16.</span> <span class="nav-text">5日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4161-scoi2009%E6%B8%B8%E6%88%8F-1"><span class="nav-number">16.1.</span> <span class="nav-text">P4161 [SCOI2009]游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6280-usaco20openexercise-g-1"><span class="nav-number">16.2.</span> <span class="nav-text">P6280 [USACO20OPEN]Exercise G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4342-ioi1998polygon-1"><span class="nav-number">16.3.</span> <span class="nav-text">P4342 [IOI1998]Polygon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4158-scoi2009%E7%B2%89%E5%88%B7%E5%8C%A0-1"><span class="nav-number">16.4.</span> <span class="nav-text">P4158 [SCOI2009]粉刷匠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1092-%E8%99%AB%E9%A3%9F%E7%AE%97-1"><span class="nav-number">16.5.</span> <span class="nav-text">P1092 虫食算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3951-%E5%B0%8F%E5%87%AF%E7%9A%84%E7%96%91%E6%83%91-1"><span class="nav-number">16.6.</span> <span class="nav-text">P3951 小凯的疑惑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p5092-usaco04opencube-stacking-1"><span class="nav-number">16.7.</span> <span class="nav-text">P5092 [USACO04OPEN]Cube Stacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2894-usaco08febhotel-g-1"><span class="nav-number">16.8.</span> <span class="nav-text">P2894 [USACO08FEB]Hotel G</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-16"><span class="nav-number">17.</span> <span class="nav-text">11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7076-%E5%8A%A8%E7%89%A9%E5%9B%AD-1"><span class="nav-number">17.1.</span> <span class="nav-text">P7076 动物园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-17"><span class="nav-number">18.</span> <span class="nav-text">12日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7077-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8-1"><span class="nav-number">18.1.</span> <span class="nav-text">P7077 函数调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-18"><span class="nav-number">19.</span> <span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p7078-%E8%B4%AA%E5%90%83%E8%9B%87-1"><span class="nav-number">19.1.</span> <span class="nav-text">P7078 贪吃蛇</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-19"><span class="nav-number">20.</span> <span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf455d-serega-and-fun-1"><span class="nav-number">20.1.</span> <span class="nav-text">CF455D Serega and Fun</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj41-%E6%96%B0%E6%96%AF%E8%AF%BA%E5%85%8B-1"><span class="nav-number">20.2.</span> <span class="nav-text">S2OJ#41 新斯诺克</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-20"><span class="nav-number">21.</span> <span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj42-%E6%96%B9%E8%88%9F%E8%BF%9E%E6%8E%A5-1"><span class="nav-number">21.1.</span> <span class="nav-text">S2OJ#42 方舟连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj60-a-simple-math-problem-vi-1"><span class="nav-number">21.2.</span> <span class="nav-text">S2OJ#60 A Simple Math Problem VI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-21"><span class="nav-number">22.</span> <span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4093-heoi2016tjoi2016%E5%BA%8F%E5%88%97-1"><span class="nav-number">22.1.</span> <span class="nav-text">P4093 [HEOI2016&#x2F;TJOI2016]序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-22"><span class="nav-number">23.</span> <span class="nav-text">26日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf571d-campus-1"><span class="nav-number">23.1.</span> <span class="nav-text">CF571D Campus</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-23"><span class="nav-number">24.</span> <span class="nav-text">27日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gym102331b-bitwise-xor-1"><span class="nav-number">24.1.</span> <span class="nav-text">GYM102331B Bitwise Xor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-24"><span class="nav-number">25.</span> <span class="nav-text">28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj61-%E8%BF%9E%E7%BB%AD%E6%AE%B5%E7%9A%84%E6%9C%9F%E6%9C%9B"><span class="nav-number">25.1.</span> <span class="nav-text">S2OJ#61 连续段的期望</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-25"><span class="nav-number">26.</span> <span class="nav-text">29日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj52-%E7%BB%83%E4%B9%A0%E6%9B%B2"><span class="nav-number">26.1.</span> <span class="nav-text">S2OJ#52 练习曲</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-26"><span class="nav-number">27.</span> <span class="nav-text">30日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf1175e-minimal-segment-cover"><span class="nav-number">27.1.</span> <span class="nav-text">CF1175E Minimal Segment Cover</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -521,7 +705,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
