@@ -3406,6 +3406,14 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
 <p>取模可能会让中间的某些值修改后变成最小值，所以要用维护权值的数据结构。</p>
 <p>考虑分块，每个块维护一个排好序的 vector，下放标记就重构，查询就 lower_bound。</p>
 <p>经过多次调参和提交，发现块的大小为 <span class="math inline">\(n^{0.4}\)</span> 能 AC，复杂度 <span class="math inline">\(\mathcal O(m(n^{0.6}+n^{0.4}\log n^{0.4}))\)</span>。</p>
+<h2 id="p1776-宝物筛选">P1776 宝物筛选</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1776">题目</a></p>
+<p>单调队列优化多重背包。 <span class="math display">\[
+\begin{aligned}
+f(i,j)&amp;\leftarrow \max_{0\le k\le c}\{f(i-1, j-kw)+v\times k\}\\
+f(i,d+kw)&amp;\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)-v\times k&#39;\}+v\times k
+\end{aligned}
+\]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 $O(nm)</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
