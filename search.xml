@@ -3413,7 +3413,13 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
 f(i,j)&amp;\leftarrow \max_{0\le k\le c}\{f(i-1, j-kw)+v\times k\}\\
 f(i,d+kw)&amp;\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)-v\times k&#39;\}+v\times k
 \end{aligned}
-\]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 $O(nm)</p>
+\]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 <span class="math inline">\(\mathcal O(nm)\)</span>。</p>
+<h2 id="u142829-魔法商店">U142829 魔法商店</h2>
+<p><a href="https://www.luogu.com.cn/problem/U142829">题目</a></p>
+<p>物品重量很小，按重量分类再排序，转化成多重背包。</p>
+<p>设 <span class="math inline">\(s(i,j)\)</span> 为物品 <span class="math inline">\(i\)</span> 最大的前 <span class="math inline">\(j\)</span> 个物品价值和。 <span class="math display">\[
+f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
+\]</span> <span class="math inline">\(s(i,j)\)</span> 是凸的，<span class="math inline">\(f(i,j)\)</span> 单调不降，所以这东西有决策单调性，可以单调队列优化，或者分治。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
