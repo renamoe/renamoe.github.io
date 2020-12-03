@@ -3414,12 +3414,19 @@ f(i,j)&amp;\leftarrow \max_{0\le k\le c}\{f(i-1, j-kw)+v\times k\}\\
 f(i,d+kw)&amp;\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)-v\times k&#39;\}+v\times k
 \end{aligned}
 \]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 <span class="math inline">\(\mathcal O(nm)\)</span>。</p>
+<h1 id="日-1">3日</h1>
 <h2 id="u142829-魔法商店">U142829 魔法商店</h2>
 <p><a href="https://www.luogu.com.cn/problem/U142829">题目</a></p>
 <p>物品重量很小，按重量分类再排序，转化成多重背包。</p>
 <p>设 <span class="math inline">\(s(i,j)\)</span> 为物品 <span class="math inline">\(i\)</span> 最大的前 <span class="math inline">\(j\)</span> 个物品价值和。 <span class="math display">\[
 f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
 \]</span> <span class="math inline">\(s(i,j)\)</span> 是凸的，<span class="math inline">\(f(i,j)\)</span> 单调不降，所以这东西有决策单调性，可以单调队列优化，或者分治。</p>
+<h2 id="cf220b-little-elephant-and-array">CF220B Little Elephant and Array</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF220B">题目</a></p>
+<p>树状数组 + 离线。</p>
+<p>离散化，用 vector 把每种权值的所有位置按顺序存起来，先令区间左端点为 <span class="math inline">\(1\)</span>，确定右端点合法范围，用树状数组区间打标记。</p>
+<p>将所有询问离线，从左往右扫，对于以该点为左端点的询问在树状数组上单点查询；每次只有 <span class="math inline">\(1\)</span> 种权值答案改变，在树状数组上撤销和修改即可。</p>
+<p>总复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
