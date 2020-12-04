@@ -1711,10 +1711,12 @@ a^{x-1}\equiv \frac{\frac{b}{d}}{\frac{a}{d}}\equiv 1\pmod{\frac{p}{d}}
 \end{cases}
 \]</span> x 的最小非负整数解，其中 <span class="math inline">\(m_i\)</span> 两两互质。</p>
 <p>该方程组的通解为： <span class="math display">\[
-M=\prod_{i=1}^nm_i\\
-M_i=\frac{M}{m_i}\\
-t_i\equiv M_i^{-1}\pmod{m_i}\\
-x\equiv \sum_{i=1}^n{a_it_iM_i\pmod M}
+\begin{aligned}
+M&amp;=\prod_{i=1}^nm_i\\
+M_i&amp;=\frac{M}{m_i}\\
+t_i&amp;\equiv M_i^{-1}\pmod{m_i}\\
+x&amp;\equiv \sum_{i=1}^n{a_it_iM_i\pmod M}
+\end{aligned}
 \]</span></p>
 <p>x 最小的话，<span class="math inline">\(t_i\)</span> 最小，要在用 exgcd 求解 <span class="math inline">\(M_i^{-1}\)</span> 时保证 <span class="math inline">\(t_i\)</span> 最小。</p>
 <h2 id="扩展中国剩余定理-excrt">扩展中国剩余定理 exCRT</h2>
@@ -1729,9 +1731,12 @@ x\equiv A\pmod{M}
 \begin{cases}
 x=my+a\\
 x=MY+A
-\end{cases}\\
-my+a=MY+A\\
-my-MY=A-a
+\end{cases}
+\]</span> <span class="math display">\[
+\begin{aligned}
+my+a&amp;=MY+A\\
+my-MY&amp;=A-a
+\end{aligned}
 \]</span> 通过 exgcd 求出 y 关于 <span class="math inline">\(my+M(-Y)=\gcd(m,M)\)</span> 的解 <span class="math inline">\(y_0\)</span>，那么 y 的特定解为 <span class="math inline">\(y_0\times\frac{A-a}{\gcd(n,M)}\)</span>。</p>
 <p>因为要最小化 x，所以要最小化 y。</p>
 <p>y 在 exgcd 中通解为 <span class="math inline">\(y_0+\frac{M}{\gcd(m,M)}\)</span>，所以要最小值为 <span class="math display">\[
