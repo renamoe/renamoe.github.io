@@ -17,16 +17,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="235分，算是没有挂分。">
+  <meta name="description" content="规律 + 树链剖分 + trie 树 + 简单 DP。 235分，算是没有挂分。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20年11月14日 模拟赛">
 <meta property="og:url" content="http://example.com/2020/11/15/20%E5%B9%B411%E6%9C%8814%E6%97%A5-%E6%A8%A1%E6%8B%9F%E8%B5%9B/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="235分，算是没有挂分。">
+<meta property="og:description" content="规律 + 树链剖分 + trie 树 + 简单 DP。 235分，算是没有挂分。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s3.ax1x.com/2020/11/15/Di2HZn.png">
 <meta property="article:published_time" content="2020-11-15T06:45:42.000Z">
-<meta property="article:modified_time" content="2020-12-02T07:07:47.407Z">
+<meta property="article:modified_time" content="2020-12-04T06:38:39.545Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s3.ax1x.com/2020/11/15/Di2HZn.png">
@@ -228,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-02 15:07:47" itemprop="dateModified" datetime="2020-12-02T15:07:47+08:00">2020-12-02</time>
+                <time title="修改时间：2020-12-04 14:38:39" itemprop="dateModified" datetime="2020-12-04T14:38:39+08:00">2020-12-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,7 +265,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>235分，算是没有挂分。</p>
+        <p>规律 + 树链剖分 + trie 树 + 简单 DP。</p>
+<p>235分，算是没有挂分。</p>
 <a id="more"></a>
 <h1 id="a-演讲">A 演讲</h1>
 <p><a target="_blank" rel="noopener" href="http://sjzezoj.com:9280/problem/49">题目</a></p>
@@ -273,6 +274,7 @@
 <p>给定矩阵 <span class="math inline">\(g\)</span>，如果 i 被 j D，那么 i 就会去 D <span class="math inline">\(g_{i,j}\)</span>，一直循环下去，求第 d 个人。</p>
 <p><span class="math inline">\(n\le 600,d\le 10^{18}\)</span>。</p>
 </blockquote>
+<p>规律题。</p>
 <p>可以发现状态 <span class="math inline">\((i,j)\)</span> 只能转移到确定的一处，手模一下可以发现，这样下去会产生一个 ρ 型环。</p>
 <p>只要预处理 <span class="math inline">\(n^2\)</span> 个状态就能找到环。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">609</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, tot, cur;</span><br><span class="line">LL d;</span><br><span class="line"><span class="keyword">int</span> g[N][N];</span><br><span class="line"><span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mem[N*N];</span><br><span class="line"><span class="built_in">map</span> &lt;<span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(d);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)</span><br><span class="line">            read(g[i][j]);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">1</span>;</span><br><span class="line">    mem[tot = <span class="number">1</span>] = <span class="built_in">make_pair</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> id = <span class="number">2</span>; ; ++id) &#123;</span><br><span class="line">        <span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; t(i, j);</span><br><span class="line">        <span class="keyword">if</span> (mp.count(t)) &#123;</span><br><span class="line">            cur = mp[t];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mp[t] = id;</span><br><span class="line">        mem[++tot] = t;</span><br><span class="line">        <span class="keyword">int</span> k = g[i][j];</span><br><span class="line">        j = i, i = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d &lt;= tot)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, mem[d].first);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        d -= cur - <span class="number">1</span>;</span><br><span class="line">        d = (d - <span class="number">1</span>) % (tot - cur + <span class="number">1</span>) + cur;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, mem[d].first);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -282,6 +284,7 @@
 <p>给出一个 n 点 m 边带权无向图，q 次询问：每次需要选的 x 和 y之间的路径和另外一条边（该边一端点是选定路径上的点），最小化这些边的最大值。</p>
 <p><span class="math inline">\(n,q\le 3\times 10^5,m\le10^6\)</span>。</p>
 </blockquote>
+<p>最小生成树 + 树链剖分。</p>
 <p>易证该路径一定在最小生成树上，树链剖分或倍增维护。</p>
 <p>问题在于如何处理多出来的这条边。</p>
 <p>对于路径上的每个点（不包括两端），已经被两条边经过，第三条边一定不大于该点第三小的出边，直接维护每个点第三小的出边边值，端点单独处理。（这里的边是原图的边。）</p>
@@ -295,7 +298,8 @@
 <p>给出 <span class="math inline">\([0,3^n]\)</span> 的序列 <span class="math inline">\(a\)</span>，有两个操作：1 操作将序列分成三部分，交换第二个和第三个部分，然后各部分递归重复该操作；2 操作将序列整体右移，即 <span class="math inline">\(a_i=a_{i-1},a_1=a_n\)</span>。</p>
 <p><span class="math inline">\(n\le 12,Q\le 2\times 10^5\)</span>。</p>
 </blockquote>
-<p>trie 树，真是难想又巧妙的思路。</p>
+<p>trie 树。</p>
+<p>真是难想又巧妙的思路。</p>
 <p>将下标转化到 3 进制，可以发现 1 操作就是对于每一位将值为 1 的和值为 2 的交换。</p>
 <p>那么可以放到 trie 树上，通过 lazy tag 优化（两次 1 操作会抵消）单次 <span class="math inline">\(\mathcal O(1)\)</span>。</p>
 <p>2 操作难以直接转化到 trie 树上，那么换一个编号方式：</p>

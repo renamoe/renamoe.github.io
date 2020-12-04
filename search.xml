@@ -2075,7 +2075,8 @@ f(l,r)=\begin{cases}
   <entry>
     <title>20年11月13日 小测</title>
     <url>/2020/11/14/20%E5%B9%B411%E6%9C%8813%E6%97%A5%E5%B0%8F%E6%B5%8B/</url>
-    <content><![CDATA[<p>死刚 A 题，30 分。</p>
+    <content><![CDATA[<p>贪心 + 状压 DP。</p>
+<p>死刚 A 题，30 分。</p>
 <a id="more"></a>
 <h1 id="a">A</h1>
 <p><a href="http://sjzezoj.com:9280/problem/44">题目</a></p>
@@ -2102,7 +2103,8 @@ f(l,r)=\begin{cases}
   <entry>
     <title>20年11月14日 模拟赛</title>
     <url>/2020/11/15/20%E5%B9%B411%E6%9C%8814%E6%97%A5-%E6%A8%A1%E6%8B%9F%E8%B5%9B/</url>
-    <content><![CDATA[<p>235分，算是没有挂分。</p>
+    <content><![CDATA[<p>规律 + 树链剖分 + trie 树 + 简单 DP。</p>
+<p>235分，算是没有挂分。</p>
 <a id="more"></a>
 <h1 id="a-演讲">A 演讲</h1>
 <p><a href="http://sjzezoj.com:9280/problem/49">题目</a></p>
@@ -2110,6 +2112,7 @@ f(l,r)=\begin{cases}
 <p>给定矩阵 <span class="math inline">\(g\)</span>，如果 i 被 j D，那么 i 就会去 D <span class="math inline">\(g_{i,j}\)</span>，一直循环下去，求第 d 个人。</p>
 <p><span class="math inline">\(n\le 600,d\le 10^{18}\)</span>。</p>
 </blockquote>
+<p>规律题。</p>
 <p>可以发现状态 <span class="math inline">\((i,j)\)</span> 只能转移到确定的一处，手模一下可以发现，这样下去会产生一个 ρ 型环。</p>
 <p>只要预处理 <span class="math inline">\(n^2\)</span> 个状态就能找到环。</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">609</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, tot, cur;</span><br><span class="line">LL d;</span><br><span class="line"><span class="keyword">int</span> g[N][N];</span><br><span class="line"><span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mem[N*N];</span><br><span class="line"><span class="built_in">map</span> &lt;<span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read(n), read(d);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)</span><br><span class="line">            read(g[i][j]);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">1</span>;</span><br><span class="line">    mem[tot = <span class="number">1</span>] = <span class="built_in">make_pair</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> id = <span class="number">2</span>; ; ++id) &#123;</span><br><span class="line">        <span class="built_in">pair</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; t(i, j);</span><br><span class="line">        <span class="keyword">if</span> (mp.count(t)) &#123;</span><br><span class="line">            cur = mp[t];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mp[t] = id;</span><br><span class="line">        mem[++tot] = t;</span><br><span class="line">        <span class="keyword">int</span> k = g[i][j];</span><br><span class="line">        j = i, i = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d &lt;= tot)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, mem[d].first);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        d -= cur - <span class="number">1</span>;</span><br><span class="line">        d = (d - <span class="number">1</span>) % (tot - cur + <span class="number">1</span>) + cur;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\\n&quot;</span>, mem[d].first);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2119,6 +2122,7 @@ f(l,r)=\begin{cases}
 <p>给出一个 n 点 m 边带权无向图，q 次询问：每次需要选的 x 和 y之间的路径和另外一条边（该边一端点是选定路径上的点），最小化这些边的最大值。</p>
 <p><span class="math inline">\(n,q\le 3\times 10^5,m\le10^6\)</span>。</p>
 </blockquote>
+<p>最小生成树 + 树链剖分。</p>
 <p>易证该路径一定在最小生成树上，树链剖分或倍增维护。</p>
 <p>问题在于如何处理多出来的这条边。</p>
 <p>对于路径上的每个点（不包括两端），已经被两条边经过，第三条边一定不大于该点第三小的出边，直接维护每个点第三小的出边边值，端点单独处理。（这里的边是原图的边。）</p>
@@ -2132,7 +2136,8 @@ f(l,r)=\begin{cases}
 <p>给出 <span class="math inline">\([0,3^n]\)</span> 的序列 <span class="math inline">\(a\)</span>，有两个操作：1 操作将序列分成三部分，交换第二个和第三个部分，然后各部分递归重复该操作；2 操作将序列整体右移，即 <span class="math inline">\(a_i=a_{i-1},a_1=a_n\)</span>。</p>
 <p><span class="math inline">\(n\le 12,Q\le 2\times 10^5\)</span>。</p>
 </blockquote>
-<p>trie 树，真是难想又巧妙的思路。</p>
+<p>trie 树。</p>
+<p>真是难想又巧妙的思路。</p>
 <p>将下标转化到 3 进制，可以发现 1 操作就是对于每一位将值为 1 的和值为 2 的交换。</p>
 <p>那么可以放到 trie 树上，通过 lazy tag 优化（两次 1 操作会抵消）单次 <span class="math inline">\(\mathcal O(1)\)</span>。</p>
 <p>2 操作难以直接转化到 trie 树上，那么换一个编号方式：</p>
@@ -3239,7 +3244,7 @@ a_i-a_j&amp;\le i-j
 <p>将选取最多的，转化为删去最少的使得异或和为零（前者）。</p>
 <p>设所有数异或和为 <span class="math inline">\(s\)</span>，异或和能够为 <span class="math inline">\(s\)</span> 的个数只有 <span class="math inline">\(\log_2n\)</span> 级别（线性基）。</p>
 <p>那么只要处理前 <span class="math inline">\(\log_2n\)</span> 的 <span class="math inline">\(f^i(x)\)</span> 即可，每次暴力 FWT 和 iFWT 可以做到 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
-<p>丧心病狂的出题人 <a href="https://www.luogu.com.cn/user/96912">AzusaCat</a> 竟然卡掉两个 log 的做法！！！</p>
+<p>丧心病狂的出题人 <span class="math inline">\(\rm \color{black}{A}\color{red}{zusaCat}\)</span> 竟然卡掉两个 log 的做法！！！</p>
 <p>考虑优化 iFWT，因为每次只需要 <span class="math inline">\(f^i(s)\)</span> 的值，单点的话从 FWT 的原理逆推：</p>
 <p><span class="math display">\[\begin{aligned} \hat{F}*S&amp;=\sum*{T\subseteq U}(-1)^{|S\cap T|}F_T \\ F_S&amp;=\frac{1}{2^n}\sum_{T\subseteq U}(-1)^{|S\cap T|}\hat F_T \end{aligned}\]</span></p>
 <p>每次只要 <span class="math inline">\(\mathcal O(n)\)</span> 即可得到单点的值，总复杂度降至 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
