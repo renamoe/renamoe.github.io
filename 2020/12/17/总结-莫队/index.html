@@ -17,15 +17,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="RenaMoe&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/LCT/index.html">
+  <meta name="description" content="基于分块优化的暴力。 离线算法，适用于能够快速加减单点的贡献的区间询问。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总结 莫队">
+<meta property="og:url" content="http://example.com/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="基于分块优化的暴力。 离线算法，适用于能够快速加减单点的贡献的区间询问。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-17T09:27:47.000Z">
+<meta property="article:modified_time" content="2020-12-18T09:23:57.894Z">
 <meta property="article:author" content="RenaMoe">
+<meta property="article:tag" content="莫队">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/LCT/">
+<link rel="canonical" href="http://example.com/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/">
 
 
 <script id="page-configurations">
@@ -33,12 +38,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: LCT | RenaMoe's Blog</title>
+  <title>总结 莫队 | RenaMoe's Blog</title>
   
 
 
@@ -185,57 +190,170 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          总结 莫队
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-17 17:27:47" itemprop="dateCreated datePublished" datetime="2020-12-17T17:27:47+08:00">2020-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-18 17:23:57" itemprop="dateModified" datetime="2020-12-18T17:23:57+08:00">2020-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">LCT
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <p>基于分块优化的暴力。</p>
+<p>离线算法，适用于能够快速加减单点的贡献的区间询问。</p>
+<a id="more"></a>
+<h2 id="普通莫队">普通莫队</h2>
+<p>板子题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1494">P1494 「国家集训队」小Z的袜子</a> 或者：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2709">P2709 小B的询问</a>。</p>
+<blockquote>
+<p>给出长为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span>，每次询问区间内 <span class="math inline">\(\displaystyle \sum_{i=l}^r a_i^2\)</span>。</p>
+</blockquote>
+<p>从暴力开始优化：</p>
+<p>一个区间询问可以移动左右端点来得到另一个区间询问的答案，从而避免重复计算两个区间重叠的部分，那就设两个指针 <span class="math inline">\(l,r\)</span>，在序列上移动。</p>
+<p>但还是会被卡成 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<p>于是将询问 <span class="math inline">\([l,r]\)</span> 离线下来排序，怎么排？</p>
+<p>将序列分块，<span class="math inline">\(l\)</span> 所在块相同就按右端点排，不同就按 <span class="math inline">\(l\)</span> 所在块排。</p>
+<h3 id="复杂度">复杂度</h3>
+<p>对于 <span class="math inline">\(l\)</span>，每个块内有 <span class="math inline">\(k_i\)</span> 个询问，块内最坏 <span class="math inline">\(\mathcal O(k_i\sqrt{n})\)</span>，总共 <span class="math inline">\(\mathcal O(\sum k_i\sqrt{n})=\mathcal O(n\sqrt{n})\)</span>。</p>
+<p>对于 <span class="math inline">\(r\)</span>，每个块最坏移动 <span class="math inline">\(n\)</span> 次，总共 <span class="math inline">\(\mathcal O(n\sqrt{n})\)</span>。</p>
+<p>不考虑计算答案复杂度，这样莫队的总体复杂度就是 <span class="math inline">\(\mathcal O(n\sqrt{n})\)</span>。</p>
+<h3 id="奇偶性优化">奇偶性优化</h3>
+<p>为了衔接相邻两个块的 <span class="math inline">\(r\)</span> 指针，<span class="math inline">\(l\)</span> 所在块为奇数就令 <span class="math inline">\(r\)</span> 升序，偶数则降序。</p>
+<h2 id="树上莫队">树上莫队</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP10707">SP10707 COT2 - Count on a tree II</a></p>
+<blockquote>
+<p>给定 <span class="math inline">\(n\)</span> 个结点的树，每个结点有一种颜色，<span class="math inline">\(m\)</span> 次询问，每次询问 <span class="math inline">\(u,v\)</span> 之间的路径上的结点的不同颜色数。</p>
+<p><span class="math inline">\(1\le n\le 4\times 10^4\)</span>，<span class="math inline">\(1\le m\le 10^5\)</span>。</p>
+</blockquote>
+<p>把树转化成欧拉序，就是序列问题了，设 <span class="math inline">\(st_u,ed_u\)</span> 表示欧拉序中 <span class="math inline">\(u\)</span> 的进栈、出栈顺序。</p>
+<p><span class="math inline">\(st_u&lt;st_v\)</span> 时：</p>
+<ul>
+<li><span class="math inline">\(u\)</span> 为 <span class="math inline">\(v\)</span> 的祖先，查询 <span class="math inline">\([st_u,st_v]\)</span> 中所有出现 <span class="math inline">\(1\)</span> 次的点的答案；</li>
+<li>否则，查询 <span class="math inline">\([ed_u,st_v]\)</span> 的所有出现 <span class="math inline">\(1\)</span> 次的点的答案，记得单独处理 <span class="math inline">\(\operatorname{LCA}\)</span>。</li>
+</ul>
+<p>通过重链剖分可以轻松得到 <span class="math inline">\(\operatorname{LCA}\)</span> 和欧拉序，然后就是普通莫队问题了。</p>
+<h2 id="带修莫队">带修莫队</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1903">P1903 「国家集训队」数颜色 / 维护队列</a></p>
+<p>相对于普通莫队多了修改操作。</p>
+<p>同样是把左右操作离线，分开询问和修改，并都打上时间戳。</p>
+<p>可以想到多设一个指针在 <span class="math inline">\(p\)</span> 在<strong>修改操作的序列</strong>上移动，对于莫队过程中相邻的两个询问的时间戳 <span class="math inline">\(t_x,t_y\)</span>，将 <span class="math inline">\(t_x,t_y\)</span> 之间在当前区间内的修改操作统计到答案里。</p>
+<p>发现这样单次会被卡成 <span class="math inline">\(\mathcal O(n)\)</span>，怎么优化？</p>
+<h3 id="调整排序方法">调整排序方法</h3>
+<ul>
+<li>第一关键字：<span class="math inline">\(l\)</span> 所在块；</li>
+<li>第二关键字：<span class="math inline">\(r\)</span> 所在块；</li>
+<li>第三关键字：时间戳。</li>
+</ul>
+<p>这样 <span class="math inline">\(l\)</span> 所在块相同并且 <span class="math inline">\(r\)</span> 所在块相同的若干个询问，会按照时间总小到大排序。</p>
+<h3 id="调整块的大小">调整块的大小</h3>
+<p>设修改操作序列长为 <span class="math inline">\(t\)</span>，将块的大小调整为 <span class="math inline">\(\sqrt[3]{nt}\)</span> 最优，此时总体复杂度 <span class="math inline">\(\mathcal O(\sqrt[3]{n^4t})\)</span>。</p>
+<p>证明见 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/KYD/solution-p1903">Minclxc 的博客</a>。</p>
+<p><del>懒得话</del>实测上 <span class="math inline">\(n^{\frac{2}{3}}\)</span> 跑的更快。</p>
+<h2 id="回滚莫队">回滚莫队</h2>
+<p>咕~</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-17T19:39:00+08:00"
-              content="2020-01-17">
-          01-17
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%8E%AB%E9%98%9F/" rel="tag"># 莫队</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-Link-Cut-Tree/" itemprop="url">
-            <span itemprop="name">板子 Link-Cut Tree</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/05/NOIP2020-%E6%B8%B8%E8%AE%B0/" rel="prev" title="NOIP2020 游记">
+      <i class="fa fa-chevron-left"></i> NOIP2020 游记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -282,6 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E8%8E%AB%E9%98%9F"><span class="nav-text">普通莫队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%80%A7%E4%BC%98%E5%8C%96"><span class="nav-text">奇偶性优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E4%B8%8A%E8%8E%AB%E9%98%9F"><span class="nav-text">树上莫队</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F"><span class="nav-text">带修莫队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95"><span class="nav-text">调整排序方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%9D%97%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-text">调整块的大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BB%9A%E8%8E%AB%E9%98%9F"><span class="nav-text">回滚莫队</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
