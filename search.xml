@@ -2275,11 +2275,12 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
 <h2 id="sp10707-cot2---count-on-a-tree-ii">SP10707 COT2 - Count on a tree II</h2>
 <p><a href="https://www.luogu.com.cn/problem/SP10707">题目</a></p>
 <p>树上莫队。</p>
-<p>把树转化成欧拉序，就是序列问题了，设 <span class="math inline">\(st_u,ed_u\)</span> 表示欧拉序中 <span class="math inline">\(u\)</span> 的进栈、出栈顺序，<span class="math inline">\(st_u&lt;st_v\)</span> 时：</p>
-<ul>
-<li><span class="math inline">\(u\)</span> 为 <span class="math inline">\(v\)</span> 的祖先，查询 <span class="math inline">\([st_u,st_v]\)</span> 中所有出现 <span class="math inline">\(1\)</span> 次的点的答案；</li>
-<li>否则，查询 <span class="math inline">\([ed_u,st_v]\)</span> 的所有出现 <span class="math inline">\(1\)</span> 次的点的答案，记得单独处理 <span class="math inline">\(\operatorname{LCA}\)</span>。</li>
-</ul>
+<p>见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h1 id="日-5">19日</h1>
+<h2 id="at1219-歴史の研究">AT1219 歴史の研究</h2>
+<p><a href="https://www.luogu.com.cn/problem/AT1219">题目</a></p>
+<p>回滚莫队。</p>
+<p>见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
@@ -3608,9 +3609,23 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
 <h3 id="调整块的大小">调整块的大小</h3>
 <p>设修改操作序列长为 <span class="math inline">\(t\)</span>，将块的大小调整为 <span class="math inline">\(\sqrt[3]{nt}\)</span> 最优，此时总体复杂度 <span class="math inline">\(\mathcal O(\sqrt[3]{n^4t})\)</span>。</p>
 <p>证明见 <a href="https://www.luogu.com.cn/blog/KYD/solution-p1903">Minclxc 的博客</a>。</p>
-<p><del>懒得话</del>实测上 <span class="math inline">\(n^{\frac{2}{3}}\)</span> 跑的更快。</p>
+<p><del>懒得话</del>实测 <span class="math inline">\(n^{\frac{2}{3}}\)</span> 跑的更快，毕竟 <span class="math inline">\(n\)</span>，<span class="math inline">\(t\)</span> 同阶。</p>
 <h2 id="回滚莫队">回滚莫队</h2>
-<p>咕~</p>
+<p><a href="https://www.luogu.com.cn/problem/AT1219">AT1219 歴史の研究</a></p>
+<blockquote>
+<p>给出长为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span>，<span class="math inline">\(c(x)\)</span> 为 <span class="math inline">\([l,r]\)</span> 中 <span class="math inline">\(x\)</span> 出现的次数，每次询问区间内 <span class="math inline">\(\displaystyle \max_{i=l}^r \{a_i\times c(a_i)\}\)</span>。</p>
+</blockquote>
+<p>发现由于 <span class="math inline">\(\max\)</span> 的性质，莫队无法做到 <span class="math inline">\(\mathcal O(1)\)</span> 减去某个点的贡献。</p>
+<p><strong>只能加点不能删点</strong>，这时候回滚莫队就出现了。</p>
+<p>还是先套路地分块，像普通莫队一样排序（不加奇偶性优化）。</p>
+<p>同一个块里的询问右端点单调递增，满足只加不减。</p>
+<p>发现左端点在块里反复横跳，干脆每次都从块的右端向左扩展，这样总复杂度仍然控制在 <span class="math inline">\(\mathcal O(n\sqrt{n})\)</span>。</p>
+<p>好了，现在有了完整的思路：</p>
+<p>为了方便，将询问按左端点所在块分组，组内排序。</p>
+<p>注意要将左右端点在同一块的询问单独处理。</p>
+<p>对于每一个块内，设指针 <span class="math inline">\(l,r\)</span>，我们要<strong>保留块的右端点到上一次 <span class="math inline">\(r\)</span> 的答案为 <span class="math inline">\(last\)</span> </strong>；</p>
+<p><span class="math inline">\(r\)</span> 从上一次的 <span class="math inline">\(r\)</span> 向右扩展，更新 <span class="math inline">\(last\)</span>；</p>
+<p><span class="math inline">\(l\)</span> 从块的右端暴力向左扩展，更新答案后撤销掉贡献的所有 <span class="math inline">\(c(a_i)\)</span>。</p>
 ]]></content>
       <categories>
         <category>总结</category>
