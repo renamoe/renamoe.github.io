@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/logo.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="考完 NOIP 就要回去补文化课了，这个月可能做不了多少题了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20年12月 刷题记录">
+<meta property="og:url" content="http://example.com/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="考完 NOIP 就要回去补文化课了，这个月可能做不了多少题了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-02T09:05:22.000Z">
+<meta property="article:modified_time" content="2020-12-22T11:42:43.403Z">
+<meta property="article:author" content="RenaMoe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>20年12月 刷题记录 | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">念念不忘，必有回响</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20年12月 刷题记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-02 17:05:22" itemprop="dateCreated datePublished" datetime="2020-12-02T17:05:22+08:00">2020-12-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-22 19:42:43" itemprop="dateModified" datetime="2020-12-22T19:42:43+08:00">2020-12-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">刷题记录</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>考完 NOIP 就要回去补文化课了，这个月可能做不了多少题了。</p>
+<a id="more"></a>
+<h1 id="日">2日</h1>
+<h2 id="s2oj123-数组入门">S2OJ#123 数组入门</h2>
+<p><a target="_blank" rel="noopener" href="https://sjzezoj.com/problem/123">题目</a></p>
+<p>分块。</p>
+<p>取模可能会让中间的某些值修改后变成最小值，所以要用维护权值的数据结构。</p>
+<p>考虑分块，每个块维护一个排好序的 vector，下放标记就重构，查询就 lower_bound。</p>
+<p>经过多次调参和提交，发现块的大小为 <span class="math inline">\(n^{0.4}\)</span> 能 AC，复杂度 <span class="math inline">\(\mathcal O(m(n^{0.6}+n^{0.4}\log n^{0.4}))\)</span>。</p>
+<h2 id="p1776-宝物筛选">P1776 宝物筛选</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1776">题目</a></p>
+<p>单调队列优化多重背包。 <span class="math display">\[
+\begin{aligned}
+f(i,j)&amp;\leftarrow \max_{0\le k\le c}\{f(i-1, j-kw)+v\times k\}\\
+f(i,d+kw)&amp;\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)-v\times k&#39;\}+v\times k
+\end{aligned}
+\]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 <span class="math inline">\(\mathcal O(nm)\)</span>。</p>
+<h1 id="日-1">3日</h1>
+<h2 id="u142829-魔法商店">U142829 魔法商店</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/U142829">题目</a></p>
+<p>物品重量很小，按重量分类再排序，转化成多重背包。</p>
+<p>设 <span class="math inline">\(s(i,j)\)</span> 为物品 <span class="math inline">\(i\)</span> 最大的前 <span class="math inline">\(j\)</span> 个物品价值和。 <span class="math display">\[
+f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
+\]</span> <span class="math inline">\(s(i,j)\)</span> 是凸的，<span class="math inline">\(f(i,j)\)</span> 单调不降，所以这东西有决策单调性，可以单调队列优化，或者分治。</p>
+<h2 id="cf220b-little-elephant-and-array">CF220B Little Elephant and Array</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF220B">题目</a></p>
+<p>树状数组 + 离线。</p>
+<p>离散化，用 vector 把每种权值的所有位置按顺序存起来，先令区间左端点为 <span class="math inline">\(1\)</span>，确定右端点合法范围，用树状数组区间打标记。</p>
+<p>将所有询问离线，从左往右扫，对于以该点为左端点的询问在树状数组上单点查询；每次只有 <span class="math inline">\(1\)</span> 种权值答案改变，在树状数组上撤销和修改即可。</p>
+<p>总复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="u144136-距离">U144136 距离</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/U144136">题目</a></p>
+<p>倍增 + 二分 + 最短路。</p>
+<p>发现不断地往 图里加边，<span class="math inline">\(1\)</span> 到 <span class="math inline">\(n\)</span> 的最短路单调不升，可以二分。</p>
+<p>考虑 <span class="math inline">\(47\)</span> 分：对于某个时间段里的边建出图来跑最短路，二分 <span class="math inline">\(5\)</span> 次即可，复杂度 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<p>至于满分做法，因为清空图的时间段很多，每次二分边界中有许多无用的范围，考虑用倍增缩小二分范围。</p>
+<p>设上次清空时间点 <span class="math inline">\(D\)</span>，倍增到最小的时间点 <span class="math inline">\(D+2^i\)</span> 满足 <span class="math inline">\(dis(1,n)\le T\)</span>，在中间二分并更新 <span class="math inline">\(D\)</span>。</p>
+<p>每条边最多被处理 <span class="math inline">\(\log q\)</span> 次，复杂度应该是 <span class="math inline">\(\mathcal O(q\log q)\)</span>。</p>
+<p>毒瘤 <span class="math inline">\(\rm \color{black}{A}\color{red}{zusaCat}\)</span>，她卡了 SPFA。</p>
+<h1 id="日-2">15日</h1>
+<h2 id="p5410-模板扩展-kmpz-函数">P5410 【模板】扩展 KMP（Z 函数）</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5410">题目</a></p>
+<p>见 <a href="/2020/01/17/2020-01-17-板子-kmp/">板子 kmp</a></p>
+<h1 id="日-3">16日</h1>
+<h2 id="p1494-国家集训队小z的袜子">P1494 [国家集训队]小Z的袜子</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1494">题目</a></p>
+<p>经典莫队板子，复习。</p>
+<h1 id="日-4">17日</h1>
+<h2 id="sp10707-cot2---count-on-a-tree-ii">SP10707 COT2 - Count on a tree II</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP10707">题目</a></p>
+<p>树上莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h1 id="日-5">19日</h1>
+<h2 id="at1219-歴史の研究">AT1219 歴史の研究</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT1219">题目</a></p>
+<p>回滚莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h1 id="日-6">20日</h1>
+<h2 id="p4887-模板莫队二次离线第十四分块前体">P4887 【模板】莫队二次离线（第十四分块(前体)）</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4887">题目</a></p>
+<p>二次离线莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h2 id="p4074-wc2013糖果公园">P4074 「WC2013」糖果公园</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4074">题目</a></p>
+<p>树上莫队 + 带修莫队。</p>
+<p>不太好码。</p>
+<h1 id="日-7">21日</h1>
+<h2 id="p2713-罗马游戏">P2713 罗马游戏</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2713">题目</a></p>
+<p>可并堆。</p>
+<h2 id="p4556-vani有约会雨天的尾巴-模板线段树合并">P4556 [Vani有约会]雨天的尾巴 /【模板】线段树合并</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4556">题目</a></p>
+<p>树上差分 + 线段树合并。</p>
+<p>注意是多次路径修改并且一次询问，树上差分后把所有询问插入对应点的线段树中，dfs 一遍把每个点儿子的线段树合并到它的线段树上，然后在线段树上查即可。</p>
+<p>插入点数 <span class="math inline">\(n\)</span>，复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h1 id="日-8">22日</h1>
+<h2 id="p3224-hnoi2012永无乡">P3224 [HNOI2012]永无乡</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3224">题目</a></p>
+<p>并查集 + 线段树合并。</p>
+<p>并查集维护连通性，线段树合并硬上即可，每次合并都没有重合的点，复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="p3919-模板可持久化线段树-1可持久化数组">P3919 【模板】可持久化线段树 1（可持久化数组）</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3919">题目</a></p>
+<p>可持久化线段树。</p>
+<h2 id="p2839-国家集训队middle">P2839 [国家集训队]middle</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2839">题目</a></p>
+<p>二分 + 可持久化线段树。</p>
+<p>中位数套路：把大于等于 <span class="math inline">\(x\)</span> 的设为 <span class="math inline">\(+1\)</span>，小于 <span class="math inline">\(x\)</span> 的设为 <span class="math inline">\(-1\)</span>，若和为 <span class="math inline">\(1\)</span> 或 <span class="math inline">\(0\)</span> 则 <span class="math inline">\(x\)</span> 为中位数。</p>
+<p>先考虑询问固定的区间，二分最大的 <span class="math inline">\(x\)</span> 满足区间和 <span class="math inline">\(\ge 0\)</span>，所以需要对于每一个值开一棵求中位数的线段树。</p>
+<p>相邻两个值的线段树只有很少几个值不同，可以通过可持久化线段树将时间空间降到 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<p>对于询问 <span class="math inline">\(a,b,c,d\)</span>，<span class="math inline">\([b,c]\)</span> 是一定要选的，查和即可；因为要让中位数尽可能大，所以 check 时的区间可也要尽可能大，所以取 <span class="math inline">\([a,b)\)</span> 的最大后缀和、<span class="math inline">\((c,d]\)</span> 的最大前缀和。</p>
+<h2 id="p1712-noi2016区间">P1712 [NOI2016]区间</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1712">题目</a></p>
+<p>尺取法 + 线段树。</p>
+<p>把所有区间按长度排序，然后模拟一个队列，每次向后挪动 <span class="math inline">\(r\)</span> 至有至少一个点覆盖次数 <span class="math inline">\(\ge m\)</span>，再尽量往后挪动 <span class="math inline">\(l\)</span>，更新答案，覆盖次数用线段树维护。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/01/20%E5%B9%B412%E6%9C%881%E6%97%A5-%E6%A8%A1%E6%8B%9F%E8%B5%9B/" rel="prev" title="20年12月1日 模拟赛">
+      <i class="fa fa-chevron-left"></i> 20年12月1日 模拟赛
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/05/NOIP2020-%E6%B8%B8%E8%AE%B0/" rel="next" title="NOIP2020 游记">
+      NOIP2020 游记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj123-%E6%95%B0%E7%BB%84%E5%85%A5%E9%97%A8"><span class="nav-text">S2OJ#123 数组入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1776-%E5%AE%9D%E7%89%A9%E7%AD%9B%E9%80%89"><span class="nav-text">P1776 宝物筛选</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u142829-%E9%AD%94%E6%B3%95%E5%95%86%E5%BA%97"><span class="nav-text">U142829 魔法商店</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf220b-little-elephant-and-array"><span class="nav-text">CF220B Little Elephant and Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u144136-%E8%B7%9D%E7%A6%BB"><span class="nav-text">U144136 距离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-text">15日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p5410-%E6%A8%A1%E6%9D%BF%E6%89%A9%E5%B1%95-kmpz-%E5%87%BD%E6%95%B0"><span class="nav-text">P5410 【模板】扩展 KMP（Z 函数）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-text">16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1494-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%E5%B0%8Fz%E7%9A%84%E8%A2%9C%E5%AD%90"><span class="nav-text">P1494 [国家集训队]小Z的袜子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sp10707-cot2---count-on-a-tree-ii"><span class="nav-text">SP10707 COT2 - Count on a tree II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-5"><span class="nav-text">19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#at1219-%E6%AD%B4%E5%8F%B2%E3%81%AE%E7%A0%94%E7%A9%B6"><span class="nav-text">AT1219 歴史の研究</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-6"><span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4887-%E6%A8%A1%E6%9D%BF%E8%8E%AB%E9%98%9F%E4%BA%8C%E6%AC%A1%E7%A6%BB%E7%BA%BF%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%88%86%E5%9D%97%E5%89%8D%E4%BD%93"><span class="nav-text">P4887 【模板】莫队二次离线（第十四分块(前体)）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4074-wc2013%E7%B3%96%E6%9E%9C%E5%85%AC%E5%9B%AD"><span class="nav-text">P4074 「WC2013」糖果公园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-7"><span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2713-%E7%BD%97%E9%A9%AC%E6%B8%B8%E6%88%8F"><span class="nav-text">P2713 罗马游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4556-vani%E6%9C%89%E7%BA%A6%E4%BC%9A%E9%9B%A8%E5%A4%A9%E7%9A%84%E5%B0%BE%E5%B7%B4-%E6%A8%A1%E6%9D%BF%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6"><span class="nav-text">P4556 [Vani有约会]雨天的尾巴 &#x2F;【模板】线段树合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-8"><span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3224-hnoi2012%E6%B0%B8%E6%97%A0%E4%B9%A1"><span class="nav-text">P3224 [HNOI2012]永无乡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3919-%E6%A8%A1%E6%9D%BF%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91-1%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E7%BB%84"><span class="nav-text">P3919 【模板】可持久化线段树 1（可持久化数组）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2839-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9Fmiddle"><span class="nav-text">P2839 [国家集训队]middle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1712-noi2016%E5%8C%BA%E9%97%B4"><span class="nav-text">P1712 [NOI2016]区间</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>

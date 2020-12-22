@@ -3612,4 +3612,103 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
         <tag>主席树</tag>
       </tags>
   </entry>
+  <entry>
+    <title>20年12月 刷题记录</title>
+    <url>/2020/12/02/20%E5%B9%B412%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>考完 NOIP 就要回去补文化课了，这个月可能做不了多少题了。</p>
+<a id="more"></a>
+<h1 id="日">2日</h1>
+<h2 id="s2oj123-数组入门">S2OJ#123 数组入门</h2>
+<p><a href="https://sjzezoj.com/problem/123">题目</a></p>
+<p>分块。</p>
+<p>取模可能会让中间的某些值修改后变成最小值，所以要用维护权值的数据结构。</p>
+<p>考虑分块，每个块维护一个排好序的 vector，下放标记就重构，查询就 lower_bound。</p>
+<p>经过多次调参和提交，发现块的大小为 <span class="math inline">\(n^{0.4}\)</span> 能 AC，复杂度 <span class="math inline">\(\mathcal O(m(n^{0.6}+n^{0.4}\log n^{0.4}))\)</span>。</p>
+<h2 id="p1776-宝物筛选">P1776 宝物筛选</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1776">题目</a></p>
+<p>单调队列优化多重背包。 <span class="math display">\[
+\begin{aligned}
+f(i,j)&amp;\leftarrow \max_{0\le k\le c}\{f(i-1, j-kw)+v\times k\}\\
+f(i,d+kw)&amp;\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)-v\times k&#39;\}+v\times k
+\end{aligned}
+\]</span> 对于每个 <span class="math inline">\(d\ (0\le d &lt; w)\)</span> 分别用单调队列维护 DP，总复杂度 <span class="math inline">\(\mathcal O(nm)\)</span>。</p>
+<h1 id="日-1">3日</h1>
+<h2 id="u142829-魔法商店">U142829 魔法商店</h2>
+<p><a href="https://www.luogu.com.cn/problem/U142829">题目</a></p>
+<p>物品重量很小，按重量分类再排序，转化成多重背包。</p>
+<p>设 <span class="math inline">\(s(i,j)\)</span> 为物品 <span class="math inline">\(i\)</span> 最大的前 <span class="math inline">\(j\)</span> 个物品价值和。 <span class="math display">\[
+f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
+\]</span> <span class="math inline">\(s(i,j)\)</span> 是凸的，<span class="math inline">\(f(i,j)\)</span> 单调不降，所以这东西有决策单调性，可以单调队列优化，或者分治。</p>
+<h2 id="cf220b-little-elephant-and-array">CF220B Little Elephant and Array</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF220B">题目</a></p>
+<p>树状数组 + 离线。</p>
+<p>离散化，用 vector 把每种权值的所有位置按顺序存起来，先令区间左端点为 <span class="math inline">\(1\)</span>，确定右端点合法范围，用树状数组区间打标记。</p>
+<p>将所有询问离线，从左往右扫，对于以该点为左端点的询问在树状数组上单点查询；每次只有 <span class="math inline">\(1\)</span> 种权值答案改变，在树状数组上撤销和修改即可。</p>
+<p>总复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="u144136-距离">U144136 距离</h2>
+<p><a href="https://www.luogu.com.cn/problem/U144136">题目</a></p>
+<p>倍增 + 二分 + 最短路。</p>
+<p>发现不断地往 图里加边，<span class="math inline">\(1\)</span> 到 <span class="math inline">\(n\)</span> 的最短路单调不升，可以二分。</p>
+<p>考虑 <span class="math inline">\(47\)</span> 分：对于某个时间段里的边建出图来跑最短路，二分 <span class="math inline">\(5\)</span> 次即可，复杂度 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<p>至于满分做法，因为清空图的时间段很多，每次二分边界中有许多无用的范围，考虑用倍增缩小二分范围。</p>
+<p>设上次清空时间点 <span class="math inline">\(D\)</span>，倍增到最小的时间点 <span class="math inline">\(D+2^i\)</span> 满足 <span class="math inline">\(dis(1,n)\le T\)</span>，在中间二分并更新 <span class="math inline">\(D\)</span>。</p>
+<p>每条边最多被处理 <span class="math inline">\(\log q\)</span> 次，复杂度应该是 <span class="math inline">\(\mathcal O(q\log q)\)</span>。</p>
+<p>毒瘤 <span class="math inline">\(\rm \color{black}{A}\color{red}{zusaCat}\)</span>，她卡了 SPFA。</p>
+<h1 id="日-2">15日</h1>
+<h2 id="p5410-模板扩展-kmpz-函数">P5410 【模板】扩展 KMP（Z 函数）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P5410">题目</a></p>
+<p>见 <a href="/2020/01/17/2020-01-17-板子-kmp/">板子 kmp</a></p>
+<h1 id="日-3">16日</h1>
+<h2 id="p1494-国家集训队小z的袜子">P1494 [国家集训队]小Z的袜子</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1494">题目</a></p>
+<p>经典莫队板子，复习。</p>
+<h1 id="日-4">17日</h1>
+<h2 id="sp10707-cot2---count-on-a-tree-ii">SP10707 COT2 - Count on a tree II</h2>
+<p><a href="https://www.luogu.com.cn/problem/SP10707">题目</a></p>
+<p>树上莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h1 id="日-5">19日</h1>
+<h2 id="at1219-歴史の研究">AT1219 歴史の研究</h2>
+<p><a href="https://www.luogu.com.cn/problem/AT1219">题目</a></p>
+<p>回滚莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h1 id="日-6">20日</h1>
+<h2 id="p4887-模板莫队二次离线第十四分块前体">P4887 【模板】莫队二次离线（第十四分块(前体)）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4887">题目</a></p>
+<p>二次离线莫队，见 <a href="/2020/12/17/总结-莫队/">莫队总结</a>。</p>
+<h2 id="p4074-wc2013糖果公园">P4074 「WC2013」糖果公园</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4074">题目</a></p>
+<p>树上莫队 + 带修莫队。</p>
+<p>不太好码。</p>
+<h1 id="日-7">21日</h1>
+<h2 id="p2713-罗马游戏">P2713 罗马游戏</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2713">题目</a></p>
+<p>可并堆。</p>
+<h2 id="p4556-vani有约会雨天的尾巴-模板线段树合并">P4556 [Vani有约会]雨天的尾巴 /【模板】线段树合并</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4556">题目</a></p>
+<p>树上差分 + 线段树合并。</p>
+<p>注意是多次路径修改并且一次询问，树上差分后把所有询问插入对应点的线段树中，dfs 一遍把每个点儿子的线段树合并到它的线段树上，然后在线段树上查即可。</p>
+<p>插入点数 <span class="math inline">\(n\)</span>，复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h1 id="日-8">22日</h1>
+<h2 id="p3224-hnoi2012永无乡">P3224 [HNOI2012]永无乡</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3224">题目</a></p>
+<p>并查集 + 线段树合并。</p>
+<p>并查集维护连通性，线段树合并硬上即可，每次合并都没有重合的点，复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="p3919-模板可持久化线段树-1可持久化数组">P3919 【模板】可持久化线段树 1（可持久化数组）</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3919">题目</a></p>
+<p>可持久化线段树。</p>
+<h2 id="p2839-国家集训队middle">P2839 [国家集训队]middle</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2839">题目</a></p>
+<p>二分 + 可持久化线段树。</p>
+<p>中位数套路：把大于等于 <span class="math inline">\(x\)</span> 的设为 <span class="math inline">\(+1\)</span>，小于 <span class="math inline">\(x\)</span> 的设为 <span class="math inline">\(-1\)</span>，若和为 <span class="math inline">\(1\)</span> 或 <span class="math inline">\(0\)</span> 则 <span class="math inline">\(x\)</span> 为中位数。</p>
+<p>先考虑询问固定的区间，二分最大的 <span class="math inline">\(x\)</span> 满足区间和 <span class="math inline">\(\ge 0\)</span>，所以需要对于每一个值开一棵求中位数的线段树。</p>
+<p>相邻两个值的线段树只有很少几个值不同，可以通过可持久化线段树将时间空间降到 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<p>对于询问 <span class="math inline">\(a,b,c,d\)</span>，<span class="math inline">\([b,c]\)</span> 是一定要选的，查和即可；因为要让中位数尽可能大，所以 check 时的区间可也要尽可能大，所以取 <span class="math inline">\([a,b)\)</span> 的最大后缀和、<span class="math inline">\((c,d]\)</span> 的最大前缀和。</p>
+<h2 id="p1712-noi2016区间">P1712 [NOI2016]区间</h2>
+<p><a href="https://www.luogu.com.cn/problem/P1712">题目</a></p>
+<p>尺取法 + 线段树。</p>
+<p>把所有区间按长度排序，然后模拟一个队列，每次向后挪动 <span class="math inline">\(r\)</span> 至有至少一个点覆盖次数 <span class="math inline">\(\ge m\)</span>，再尽量往后挪动 <span class="math inline">\(l\)</span>，更新答案，覆盖次数用线段树维护。</p>
+]]></content>
+      <categories>
+        <category>刷题记录</category>
+      </categories>
+  </entry>
 </search>
