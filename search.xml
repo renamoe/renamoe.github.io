@@ -4182,6 +4182,15 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
 <h2 id="基本思路">基本思路</h2>
 <p>min_25 筛基本思路是把答案拆成质数和非质数来分别计算。</p>
 <h3 id="第一部分">第一部分</h3>
+<p>以 <a href="https://www.luogu.com.cn/problem/P5325">模板题 P5325</a> 为例，拆开 <span class="math inline">\(f(p^k)=p^{2k}-p^k\)</span>，分别计算。</p>
+<p>先处理 <span class="math inline">\(p^k\)</span>。</p>
+<p>设 <span class="math inline">\(g(n,i)=\sum_{j=2}^n[j\in \text{prime}\or \operatorname{minp}(j)&gt;p_i]j^k\)</span>，其中 <span class="math inline">\(\operatorname{minp}(x)\)</span> 表示 <span class="math inline">\(x\)</span> 最小质因子。</p>
+<p>可以发现 <span class="math inline">\(g(n,i)\)</span> 是完全积性函数，并且在质数处的取值和 <span class="math inline">\(f(x)\)</span> 一样。</p>
+<p>然后递推 <span class="math inline">\(g(n,i)\)</span>： <span class="math display">\[
+g(n,i)=g(n,i-1)-p_i\Big(g(\lfloor\frac{n}{p_i}\rfloor,i-1)-g(p_{i-1},i-1)\Big)
+\]</span></p>
+<hr />
+<p>先咕。</p>
 ]]></content>
       <categories>
         <category>总结</category>
