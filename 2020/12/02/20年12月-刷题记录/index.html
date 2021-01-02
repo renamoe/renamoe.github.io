@@ -25,7 +25,7 @@
 <meta property="og:description" content="考完 NOIP 就要回去补文化课了，这个月可能做不了多少题了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-02T09:05:22.000Z">
-<meta property="article:modified_time" content="2020-12-22T11:42:43.403Z">
+<meta property="article:modified_time" content="2020-12-28T23:25:06.901Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-22 19:42:43" itemprop="dateModified" datetime="2020-12-22T19:42:43+08:00">2020-12-22</time>
+                <time title="修改时间：2020-12-29 07:25:06" itemprop="dateModified" datetime="2020-12-29T07:25:06+08:00">2020-12-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -354,6 +354,92 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1712">题目</a></p>
 <p>尺取法 + 线段树。</p>
 <p>把所有区间按长度排序，然后模拟一个队列，每次向后挪动 <span class="math inline">\(r\)</span> 至有至少一个点覆盖次数 <span class="math inline">\(\ge m\)</span>，再尽量往后挪动 <span class="math inline">\(l\)</span>，更新答案，覆盖次数用线段树维护。</p>
+<h1 id="日-9">23日</h1>
+<h2 id="p5192-zoj3229-shoot-the-bullet东方文花帖模板有源汇上下界最大流">P5192 Zoj3229 Shoot the Bullet|东方文花帖|【模板】有源汇上下界最大流</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5192">题目</a></p>
+<p>有源汇上下界最大流，见 <a href="/2020/01/17/2020-01-17-总结-网络流/">总结 网络流</a>。</p>
+<h2 id="p6329-模板点分树-震波">P6329 【模板】点分树 | 震波</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6329">题目</a></p>
+<p>点分树，见 <a href="/2020/12/23/总结-点分树（动态点分治）/">总结 点分树（动态点分治）</a>。</p>
+<h1 id="日-10">24日</h1>
+<h2 id="p3345-zjoi2015幻想乡战略游戏">P3345 [ZJOI2015]幻想乡战略游戏</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3345">题目</a></p>
+<p>点分树，见 <a href="/2020/12/23/总结-点分树（动态点分治）/">总结 点分树（动态点分治）</a>。</p>
+<h2 id="p3241-hnoi2015开店">P3241 [HNOI2015]开店</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3241">题目</a></p>
+<p>点分树，见 <a href="/2020/12/23/总结-点分树（动态点分治）/">总结 点分树（动态点分治）</a>。</p>
+<h1 id="日-11">26~27日</h1>
+<p>写了一堆多项式板子题，见 <a href="/2020/12/25/2020-01-24-板子-多项式全家桶/">板子 多项式全家桶</a>。</p>
+<h2 id="p2260-清华集训2012模积和">P2260 [清华集训2012]模积和</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2260">题目</a></p>
+<p>整除分块。</p>
+<p>令 <span class="math inline">\(n\le m\)</span>，推式子：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\quad\sum_{i=1}^n\sum_{j=1}^m[i\not=j](n\bmod i)(m\bmod j)\\
+&amp;=\sum_{i=1}^n\sum_{j=1}^m(n-\lfloor\frac{n}{i}\rfloor i)(m-\lfloor\frac{m}{j}\rfloor j)-\sum_{i=1}^{n}(n-\lfloor\frac{n}{i}\rfloor i)(m-\lfloor\frac{m}{i}\rfloor i)
+\end{aligned}
+\]</span></p>
+<p>设 <span class="math inline">\(F(n,k)=\sum_{i=1}^n \lfloor\frac{k}{i}\rfloor i\)</span>，这东西可以 <span class="math inline">\(\mathcal O(\sqrt{n})\)</span> 整除分块算。</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;=(n^2-F(n,n))(m^2-F(m, m))-\sum_{i=1}^{n}(nm-n\lfloor\frac{m}{i}\rfloor i-m\lfloor\frac{n}{i}\rfloor i+\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor i^2)\\
+&amp;=(n^2-F(n,n))(m^2-F(m, m))-n^2 m+nF(n,m)+mF(n,n)-\sum_{i=1}^{n}\lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor i^2\\
+\end{aligned}
+\]</span> 最后 <span class="math inline">\(\sum_{i=1}^n \lfloor\frac{n}{i}\rfloor\lfloor\frac{m}{i}\rfloor i^2\)</span> 这东西可以二维整除分块，两个整除分块叠加，块的数量是相加的。</p>
+<h2 id="p4213-模板杜教筛sum">P4213 【模板】杜教筛（Sum）</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4213">题目</a></p>
+<p>见 <a href="/2020/12/27/笔记-杜教筛/">笔记 杜教筛</a>。</p>
+<h2 id="p4318-完全平方数">P4318 完全平方数</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4318">题目</a></p>
+<p>二分 + 容斥。</p>
+<p>先二分答案，然后考虑计算 <span class="math inline">\(f(n)=\sum_{i=1}^n \mu(i)^2\)</span>。</p>
+<p>从另一个角度考虑，<span class="math inline">\(f(n)\)</span> 让有平方因子的数贡献为 <span class="math inline">\(0\)</span>，容斥的算就是 <span class="math inline">\(-\)</span> <span class="math inline">\(2^2\)</span> 的倍数 <span class="math inline">\(-\)</span> <span class="math inline">\(3^2\)</span> 的倍数 <span class="math inline">\(+\)</span> <span class="math inline">\(6^2\)</span> 的倍数，根据 <span class="math inline">\(\mu\)</span> 的定义，容斥系数就是 <span class="math inline">\(\mu\)</span>，所以 <span class="math inline">\(f(n)=\sum_{i=1}^{\sqrt{n}}\mu(i)\lfloor\frac{n}{i^2}\rfloor\)</span>。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(\sqrt{n}\log n)\)</span>。</p>
+<h1 id="日-12">28日</h1>
+<h2 id="p4841-集训队作业2013城市规划">P4841 [集训队作业2013]城市规划</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4841">题目</a></p>
+<p>多项式求逆。</p>
+<p>设 <span class="math inline">\(f(n)\)</span> 表示 <span class="math inline">\(n\)</span> 个点的无向连通图方案数，<span class="math inline">\(g(n)\)</span> 表示 <span class="math inline">\(n\)</span> 个点无向图方案数（即 <span class="math inline">\(2^{\binom{n}{2}}\)</span>）。</p>
+<p>钦定 <span class="math inline">\(1\)</span> 号点不动，枚举 <span class="math inline">\(1\)</span> 所在连通块大小，推式子： <span class="math display">\[
+\begin{aligned}
+g(n)&amp;=\sum_{i=1}^n \binom{n-1}{i-1}f(i)g(n-i)\\
+g(n)&amp;=\sum_{i=1}^n \frac{(n-1)!}{(i-1)!(n-i)!}f(i)g(n-i)\\
+\frac{g(n)}{(n-1)!}&amp;=\sum_{i=1}^n \frac{f(i)}{(i-1)!}\frac{g(n-i)}{(n-i)!}\\
+\end{aligned}
+\]</span> 设 <span class="math inline">\(F(n)=\frac{f(i)}{(i-1)!}\)</span>，<span class="math inline">\(G(n)=\frac{g(n-i)}{(n-i)!}\)</span>，<span class="math inline">\(H(n)=\frac{g(n)}{(n-1)!}\)</span>，可以看出来这是个卷积。 <span class="math display">\[
+H(n)=\sum_{i=1}^nF(i)G(n-i)\Leftrightarrow F=H*G^{-1}
+\]</span> 我们已知 <span class="math inline">\(H,G\)</span>，就可以用多项式求逆做。</p>
+<h2 id="p4449-于神之怒加强版">P4449 于神之怒加强版</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4449">题目</a></p>
+<p>整除分块 + 线性筛。</p>
+<p>我们知道 <span class="math inline">\(\mu*I=\epsilon\)</span>，则 <span class="math display">\[
+\begin{aligned}
+&amp;\quad\sum_{i=1}^n\sum_{j=1}^m\gcd(i,j)^k\\
+&amp;=\sum_{d=1}^n d^k\sum_{i=1}^{\lfloor n/d\rfloor}\sum_{j=1}^{\lfloor m/d\rfloor}[\gcd(i,j)=1]\\
+&amp;=\sum_{d=1}^n d^k\sum_{i=1}^{\lfloor n/d\rfloor}\sum_{j=1}^{\lfloor m/d\rfloor}\sum_{x|i,x|j}\mu(x)\\
+&amp;=\sum_{d=1}^n d^k\sum_{x=1}^{\lfloor n/d\rfloor}\mu(x)\lfloor n/dx\rfloor\lfloor m/dx\rfloor\\
+&amp;=\sum_{d=1}^n d^k\sum_{y=1}^{\lfloor n\rfloor}\mu(y/d)\lfloor n/y\rfloor\lfloor m/y\rfloor\\
+&amp;=\sum_{y=1}^{n}\lfloor n/y\rfloor\lfloor m/y\rfloor\sum_{d|y} d^k\mu(y/d)\\
+\end{aligned}
+\]</span> 设 <span class="math inline">\(f(n)=\sum_{d|y} d^k\mu(\frac{y}{d})\)</span>，是个积性函数，考虑线性筛。</p>
+<p>若 <span class="math inline">\(n=\prod p^c\)</span>，则 <span class="math display">\[
+\begin{aligned}
+f(n)&amp;=\prod(-p^{k(c-1)}+p^{kc})\\
+&amp;=\prod p^{k(c-1)}(p^k-1)
+\end{aligned}
+\]</span> 这样 <span class="math inline">\(f\)</span> 就满足了能够快速求得 <span class="math inline">\(f(p),f(p^k)\)</span>。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n\log n+T\sqrt{n})\)</span>。</p>
+<h2 id="p3723-ah2017hnoi2017礼物">P3723 [AH2017/HNOI2017]礼物</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3723">题目</a></p>
+<p>FFT。</p>
+<p>题目让我们求 <span class="math display">\[
+\begin{aligned}
+&amp;\quad\sum_{i=1}^n(a_i-b_i+c)^2\\
+&amp;=\sum_{i=1}^na_i^2+\sum_{i=1}^nb_i^2+2c\sum_{i=1}^n(a_i-b_i)+nc^2-2\sum_{i=1}^na_ib_i\\
+\end{aligned}
+\]</span> 发现前两项是不变项，和 <span class="math inline">\(c\)</span> 相关的是二次函数（值域很小大力枚举就好），问题是旋转 <span class="math inline">\(a\)</span> 序列最大化最后一项。</p>
+<p>倍长 <span class="math inline">\(a\)</span> 就是 <span class="math inline">\(\sum_{i=1}^{2n} a_{i+k}b_i\)</span>，翻转 <span class="math inline">\(b\)</span> 得到 <span class="math inline">\(\sum_{i=1}^{2n} a_{i+k}b_{n-i}\)</span> 是个卷积，FFT 卷后在 <span class="math inline">\([n+1,2n]\)</span> 上找最大值即可。</p>
 
     </div>
 
@@ -435,7 +521,7 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj123-%E6%95%B0%E7%BB%84%E5%85%A5%E9%97%A8"><span class="nav-text">S2OJ#123 数组入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1776-%E5%AE%9D%E7%89%A9%E7%AD%9B%E9%80%89"><span class="nav-text">P1776 宝物筛选</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u142829-%E9%AD%94%E6%B3%95%E5%95%86%E5%BA%97"><span class="nav-text">U142829 魔法商店</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf220b-little-elephant-and-array"><span class="nav-text">CF220B Little Elephant and Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u144136-%E8%B7%9D%E7%A6%BB"><span class="nav-text">U144136 距离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-text">15日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p5410-%E6%A8%A1%E6%9D%BF%E6%89%A9%E5%B1%95-kmpz-%E5%87%BD%E6%95%B0"><span class="nav-text">P5410 【模板】扩展 KMP（Z 函数）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-text">16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1494-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%E5%B0%8Fz%E7%9A%84%E8%A2%9C%E5%AD%90"><span class="nav-text">P1494 [国家集训队]小Z的袜子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sp10707-cot2---count-on-a-tree-ii"><span class="nav-text">SP10707 COT2 - Count on a tree II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-5"><span class="nav-text">19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#at1219-%E6%AD%B4%E5%8F%B2%E3%81%AE%E7%A0%94%E7%A9%B6"><span class="nav-text">AT1219 歴史の研究</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-6"><span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4887-%E6%A8%A1%E6%9D%BF%E8%8E%AB%E9%98%9F%E4%BA%8C%E6%AC%A1%E7%A6%BB%E7%BA%BF%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%88%86%E5%9D%97%E5%89%8D%E4%BD%93"><span class="nav-text">P4887 【模板】莫队二次离线（第十四分块(前体)）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4074-wc2013%E7%B3%96%E6%9E%9C%E5%85%AC%E5%9B%AD"><span class="nav-text">P4074 「WC2013」糖果公园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-7"><span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2713-%E7%BD%97%E9%A9%AC%E6%B8%B8%E6%88%8F"><span class="nav-text">P2713 罗马游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4556-vani%E6%9C%89%E7%BA%A6%E4%BC%9A%E9%9B%A8%E5%A4%A9%E7%9A%84%E5%B0%BE%E5%B7%B4-%E6%A8%A1%E6%9D%BF%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6"><span class="nav-text">P4556 [Vani有约会]雨天的尾巴 &#x2F;【模板】线段树合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-8"><span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3224-hnoi2012%E6%B0%B8%E6%97%A0%E4%B9%A1"><span class="nav-text">P3224 [HNOI2012]永无乡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3919-%E6%A8%A1%E6%9D%BF%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91-1%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E7%BB%84"><span class="nav-text">P3919 【模板】可持久化线段树 1（可持久化数组）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2839-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9Fmiddle"><span class="nav-text">P2839 [国家集训队]middle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1712-noi2016%E5%8C%BA%E9%97%B4"><span class="nav-text">P1712 [NOI2016]区间</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#s2oj123-%E6%95%B0%E7%BB%84%E5%85%A5%E9%97%A8"><span class="nav-text">S2OJ#123 数组入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1776-%E5%AE%9D%E7%89%A9%E7%AD%9B%E9%80%89"><span class="nav-text">P1776 宝物筛选</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u142829-%E9%AD%94%E6%B3%95%E5%95%86%E5%BA%97"><span class="nav-text">U142829 魔法商店</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf220b-little-elephant-and-array"><span class="nav-text">CF220B Little Elephant and Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u144136-%E8%B7%9D%E7%A6%BB"><span class="nav-text">U144136 距离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-text">15日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p5410-%E6%A8%A1%E6%9D%BF%E6%89%A9%E5%B1%95-kmpz-%E5%87%BD%E6%95%B0"><span class="nav-text">P5410 【模板】扩展 KMP（Z 函数）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-text">16日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1494-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%E5%B0%8Fz%E7%9A%84%E8%A2%9C%E5%AD%90"><span class="nav-text">P1494 [国家集训队]小Z的袜子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-text">17日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sp10707-cot2---count-on-a-tree-ii"><span class="nav-text">SP10707 COT2 - Count on a tree II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-5"><span class="nav-text">19日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#at1219-%E6%AD%B4%E5%8F%B2%E3%81%AE%E7%A0%94%E7%A9%B6"><span class="nav-text">AT1219 歴史の研究</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-6"><span class="nav-text">20日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4887-%E6%A8%A1%E6%9D%BF%E8%8E%AB%E9%98%9F%E4%BA%8C%E6%AC%A1%E7%A6%BB%E7%BA%BF%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%88%86%E5%9D%97%E5%89%8D%E4%BD%93"><span class="nav-text">P4887 【模板】莫队二次离线（第十四分块(前体)）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4074-wc2013%E7%B3%96%E6%9E%9C%E5%85%AC%E5%9B%AD"><span class="nav-text">P4074 「WC2013」糖果公园</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-7"><span class="nav-text">21日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2713-%E7%BD%97%E9%A9%AC%E6%B8%B8%E6%88%8F"><span class="nav-text">P2713 罗马游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4556-vani%E6%9C%89%E7%BA%A6%E4%BC%9A%E9%9B%A8%E5%A4%A9%E7%9A%84%E5%B0%BE%E5%B7%B4-%E6%A8%A1%E6%9D%BF%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6"><span class="nav-text">P4556 [Vani有约会]雨天的尾巴 &#x2F;【模板】线段树合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-8"><span class="nav-text">22日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3224-hnoi2012%E6%B0%B8%E6%97%A0%E4%B9%A1"><span class="nav-text">P3224 [HNOI2012]永无乡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3919-%E6%A8%A1%E6%9D%BF%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91-1%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E7%BB%84"><span class="nav-text">P3919 【模板】可持久化线段树 1（可持久化数组）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2839-%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9Fmiddle"><span class="nav-text">P2839 [国家集训队]middle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1712-noi2016%E5%8C%BA%E9%97%B4"><span class="nav-text">P1712 [NOI2016]区间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-9"><span class="nav-text">23日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p5192-zoj3229-shoot-the-bullet%E4%B8%9C%E6%96%B9%E6%96%87%E8%8A%B1%E5%B8%96%E6%A8%A1%E6%9D%BF%E6%9C%89%E6%BA%90%E6%B1%87%E4%B8%8A%E4%B8%8B%E7%95%8C%E6%9C%80%E5%A4%A7%E6%B5%81"><span class="nav-text">P5192 Zoj3229 Shoot the Bullet|东方文花帖|【模板】有源汇上下界最大流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p6329-%E6%A8%A1%E6%9D%BF%E7%82%B9%E5%88%86%E6%A0%91-%E9%9C%87%E6%B3%A2"><span class="nav-text">P6329 【模板】点分树 | 震波</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-10"><span class="nav-text">24日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3345-zjoi2015%E5%B9%BB%E6%83%B3%E4%B9%A1%E6%88%98%E7%95%A5%E6%B8%B8%E6%88%8F"><span class="nav-text">P3345 [ZJOI2015]幻想乡战略游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3241-hnoi2015%E5%BC%80%E5%BA%97"><span class="nav-text">P3241 [HNOI2015]开店</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-11"><span class="nav-text">26~27日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p2260-%E6%B8%85%E5%8D%8E%E9%9B%86%E8%AE%AD2012%E6%A8%A1%E7%A7%AF%E5%92%8C"><span class="nav-text">P2260 [清华集训2012]模积和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4213-%E6%A8%A1%E6%9D%BF%E6%9D%9C%E6%95%99%E7%AD%9Bsum"><span class="nav-text">P4213 【模板】杜教筛（Sum）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4318-%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0"><span class="nav-text">P4318 完全平方数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-12"><span class="nav-text">28日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4841-%E9%9B%86%E8%AE%AD%E9%98%9F%E4%BD%9C%E4%B8%9A2013%E5%9F%8E%E5%B8%82%E8%A7%84%E5%88%92"><span class="nav-text">P4841 [集训队作业2013]城市规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p4449-%E4%BA%8E%E7%A5%9E%E4%B9%8B%E6%80%92%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="nav-text">P4449 于神之怒加强版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3723-ah2017hnoi2017%E7%A4%BC%E7%89%A9"><span class="nav-text">P3723 [AH2017&#x2F;HNOI2017]礼物</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -451,7 +537,7 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -464,7 +550,7 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -491,7 +577,7 @@ f(i,d+kw)\leftarrow \max_{k-c\le k&#39;\le k}\{f(i-1, d+k&#39;w)+s(i,k-k&#39;)\}
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -17,20 +17,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="\(O(nlogn)\) 多项式乘法。">
+  <meta name="description" content="用于求数论函数的前缀和。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="板子 FFT&#x2F;NTT">
-<meta property="og:url" content="http://example.com/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-FFTNTT/index.html">
+<meta property="og:title" content="笔记 杜教筛">
+<meta property="og:url" content="http://example.com/2020/12/27/%E7%AC%94%E8%AE%B0-%E6%9D%9C%E6%95%99%E7%AD%9B/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="\(O(nlogn)\) 多项式乘法。">
+<meta property="og:description" content="用于求数论函数的前缀和。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-17T11:42:00.000Z">
-<meta property="article:modified_time" content="2020-08-15T17:08:32.000Z">
+<meta property="article:published_time" content="2020-12-27T10:45:06.000Z">
+<meta property="article:modified_time" content="2020-12-28T01:42:14.644Z">
 <meta property="article:author" content="RenaMoe">
-<meta property="article:tag" content="FFT&#x2F;NTT">
+<meta property="article:tag" content="杜教筛">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-FFTNTT/">
+<link rel="canonical" href="http://example.com/2020/12/27/%E7%AC%94%E8%AE%B0-%E6%9D%9C%E6%95%99%E7%AD%9B/">
 
 
 <script id="page-configurations">
@@ -43,7 +43,7 @@
   };
 </script>
 
-  <title>板子 FFT/NTT | RenaMoe's Blog</title>
+  <title>笔记 杜教筛 | RenaMoe's Blog</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-FFTNTT/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/27/%E7%AC%94%E8%AE%B0-%E6%9D%9C%E6%95%99%E7%AD%9B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -210,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          板子 FFT/NTT
+          笔记 杜教筛
         </h1>
 
         <div class="post-meta">
@@ -220,14 +220,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-17 19:42:00" itemprop="dateCreated datePublished" datetime="2020-01-17T19:42:00+08:00">2020-01-17</time>
+              <time title="创建时间：2020-12-27 18:45:06" itemprop="dateCreated datePublished" datetime="2020-12-27T18:45:06+08:00">2020-12-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-16 01:08:32" itemprop="dateModified" datetime="2020-08-16T01:08:32+08:00">2020-08-16</time>
+                <time title="修改时间：2020-12-28 09:42:14" itemprop="dateModified" datetime="2020-12-28T09:42:14+08:00">2020-12-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +252,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-FFTNTT/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/17/2020-01-17-%E6%9D%BF%E5%AD%90-FFTNTT/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/12/27/%E7%AC%94%E8%AE%B0-%E6%9D%9C%E6%95%99%E7%AD%9B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/27/%E7%AC%94%E8%AE%B0-%E6%9D%9C%E6%95%99%E7%AD%9B/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -268,20 +268,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><span class="math inline">\(O(nlogn)\)</span> 多项式乘法。</p>
+        <p>用于求数论函数的前缀和。</p>
 <a id="more"></a>
-<h2 id="rader排序">Rader排序</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (lim = <span class="number">1</span>; lim &lt;= n; lim &lt;&lt;= <span class="number">1</span>, len++);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">calc_rev</span><span class="params">(<span class="keyword">int</span> lim, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; lim; ++i)</span><br><span class="line">        rev[i] = (rev[i&gt;&gt;<span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (len - <span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="fft">FFT</h2>
-<h3 id="封装复数">封装复数</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Complex</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    Complex(<span class="keyword">double</span> xx = <span class="number">0</span>, <span class="keyword">double</span> yy = <span class="number">0</span>) &#123;</span><br><span class="line">        x = xx, y = yy;</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> +(<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(x + t.x, y + t.y);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> -(<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(x - t.x, y - t.y);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> *(<span class="keyword">const</span> Complex &amp;t) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(x * t.x - y * t.y, y * t.x + x * t.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="fft-1">FFT()</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">FFT</span><span class="params">(Complex *f, <span class="keyword">int</span> lim, <span class="keyword">int</span> opt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">            swap(f[i], f[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> mid = <span class="number">1</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="function">Complex <span class="title">wn</span><span class="params">(<span class="built_in">cos</span>(Pi / mid), opt * <span class="built_in">sin</span>(Pi / mid))</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; i += mid &lt;&lt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="function">Complex <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mid; ++j, w = w * wn) &#123;</span><br><span class="line">                Complex tx = f[i+j], ty = w * f[i+mid+j];</span><br><span class="line">                f[i+j] = tx + ty, f[i+mid+j] = tx - ty;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (opt == <span class="number">-1</span>) &#123;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; ++i)</span><br><span class="line">            f[i].x /= n, f[i].y /= n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三次变两次优化">三次变两次优化</h3>
-<p>把 f2 放到 f1 的虚部上，DFT一遍，平方，再把虚部取出来除以2即可</p>
-<h2 id="ntt">NTT</h2>
-<p>用 int 时注意模好</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> G = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> invG = <span class="number">332748118</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span> *f, <span class="keyword">int</span> lim, <span class="keyword">int</span> opt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i &lt; rev[i])</span><br><span class="line">            swap(f[i], f[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> mid = <span class="number">1</span>; mid &lt; lim; mid &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> wn = power(opt == <span class="number">1</span> ? G : invG, (MOD - <span class="number">1</span>) / (mid &lt;&lt; <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; i += (mid &lt;&lt; <span class="number">1</span>)) &#123;</span><br><span class="line">            <span class="keyword">int</span> w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mid; ++j, w = (<span class="number">1l</span>l * w * wn) % MOD) &#123;</span><br><span class="line">                LL tx = f[i+j], ty = (<span class="number">1l</span>l * w * f[i+mid+j]) % MOD;</span><br><span class="line">                f[i+j] = (<span class="number">0l</span>l + tx + ty) % MOD;</span><br><span class="line">                f[i+mid+j] = (<span class="number">0l</span>l + tx - ty + MOD) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (opt == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> invlim = power(lim, MOD - <span class="number">2</span>);</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; ++i)</span><br><span class="line">            f[i] = <span class="number">1l</span>l * f[i] * invlim % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基本的">基本的</h2>
+<p>杜教筛就是这么一个柿子： <span class="math display">\[
+S(n)=\sum_{i=1}^n(f*g)(i)-\sum_{i=2}^n g(i)S(\lfloor\frac{n}{i}\rfloor)
+\]</span> 让我们求一个数论函数 <span class="math inline">\(f\)</span> 的前缀和 <span class="math inline">\(S(n)=\sum_{i=1}^n f(i)\)</span> 时，找一个合适的数论函数 <span class="math inline">\(g\)</span>： <span class="math display">\[
+\begin{aligned}
+&amp;\quad \sum_{i=1}^n(f*g)(i)\\
+&amp;=\sum_{i=1}^n\sum_{d|i}g(d)f(\frac{i}{d})\\
+&amp;=\sum_{d=1}^n g(d)\sum_{d|i}f(\frac{i}{d})\\
+&amp;=\sum_{d=1}^n g(d)\sum_{i=1}^{\lfloor\frac{n}{d}\rfloor}f(i)\\
+&amp;=\sum_{d=1}^n g(d)S(\lfloor\frac{n}{d}\rfloor)\\
+\end{aligned}
+\]</span> <span class="math inline">\(g\)</span> 函数要满足 <span class="math inline">\(f*g\)</span> 的前缀和是很容易得到的，这样求 <span class="math inline">\(g(1)S(n)\)</span> 时， <span class="math display">\[
+g(1)S(n)=\sum_{i=1}^n(f*g)(i)-\sum_{i=2}^n g(i)S(\lfloor\frac{n}{i}\rfloor)
+\]</span> 所有积性函数都满足 <span class="math inline">\(g(1)=1\)</span>，就可以忽略 <span class="math inline">\(g(1)\)</span>。</p>
+<p>最右边那项可以整除分块，<span class="math inline">\(S(\lfloor\frac{n}{i}\rfloor)\)</span> 递归求解。</p>
+<p>对于小于 <span class="math inline">\(n^{\frac{2}{3}}\)</span> 的线性预处理，递归的加上 <code>unordered_map / map</code> 记忆化。</p>
+<p>这样复杂度为 <span class="math inline">\(\mathcal O(n^{\frac{2}{3}})\)</span>，<del>我<strong>又</strong>不会证</del>。</p>
+<h2 id="一些例子">一些例子</h2>
+<ul>
+<li><p><span class="math inline">\(\varphi\)</span></p>
+<p><span class="math display">\[
+  \varphi*I=id
+  \]</span> <span class="math display">\[
+  S_{\varphi}(n)=\sum_{i=1}^n i-\sum_{i=2}^n S_{\varphi}(\lfloor\frac{n}{i}\rfloor)
+  \]</span></p></li>
+<li><p><span class="math inline">\(\mu\)</span></p>
+<p><span class="math display">\[
+  \mu*I=\epsilon
+  \]</span> <span class="math display">\[
+  S_{\mu}(n)=1-\sum_{i=2}^n S_{\mu}(\lfloor\frac{n}{i}\rfloor)
+  \]</span></p></li>
+<li><p><span class="math inline">\(\sigma_k\)</span></p>
+<p>其中 <span class="math inline">\(\sigma_k(n)=\sum_{d|n}d^k\)</span>。 <span class="math display">\[
+\sigma_k=id_k*I
+\]</span></p>
+<p><span class="math display">\[
+\sum_{i=1}^n \sigma_k(i)=\sum_{i=1}^ni^k\lfloor\frac{n}{i}\rfloor
+\]</span></p>
+<blockquote>
+<p>常用 <span class="math inline">\(S_{id_k}(n)\)</span> 公式： <span class="math display">\[
+\begin{aligned}
+S_{id}(n)&amp;=\frac{n(n+1)}{2}\\
+S_{id_2}(n)&amp;=\frac{n(n+1)(2n+1)}{6}\\
+S_{id_3}(n)&amp;=\Big(\frac{n(n+1)}{2}\Big)^2\\
+S_{id_k}(n)&amp;=\frac{1}{k+1}\bigg((n+1)^{t+1}-\sum_{j=0}^{t-1}\binom{t+1}{j}S_{id_j}(n)\bigg)\\
+\end{aligned}
+\]</span></p>
+</blockquote></li>
+<li><p><span class="math inline">\(\varphi\cdot id_k\)</span></p>
+<p>当 <span class="math inline">\(C\)</span> 是完全积性函数时，<span class="math inline">\((A\cdot C)*(B\cdot C)=(A*B)\cdot C\)</span>。 <span class="math display">\[
+  (\varphi\cdot id_k)*(I\cdot id_k)=(\varphi* I)\cdot id_k=id_{k+1}
+  \]</span></p>
+<p><span class="math display">\[
+  S_{\varphi\cdot id_k}(n)=\sum_{i=1}^ni^{k+1}-\sum_{i=2}^ni^kS_{\varphi\cdot id_k}(\lfloor\frac{n}{i}\rfloor)
+  \]</span></p></li>
+<li><p><span class="math inline">\(\mu\cdot id_k\)</span></p>
+<p>同理。 <span class="math display">\[
+  (\mu\cdot id_k)*(I\cdot id_k)=(\mu*I)\cdot id_k=\epsilon
+  \]</span></p>
+<p><span class="math display">\[
+  S_{\mu\cdot id_k}(n)=1-\sum_{i=2}^ni^kS_{\mu\cdot id_k}(\lfloor\frac{n}{i}\rfloor)
+  \]</span></p></li>
+<li><p><span class="math inline">\(\mu^2*(\mu\cdot id)\)</span> <span class="math display">\[
+  (\mu^2*(\mu\cdot id))*id=\mu^2*((\mu\cdot id)*(I\cdot id))=\mu^2
+  \]</span></p>
+<p><span class="math display">\[
+  S_{\mu^2*(\mu\cdot id)}(n)=S_{\mu^2}(n)-\sum_{i=2}^n iS_{\mu^2*(\mu\cdot id)}(\lfloor\frac{n}{i}\rfloor)
+  \]</span></p>
+<p><span class="math inline">\(S_{\mu^2}(n)\)</span> 可以 <span class="math inline">\(\mathcal O(\sqrt{n})\)</span> 求，见 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4318">P4318 完全平方数</a>。</p></li>
+</ul>
 
     </div>
 
@@ -291,7 +349,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FFT-NTT/" rel="tag"># FFT/NTT</a>
+              <a href="/tags/%E6%9D%9C%E6%95%99%E7%AD%9B/" rel="tag"># 杜教筛</a>
           </div>
 
         
@@ -300,12 +358,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/17/2020-01-17-%E8%92%9F%E8%92%BB%E7%9A%84zz%E7%A0%81%E9%A3%8E/" rel="prev" title="蒟蒻的zz码风">
-      <i class="fa fa-chevron-left"></i> 蒟蒻的zz码风
+    <a href="/2020/12/25/2020-01-24-%E6%9D%BF%E5%AD%90-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/" rel="prev" title="板子 多项式全家桶">
+      <i class="fa fa-chevron-left"></i> 板子 多项式全家桶
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/01/17/2020-01-17-%E6%80%BB%E7%BB%93-CDQ%E5%88%86%E6%B2%BB/" rel="next" title="总结 CDQ分治">
-      总结 CDQ分治 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/29/20%E5%B9%B412%E6%9C%8829%E6%97%A5-%E7%9C%81%E9%80%89%E4%BA%94%E6%A0%A1%E8%81%94%E5%90%88%E9%9B%86%E8%AE%AD%E8%80%83%E8%AF%95%E4%B8%80/" rel="next" title="20年12月29日 省选五校联合集训考试一">
+      20年12月29日 省选五校联合集训考试一 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -366,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rader%E6%8E%92%E5%BA%8F"><span class="nav-text">Rader排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fft"><span class="nav-text">FFT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E5%A4%8D%E6%95%B0"><span class="nav-text">封装复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fft-1"><span class="nav-text">FFT()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E5%8F%98%E4%B8%A4%E6%AC%A1%E4%BC%98%E5%8C%96"><span class="nav-text">三次变两次优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ntt"><span class="nav-text">NTT</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84"><span class="nav-text">基本的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90"><span class="nav-text">一些例子</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -382,7 +440,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">79</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -395,7 +453,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -422,7 +480,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

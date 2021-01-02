@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#ec9fff">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/logo.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="点分治是不支持修改的，所以根据点分治的过程，建出一个新的树形结构，具有许多很好的性质。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总结 点分树（动态点分治）">
+<meta property="og:url" content="http://example.com/2020/12/23/%E6%80%BB%E7%BB%93-%E7%82%B9%E5%88%86%E6%A0%91%EF%BC%88%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%EF%BC%89/index.html">
+<meta property="og:site_name" content="RenaMoe&#39;s Blog">
+<meta property="og:description" content="点分治是不支持修改的，所以根据点分治的过程，建出一个新的树形结构，具有许多很好的性质。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-23T12:29:11.000Z">
+<meta property="article:modified_time" content="2020-12-24T11:55:30.333Z">
+<meta property="article:author" content="RenaMoe">
+<meta property="article:tag" content="点分树">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/12/23/%E6%80%BB%E7%BB%93-%E7%82%B9%E5%88%86%E6%A0%91%EF%BC%88%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>总结 点分树（动态点分治） | RenaMoe's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">RenaMoe's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">念念不忘，必有回响</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/%E6%80%BB%E7%BB%93-%E7%82%B9%E5%88%86%E6%A0%91%EF%BC%88%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="RenaMoe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="RenaMoe's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          总结 点分树（动态点分治）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-23 20:29:11" itemprop="dateCreated datePublished" datetime="2020-12-23T20:29:11+08:00">2020-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-24 19:55:30" itemprop="dateModified" datetime="2020-12-24T19:55:30+08:00">2020-12-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/12/23/%E6%80%BB%E7%BB%93-%E7%82%B9%E5%88%86%E6%A0%91%EF%BC%88%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/12/23/%E6%80%BB%E7%BB%93-%E7%82%B9%E5%88%86%E6%A0%91%EF%BC%88%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>点分治是不支持修改的，所以根据点分治的过程，建出一个新的树形结构，具有许多很好的性质。</p>
+<a id="more"></a>
+<p>非常棒的讲解：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/ChenXingLing/post-xue-xi-bi-ji-shu-lun-dian-fen-shu-dong-tai-dian-fen-zhi-post">辰星凌 的博客</a>。</p>
+<h2 id="基本思想">基本思想</h2>
+<p>回忆点分治，每次找重心，划分成若干个连通块递归处理。</p>
+<p>如果将每个点为重心时，以上一层的重心为父亲，就能提出一个新树。</p>
+<p>根据点分治的复杂度，这棵树<strong>树高明显是 <span class="math inline">\(\log n\)</span> 的</strong>。</p>
+<p>并且可以证明，<strong>这棵树所有子树的节点数之和约为 <span class="math inline">\(n\log n\)</span></strong>（每个点最多有 <span class="math inline">\(\log n\)</span> 个祖先）。</p>
+<p>其实就是把点分治抽象的过程具体化了，树上的<strong>每个点也就代表以它为根的子树形成的连通块</strong>，所以可以在该点用一些带修数据结构维护这个连通块的信息。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, root, all;</span><br><span class="line"><span class="keyword">int</span> size[N], fa[N], maxs[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_root</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">    size[u] = <span class="number">1</span>, maxs[u] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = G.head[u]; i; i = G.nxt[i]) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = G.to[i];</span><br><span class="line">        <span class="keyword">if</span> (vis[v] || v == pre) <span class="keyword">continue</span>;</span><br><span class="line">        get_root(v, u);</span><br><span class="line">        size[u] += size[v];</span><br><span class="line">        maxs[u] = max(maxs[u], size[v]);</span><br><span class="line">    &#125;</span><br><span class="line">    maxs[u] = max(maxs[u], all - size[u]);</span><br><span class="line">    <span class="keyword">if</span> (!root || maxs[u] &lt; maxs[root]) root = u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fat)</span> </span>&#123;</span><br><span class="line">    fa[u] = fat;</span><br><span class="line">    vis[u] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> now = all;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = G.head[u]; i; i = G.nxt[i]) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = G.to[i];</span><br><span class="line">        <span class="keyword">if</span> (vis[v]) <span class="keyword">continue</span>;</span><br><span class="line">        all = size[v] &gt; size[u] ? (now - size[u]) : size[v];</span><br><span class="line">        root = <span class="number">0</span>;</span><br><span class="line">        get_root(v, u);</span><br><span class="line">        build(root, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main</span></span><br><span class="line">all = n, root = <span class="number">0</span>, get_root(<span class="number">1</span>, <span class="number">0</span>), build(root, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="例题">例题</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6329">P6329 【模板】点分树 | 震波</a></p>
+<blockquote>
+<p>每次单点修改、询问距离点 <span class="math inline">\(x\)</span> 距离 <span class="math inline">\(\le k\)</span> 的点权值和。</p>
+<p><span class="math inline">\(n,m\le 10^5\)</span>。</p>
+</blockquote>
+<p>设 <span class="math inline">\(dis(u,v)\)</span> 表示在<strong>原树</strong>上 <span class="math inline">\(u,v\)</span> 两点的距离，<span class="math inline">\(fa_u\)</span> 表示<strong>点分树</strong>上 <span class="math inline">\(u\)</span> 的父亲。</p>
+<p>类似点分治的<strong>容斥</strong>，点分树上每个点可以维护两棵树状数组：</p>
+<p><span class="math inline">\(f_1(u,i)\)</span> 表示在点分树上以 <span class="math inline">\(u\)</span> 根的子树中 <span class="math inline">\(dis(u,v)\le i\)</span> 的点 <span class="math inline">\(v\)</span> 的权值和；</p>
+<p><span class="math inline">\(f_2(u,i)\)</span> 表示在点分树上以 <span class="math inline">\(u\)</span> 根的子树中 <span class="math inline">\(dis(fa_u,v)\le i\)</span> 的点 <span class="math inline">\(v\)</span> 的权值和；</p>
+<p>这样每次查询点 <span class="math inline">\(x\)</span> 时，在点分树上 <span class="math inline">\(u\)</span> 从 <span class="math inline">\(x\)</span> 往上跳，每层的贡献就是：</p>
+<p><span class="math display">\[
+f_1(fa_u,k-dis(fa_u,x))-f_2(u,k-dis(fa_u,x))
+\]</span></p>
+<p>修改同理。</p>
+<p>但是每个点开一棵树状数组爆空间？根据重心的性质，大小为 <span class="math inline">\(s\)</span> 的连通块中每个点与重心的距离不超过 <span class="math inline">\(\frac{s}{2}\)</span>，<span class="math inline">\(f_1\)</span> 中 <span class="math inline">\(i\)</span> 的范围 <span class="math inline">\([0,\frac{s}{2}]\)</span>，<span class="math inline">\(f_2\)</span> 中 <span class="math inline">\(i\)</span> 的范围 <span class="math inline">\([1,s]\)</span>，可以每个点用 <code>vector</code>，空间复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<p>求 <span class="math inline">\(dis\)</span> 可以用重链剖分在线 <span class="math inline">\(\mathcal O(\log n)\)</span> 求，所以总复杂度 <span class="math inline">\(\mathcal O(n\log^2 n)\)</span>。</p>
+<h2 id="一些题目">一些题目</h2>
+<p>点分树常用容斥的套路，在点分树上，</p>
+<p>设 <span class="math inline">\(f_1(x)\)</span> 表示以 <span class="math inline">\(x\)</span> 为根的子树里的点对 <span class="math inline">\(x\)</span> 的贡献；</p>
+<p>设 <span class="math inline">\(f_2(x)\)</span> 表示以 <span class="math inline">\(x\)</span> 为根的子树对 <span class="math inline">\(f_1(fa_x)\)</span> 的贡献。</p>
+<p>下文可能会省略定义。</p>
+<h3 id="p3241-hnoi2015开店">P3241 [HNOI2015]开店</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3241">题目</a></p>
+<blockquote>
+<p>每个点有点权 <span class="math inline">\(A_i\)</span>，每次给出 <span class="math inline">\(x,l,r\)</span>，询问 <span class="math inline">\(\sum_{l\le Ay\le r}dis(x,y)\)</span>。</p>
+<p><span class="math inline">\(n\le 1.5\times 10^5\)</span>，<span class="math inline">\(Q\le 2\times 10^5\)</span>。</p>
+</blockquote>
+<p>答案差分一下，每次询问 <span class="math inline">\(\le k\)</span> 的答案。</p>
+<p>设 <span class="math inline">\(s(u,i)\)</span> 表示点分树上以 <span class="math inline">\(u\)</span> 为根的子树中 <span class="math inline">\(A_v\le k\)</span> 的 <span class="math inline">\(v\)</span> 个数。</p>
+<p>每一层的答案为 <span class="math inline">\(f_1(fa_u,k)-f_2(u,k)+dis(x,fa_u)\times(s(fa_u,k)-s(u,k))\)</span>。</p>
+<p>怎么求 <span class="math inline">\(f_1(fa_u,k)\)</span>？发现 <span class="math inline">\(A_i\)</span> 值域 <span class="math inline">\(10^9\)</span>，但是没有修改，那就每个点维护一个 <code>vector</code>，按 <span class="math inline">\(A_i\)</span> 排序并前缀和，每次二分即可。</p>
+<p>时间复杂度 <span class="math inline">\(\mathcal O((n+Q)\log^2n)\)</span>。</p>
+<h3 id="p3345-zjoi2015幻想乡战略游戏">P3345 [ZJOI2015]幻想乡战略游戏</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3345">题目</a></p>
+<blockquote>
+<p>设 <span class="math inline">\(F(u)=\sum_v dis(u,v)\times val_v\)</span>，每次修改点权后查询 <span class="math inline">\(F\)</span> 值最小的点。</p>
+<p><span class="math inline">\(n,Q\le 10^5\)</span>，每个点度数 <span class="math inline">\(\le 20\)</span>。</p>
+</blockquote>
+<p>设 <span class="math inline">\(S(x)\)</span> 表示以 <span class="math inline">\(x\)</span> 为根的子树点权和。</p>
+<p>先设 <span class="math inline">\(x\)</span> 为树根，得到 <span class="math inline">\(F(x)\)</span>，若将根转移到 <span class="math inline">\(x\)</span> 的儿子 <span class="math inline">\(y\)</span>，则 <span class="math display">\[
+\begin{aligned}
+\Delta F_{x\rightarrow y}&amp;=F(y)-F(x)\\
+&amp;=(S(x)-S(y))\times dis(x,y)-S(y)\times dis(x,y)\\
+&amp;= (S(x)-2S(y))\times dis(x,y)
+\end{aligned}
+\]</span> 若让 <span class="math inline">\(\Delta F_{x\rightarrow y}&lt;0\)</span>，则 <span class="math inline">\(2S(y)&gt;S(x)\)</span>，<span class="math inline">\(x\)</span> 的儿子中满足的 <span class="math inline">\(y\)</span> 至多有一个。</p>
+<p>暴力思路：在原树上，从根开始，不断跳到到更优的儿子，单次复杂度 <span class="math inline">\(\mathcal O(20\cdot depth)\)</span>，<span class="math inline">\(depth\)</span> 为树高。</p>
+<p>不过 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/ChenXingLing/post-xue-xi-bi-ji-shu-lun-dian-fen-shu-dong-tai-dian-fen-zhi-post">辰星凌 的博客</a> 告诉我们，还需要证明若某一步 <span class="math inline">\(y\)</span> 不比 <span class="math inline">\(x\)</span> 优则 <span class="math inline">\(y\)</span> 的子树中也没有比 <span class="math inline">\(x\)</span> 优的节点。</p>
+<blockquote>
+<p>证明：若 <span class="math inline">\(y\)</span> 再转移到 <span class="math inline">\(y&#39;\)</span> <span class="math display">\[
+\Delta F_{y\rightarrow y&#39;}=(S(x)-2S(y&#39;))\times dis(y,y&#39;)
+\]</span> 若 <span class="math inline">\(\Delta F_{x\rightarrow y}&gt;0\)</span>，<span class="math inline">\(S(x)&gt; 2S(y)\)</span>，又因为 <span class="math inline">\(S(y)\ge S(y&#39;)\)</span>，所以 <span class="math inline">\(S(x)&gt; 2S(y&#39;)\)</span>，</p>
+<p>即 <span class="math inline">\(\Delta F_{y\rightarrow y&#39;}&gt;0,\Delta F_{x\rightarrow y&#39;}&gt;0\)</span>。</p>
+</blockquote>
+<p>如何控制树高？放到点分树上。</p>
+<p>从重心 <span class="math inline">\(x\)</span> 开始，在原树上找到更优的儿子 <span class="math inline">\(y\)</span>，但是要<strong>跳到以 <span class="math inline">\(y\)</span> 为根的子树的重心</strong>上，毕竟答案一定在这棵子树里。</p>
+<p>如何计算某个点的 <span class="math inline">\(F\)</span> 值？</p>
+<p>还是点分树上跳 <span class="math inline">\(fa\)</span>，每一层的答案是 <span class="math inline">\(f_1(fa_u)-f_2(u)+(s(fa_u)-s(u))\times dis(x,fa_u)\)</span>。</p>
+<p>用 ST 表 <span class="math inline">\(\mathcal O(1)\)</span> 找 <span class="math inline">\(\operatorname{LCA}\)</span>，点分树树高为 <span class="math inline">\(\log n\)</span>，计算 <span class="math inline">\(F\)</span> 值 <span class="math inline">\(\mathcal O(\log n)\)</span>，加上 <span class="math inline">\(20\)</span> 的常数，所以单次询问复杂度 <span class="math inline">\(\mathcal O(20\cdot \log^2 n)\)</span>。</p>
+<p>修改就正常的在点分树上修改。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%82%B9%E5%88%86%E6%A0%91/" rel="tag"># 点分树</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/17/%E6%80%BB%E7%BB%93-%E8%8E%AB%E9%98%9F/" rel="prev" title="总结 莫队">
+      <i class="fa fa-chevron-left"></i> 总结 莫队
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/25/%E7%AC%94%E8%AE%B0-%E5%BE%AE%E7%A7%AF%E5%88%86%E5%9F%BA%E7%A1%80/" rel="next" title="笔记 微积分基础">
+      笔记 微积分基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="nav-text">一些题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#p3241-hnoi2015%E5%BC%80%E5%BA%97"><span class="nav-text">P3241 [HNOI2015]开店</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p3345-zjoi2015%E5%B9%BB%E6%83%B3%E4%B9%A1%E6%88%98%E7%95%A5%E6%B8%B8%E6%88%8F"><span class="nav-text">P3345 [ZJOI2015]幻想乡战略游戏</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="RenaMoe"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">RenaMoe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RenaMoe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y6zY3jmVQqW4FLKun6DBvbVY-gzGzoHsz',
+      appKey     : 's80GSxC9neiMz6o87tt086As',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
