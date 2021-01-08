@@ -17,31 +17,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="多图警告⚠️。">
+  <meta name="description" content="广义后缀自动机，即多串的 SAM。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSP2020 游记">
-<meta property="og:url" content="http://example.com/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/index.html">
+<meta property="og:title" content="板子 广义SAM">
+<meta property="og:url" content="http://example.com/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/index.html">
 <meta property="og:site_name" content="RenaMoe&#39;s Blog">
-<meta property="og:description" content="多图警告⚠️。">
+<meta property="og:description" content="广义后缀自动机，即多串的 SAM。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B46SjU.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B4yzcT.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B4yx3V.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B4yXhq.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B46PHJ.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/B46PHJ.jpg">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/img/qq/快哭了.gif">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/BIaxPK.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/BIasgg.jpg">
-<meta property="og:image" content="https://s1.ax1x.com/2020/11/07/BIar8S.jpg">
-<meta property="og:image" content="https://s3.ax1x.com/2020/12/05/DL74v8.jpg">
-<meta property="article:published_time" content="2020-11-06T13:29:37.000Z">
-<meta property="article:modified_time" content="2020-12-05T10:34:51.849Z">
+<meta property="article:published_time" content="2021-01-08T11:40:11.000Z">
+<meta property="article:modified_time" content="2021-01-08T11:48:45.203Z">
 <meta property="article:author" content="RenaMoe">
+<meta property="article:tag" content="SAM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/11/07/B46SjU.jpg">
 
-<link rel="canonical" href="http://example.com/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/">
 
 
 <script id="page-configurations">
@@ -54,7 +43,7 @@
   };
 </script>
 
-  <title>CSP2020 游记 | RenaMoe's Blog</title>
+  <title>板子 广义SAM | RenaMoe's Blog</title>
   
 
 
@@ -208,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -221,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSP2020 游记
+          板子 广义SAM
         </h1>
 
         <div class="post-meta">
@@ -230,23 +219,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-06 21:29:37" itemprop="dateCreated datePublished" datetime="2020-11-06T21:29:37+08:00">2020-11-06</time>
+              <time title="创建时间：2021-01-08 19:40:11 / 修改时间：19:48:45" itemprop="dateCreated datePublished" datetime="2021-01-08T19:40:11+08:00">2021-01-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-05 18:34:51" itemprop="dateModified" datetime="2020-12-05T18:34:51+08:00">2020-12-05</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a>
                 </span>
             </span>
 
@@ -259,8 +246,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/06/CSP2020-%E6%B8%B8%E8%AE%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,83 +262,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>多图警告⚠️。</p>
+        <p>广义后缀自动机，即多串的 SAM。</p>
 <a id="more"></a>
-<h2 id="初赛">初赛</h2>
-<p>没啥感觉，水过去了。</p>
-<blockquote>
-<p>教练：只要你们听话，初赛保你们过。</p>
-</blockquote>
-<h2 id="复赛">复赛</h2>
-<h3 id="day0">day0</h3>
-<p>上午坐公交车，晕，睡。</p>
-<p>我的手机在 n 老师那里，关着机但是没关闹钟……</p>
-<p>上了动车，发现坐在过道，我得坐四五站，但是靠窗的的位置每到一站就换一个人。</p>
-<p>后来我就<del>死皮赖脸地</del>坐在靠窗的位置，还好每次来的都是比较和善的大叔，都答应了。</p>
-<p>到了燕大，门口有个坡，客车上不去 2333。</p>
-<p>那个铭牌生锈的燕大宾馆不见了，取而代之的是闲庭四艺酒店（Four Arts Hotel），wow，全部装修了一番，<del>甲醛的味道</del>书墨的香气蛮浓的。</p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B46SjU.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B4yzcT.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B4yx3V.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B4yXhq.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B46PHJ.jpg" /></p>
-<p>每一房间都有《宋代书画》，还有《毕业季》（看起来是言情小说？）。</p>
-<p><img src="https://s1.ax1x.com/2020/11/07/B46PHJ.jpg" /></p>
-<p>下午就开始模拟赛。</p>
-<p>T1 算是模拟填数题？细节烦人，刚了两个小时才过大样例，心态大崩。</p>
-<p>T2 结论题，打表找半天规律没成，摸了。</p>
-<p>T4 数位 DP，推了会儿式子，调了快一个小时，大样例过了。</p>
-<p>T3 时间紧，暴力都没写，听说很毒瘤。</p>
-<p>和 ywk 一个房间，晚上想迫害他去隔壁房间玩恐怖游戏，没成 qwq。</p>
-<p>题解数据发了，T1 写搜索这么轻松？？？T4 我正解写挂，和分块打表一个分？？？T2就这？？？</p>
-<p>感觉 CSP 悬啊。<img src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/img/qq/快哭了.gif" /></p>
-<p>不管了，明天再说。</p>
-<h3 id="day0.5">day0.5</h3>
-<p>失败的开始。</p>
-<p>十点多洗完澡往床上一摊，“这个床好软啊~”</p>
-<p>翻来覆去一个多小时没睡着，太软了感觉怎么躺都腰肩酸痛（硬板床睡习惯了），十二点时无奈之下下床做了几个俯卧撑，趁着疲惫睡去。</p>
-<p>为什么我的鼻子对被子和枕头过敏啊！！！</p>
-<p>在梦里都感觉呼吸困难，迷糊的我知道是鼻窦炎发作了，不过为了保证充足的睡眠，决定扛到天亮。</p>
-<p>然后就因为差点窒息而被迫清醒了过来。</p>
-<p>怎么才 3 点多啊？？？还得睡下去。（居然会有一天觉得睡觉很痛苦。QAQ）</p>
-<p>把枕头用外套包起来，把能穿的衣服都穿在身上，被子只盖下半身。喷了一些药，睡。</p>
-<p>这一觉还算舒畅，可惜只睡了 3 个小时。ywk 要考 PJ，7 点左右就有人来敲门。</p>
-<h3 id="day1">day1</h3>
-<p>一个上午都在颓废打音游打雀魂，想补觉没补成。</p>
-<p>中午临时冲了杯咖啡，就去考试了。</p>
-<p>密码输了五六遍没对，告诉我 <code>()</code> 也是密码？？？</p>
-<p>开场<del>大力敲击键盘</del>慢悠悠地建完文件夹，读了半小时题，读完题后懵了。</p>
-<p>T1 似乎写个二分在加亿点细节就好，woc 码不出来啊，调不对啊。刚了一个半小时才过大样例，还是悬。</p>
-<p>T2 什么算法啊，是模拟吗？乱写一通过了大样例。</p>
-<p>只剩 45 分钟了，写 T3 暴力，似乎线段树暴力做还算好写，还剩 15 分钟时调完，不知道能拿多少分。不过后来听说是个图论题。</p>
-<p>花五分钟看 T4 发现 20 分白给，慌忙糊了几行。（考后发现把“不降”看成“不降”了，白给的 20 分没了。）</p>
-<p>linux 下整理完了，还剩 2 分钟在 win7 发现莫名其妙有个叫 <code>@#</code> 的文件。</p>
-<p>考完大脑有点晕。</p>
-<hr />
-<p>晚上一块去看海。</p>
-<p><img src="https://s1.ax1x.com/2020/11/07/BIaxPK.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/BIasgg.jpg" /></p>
-<p><img src="https://s1.ax1x.com/2020/11/07/BIar8S.jpg" /></p>
-<p><img src="https://s3.ax1x.com/2020/12/05/DL74v8.jpg" /></p>
-<p>不想吃晚饭，和 wxh，ycs，wgx 一块买了冷饮（本来想买奶茶的），然后寒风中在街边摊位等薯条汉堡。</p>
-<p>回宿舍颓颓颓。</p>
-<h2 id="后续">后续</h2>
-<p>什么信竞题库有了民间数据，T1 85（数据水？），T2 90（破服务器卡常），T3 75，T4 0。</p>
-<p>然后牛客似乎也有了，T1 40，T2 95。</p>
-<p>洛谷上 T1 也是 40，看了 T1 真的挂没了，T2 被卡常 70，T3 30 比较真实。</p>
-<p>这回考的都是什么啊，T1 出题人谁啊！！！</p>
-<p>官方成绩出来，数据特特特别水，似乎到处被喷。</p>
-<p>最后 100 + 95 + 70 + 0 = 265，辣鸡 RenaMoe。</p>
-<p>膜拜 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/120033">iuyi</a> 330 分巨佬 Orz。</p>
-<h2 id="总结">总结</h2>
-<p>虽然这次比赛不怎么重要，并且题目方向比较，但是暴露了不少问题。</p>
-<ul>
-<li>考试策略依旧不当，T1 写太久，后面题差点没时间写暴力。</li>
-<li>代码能力差，主要为 T1 的问题，还是做题少写得慢。</li>
-<li>没有对拍，不太会造数据。</li>
-</ul>
-<p>其它知识能力问题 NOIP 之前可能解决不了多少，毕竟 whk 太差了来机房时间有限。</p>
-<p>以后周末多打打 cf 和 oi 赛制模拟赛吧，一定要把自己会的发挥好。</p>
+<p>推荐 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Xing-Ling/p/12038349.html">辰星凌的博客</a>。</p>
+<p>设 trie 树大小 <span class="math inline">\(|T|\)</span>，字符集大小 <span class="math inline">\(|A|\)</span>；</p>
+<p>设 <span class="math inline">\(G(T)\)</span> 表示 <span class="math inline">\(T\)</span> 的所有叶子深度之和。</p>
+<h2 id="在线做法">在线做法</h2>
+<p>每次插入新串时，将 <span class="math inline">\(last\)</span> 重置，并加入特判。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(|T||A|+G(T))\)</span>，常数比离线做法小。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixAutomaton</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tot;</span><br><span class="line">    <span class="keyword">int</span> ch[N][<span class="number">26</span>], link[N], len[N], pos[N];</span><br><span class="line">    SuffixAutomaton() : tot(<span class="number">1</span>) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> c, <span class="keyword">int</span> last)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ch[last][c]) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = last, q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[q] == len[p] + <span class="number">1</span>) <span class="keyword">return</span> q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++tot;</span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>, link[nq] = link[q];</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                link[q] = nq;</span><br><span class="line">                <span class="keyword">while</span> (p &amp;&amp; ch[p][c] == q) ch[p][c] = nq, p = link[p];</span><br><span class="line">                <span class="keyword">return</span> nq;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> p = last, np = ++tot;</span><br><span class="line">        len[np] = len[p] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; !ch[p][c]) ch[p][c] = np, p = link[p];</span><br><span class="line">        <span class="keyword">if</span> (!p) link[np] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[q] == len[p] + <span class="number">1</span>) link[np] = q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++tot;</span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>, link[nq] = link[q];</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                link[q] = link[np] = nq;</span><br><span class="line">                <span class="keyword">while</span> (p &amp;&amp; ch[p][c] == q) ch[p][c] = nq, p = link[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> np;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; A;</span><br></pre></td></tr></table></figure>
+<h2 id="离线做法">离线做法</h2>
+<p>先将所有串插到 trie 里，再 bfs 构建。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(|T||A|+|T|)\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tot;</span><br><span class="line">    <span class="keyword">int</span> ch[N][<span class="number">26</span>], fa[N], val[N];</span><br><span class="line">    Trie() : tot(<span class="number">1</span>) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> c = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (!ch[p][c]) &#123;</span><br><span class="line">                ch[p][c] = ++tot;</span><br><span class="line">                val[ch[p][c]] = c, fa[ch[p][c]] = p;</span><br><span class="line">            &#125;</span><br><span class="line">            p = ch[p][c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; T;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixAutomaton</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tot;</span><br><span class="line">    <span class="keyword">int</span> ch[N][<span class="number">26</span>], link[N], len[N], pos[N];</span><br><span class="line">    SuffixAutomaton() : tot(<span class="number">1</span>) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> c, <span class="keyword">int</span> last)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = last, np = ++tot;</span><br><span class="line">        len[np] = len[p] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; !ch[p][c]) ch[p][c] = np, p = link[p];</span><br><span class="line">        <span class="keyword">if</span> (!p) link[np] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[q] == len[p] + <span class="number">1</span>) link[np] = q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++tot;</span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>, link[nq] = link[q];</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                link[q] = link[np] = nq;</span><br><span class="line">                <span class="keyword">while</span> (p &amp;&amp; ch[p][c] == q) ch[p][c] = nq, p = link[p];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> np;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i)</span><br><span class="line">            <span class="keyword">if</span> (T.ch[<span class="number">1</span>][i]) q.push(T.ch[<span class="number">1</span>][i]);</span><br><span class="line">        pos[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            pos[u] = insert(T.val[u], pos[T.fa[u]]);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i)</span><br><span class="line">                <span class="keyword">if</span> (T.ch[u][i]) q.push(T.ch[u][i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; A;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -360,6 +283,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SAM/" rel="tag"># SAM</a>
+          </div>
 
         
 
@@ -367,13 +293,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/03/%E9%A2%98%E8%A7%A3-P6564-%E3%80%8CPOI2007%E3%80%8D%E5%A0%86%E7%A7%AF%E6%9C%A8KLO/" rel="prev" title="题解 P6564 「POI2007」堆积木KLO">
-      <i class="fa fa-chevron-left"></i> 题解 P6564 「POI2007」堆积木KLO
+    <a href="/2021/01/05/21%E5%B9%B41%E6%9C%882%E6%97%A5-%E7%9C%81%E9%80%89%E4%BA%94%E6%A0%A1%E8%81%94%E5%90%88%E9%9B%86%E8%AE%AD%E8%80%83%E8%AF%95%E4%BA%8C/" rel="prev" title="21年1月2日 省选五校联合集训考试二">
+      <i class="fa fa-chevron-left"></i> 21年1月2日 省选五校联合集训考试二
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/14/20%E5%B9%B411%E6%9C%8813%E6%97%A5%E5%B0%8F%E6%B5%8B/" rel="next" title="20年11月13日 小测">
-      20年11月13日 小测 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -433,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E8%B5%9B"><span class="nav-text">初赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E8%B5%9B"><span class="nav-text">复赛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#day0"><span class="nav-text">day0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#day0.5"><span class="nav-text">day0.5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#day1"><span class="nav-text">day1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%81%9A%E6%B3%95"><span class="nav-text">在线做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E5%81%9A%E6%B3%95"><span class="nav-text">离线做法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
