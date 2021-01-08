@@ -4358,4 +4358,19 @@ F(n)&amp;=\sum_{Q}\prod_{i=1}^kG(i)\\
         <tag>SAM</tag>
       </tags>
   </entry>
+  <entry>
+    <title>21年1月 刷题记录</title>
+    <url>/2021/01/08/21%E5%B9%B41%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>哇塞怎么 2021 年了，怎么我还是那么菜。qwq</p>
+<a id="more"></a>
+<h1 id="日">8日</h1>
+<h2 id="p3181-haoi2016找相同字符">P3181 [HAOI2016]找相同字符</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3181">题目</a></p>
+<p>广义SAM。</p>
+<p>把两个串插入广义SAM里，对于两个串分别维护不同的 <span class="math inline">\(size_0,size_1\)</span>，然后在 parent 树上统计，最后答案是 <span class="math inline">\(\sum_u size_0(u)\times size_1(u)\times (len(u)-len(link(u)))\)</span>。</p>
+]]></content>
+      <categories>
+        <category>刷题记录</category>
+      </categories>
+  </entry>
 </search>
