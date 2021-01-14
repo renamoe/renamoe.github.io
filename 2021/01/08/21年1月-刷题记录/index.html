@@ -25,7 +25,7 @@
 <meta property="og:description" content="哇塞怎么 2021 年了，怎么我还是那么菜。qwq">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-08T12:29:08.000Z">
-<meta property="article:modified_time" content="2021-01-09T09:20:39.620Z">
+<meta property="article:modified_time" content="2021-01-14T09:16:28.347Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-09 17:20:39" itemprop="dateModified" datetime="2021-01-09T17:20:39+08:00">2021-01-09</time>
+                <time title="修改时间：2021-01-14 17:16:28" itemprop="dateModified" datetime="2021-01-14T17:16:28+08:00">2021-01-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,6 +276,36 @@
 <p>广义SAM + 线段树合并。</p>
 <p>把 <span class="math inline">\(S\)</span> 串和所有 <span class="math inline">\(T\)</span> 串插到 SAM 里，SAM 每个节点维护一棵线段树，记录在 <span class="math inline">\(T_{1\dots n}\)</span> 的出现次数，建出树来再线段树合并。对于每个询问，在 parent 树上倍增找到对应节点，查线段树即可。</p>
 <p><code>pair</code> 慢死了，跑了五十多秒。</p>
+<h2 id="p3346-zjoi2015诸神眷顾的幻想乡">P3346 [ZJOI2015]诸神眷顾的幻想乡</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3346">题目</a></p>
+<p>广义SAM。</p>
+<p>一个显然的性质：对于树上任何一个路径，一定能找到一个点，使得一该点为根时，该路径是直上直下的。</p>
+<p>数据限制叶子很少，就对于每个叶子为根的几棵树当成 trie 树，插到一个 trie 里。</p>
+<p>在 SAM 里离线构造，就是数本质不同子串个数的裸题了。</p>
+<h1 id="日-2">10日</h1>
+<h2 id="p6292-区间本质不同子串个数">P6292 区间本质不同子串个数</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P6292">题目</a></p>
+<p>SAM + LCT + 线段树。</p>
+<p>类比静态区间数颜色数：最于每种颜色记录 <span class="math inline">\(last_i\)</span> 表示最晚出现位置，线段树维护区间和，询问离线后，扫描线处理，每加入一个点 <span class="math inline">\(i\)</span> 就让 <span class="math inline">\(last_{c_i}\)</span> 贡献 <span class="math inline">\(-1\)</span>，<span class="math inline">\(i\)</span> 位置 <span class="math inline">\(+1\)</span>。</p>
+<p>现在同样离线询问，扫描线时在结尾加入点 <span class="math inline">\(i\)</span>，产生的子串是目前所有的后缀，我们需要让这些子串的 <span class="math inline">\(last\)</span> 贡献 <span class="math inline">\(-1\)</span>。</p>
+<p>先把整个串 <span class="math inline">\(S\)</span> 建出 SAM，然后在 parent 的树上后缀 <span class="math inline">\(S[1,i]\)</span> 对应节点的所有祖先（一条链）就是以 <span class="math inline">\(i\)</span> 结尾的所有后缀，不能暴力跳，想到用 LCT 维护 parent 树结构。</p>
+<p>可以发现这条链上相邻节点代表子串的右端点相同，左端点连续。那么在 LCT 的 access 操作时，对于这条链上每一段在线段树区间修改，同时标记新的 <span class="math inline">\(last\)</span>。最后加上当前所有后缀的贡献即可。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n\log^2 n + q\log n)\)</span>。</p>
+<h2 id="sp1811-lcs---longest-common-substring">SP1811 LCS - Longest Common Substring</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP1811">题目</a></p>
+<p>SAM。</p>
+<p>求最长公共前缀，就是对于 <span class="math inline">\(T\)</span> 的每一个前缀，找到其最大的后缀是 <span class="math inline">\(S\)</span> 的子串。</p>
+<p>那么把 <span class="math inline">\(S\)</span> 建出 SAM，然后在 SAM 上沿着 <span class="math inline">\(T\)</span> 走，每走一步匹配长度加一，若走不动了，就跳 <span class="math inline">\(link\)</span>，匹配长度缩小到 <span class="math inline">\(link\)</span> 节点的 <span class="math inline">\(len\)</span>，每一步的匹配长度取最大值即可。</p>
+<p>除去建立 SAM 的复杂度，该部分复杂度 <span class="math inline">\(\mathcal O(|T|)\)</span>。</p>
+<h1 id="日-3">11日</h1>
+<h2 id="sp1812-lcs2---longest-common-substring-ii">SP1812 LCS2 - Longest Common Substring II</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/SP1812">题目</a></p>
+<p>广义SAM。</p>
+<p>和上题类似，把所有串扔进SAM里，然后我们随便找一个串来在SAM里匹配，并且只走在所有串中都出现过的节点（分别维护 <span class="math inline">\(size\)</span>）。</p>
+<h1 id="日-4">14日</h1>
+<h2 id="p4218-ctsc2010珠宝商">P4218 [CTSC2010]珠宝商</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4218">题目</a></p>
+<p>见 <a href="/2021/01/14/题解-P4218-CTSC2010-珠宝商/">题解</a>。</p>
 
     </div>
 
@@ -294,7 +324,10 @@
     <a href="/2021/01/08/%E6%9D%BF%E5%AD%90-%E5%B9%BF%E4%B9%89SAM/" rel="prev" title="板子 广义SAM">
       <i class="fa fa-chevron-left"></i> 板子 广义SAM
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/14/%E9%A2%98%E8%A7%A3-P4218-CTSC2010-%E7%8F%A0%E5%AE%9D%E5%95%86/" rel="next" title="题解 P4218 [CTSC2010]珠宝商">
+      题解 P4218 [CTSC2010]珠宝商 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -354,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">8日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3181-haoi2016%E6%89%BE%E7%9B%B8%E5%90%8C%E5%AD%97%E7%AC%A6"><span class="nav-text">P3181 [HAOI2016]找相同字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf666e-forensic-examination"><span class="nav-text">CF666E Forensic Examination</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">8日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p3181-haoi2016%E6%89%BE%E7%9B%B8%E5%90%8C%E5%AD%97%E7%AC%A6"><span class="nav-text">P3181 [HAOI2016]找相同字符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">9日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cf666e-forensic-examination"><span class="nav-text">CF666E Forensic Examination</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p3346-zjoi2015%E8%AF%B8%E7%A5%9E%E7%9C%B7%E9%A1%BE%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1"><span class="nav-text">P3346 [ZJOI2015]诸神眷顾的幻想乡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-text">10日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p6292-%E5%8C%BA%E9%97%B4%E6%9C%AC%E8%B4%A8%E4%B8%8D%E5%90%8C%E5%AD%90%E4%B8%B2%E4%B8%AA%E6%95%B0"><span class="nav-text">P6292 区间本质不同子串个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sp1811-lcs---longest-common-substring"><span class="nav-text">SP1811 LCS - Longest Common Substring</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-text">11日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sp1812-lcs2---longest-common-substring-ii"><span class="nav-text">SP1812 LCS2 - Longest Common Substring II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-4"><span class="nav-text">14日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4218-ctsc2010%E7%8F%A0%E5%AE%9D%E5%95%86"><span class="nav-text">P4218 [CTSC2010]珠宝商</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,7 +416,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
