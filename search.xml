@@ -4368,6 +4368,22 @@ f_*(u,i+1)=f(u,i+1)+f(u,i)\times (sum_0(u)-i)
 <p><a href="https://www.luogu.com.cn/problem/P1856">题目</a></p>
 <p>扫描线。</p>
 <p>求矩形并的周长。先纵向扫描线，同一纵坐标的线段保证先加后减，每操作一条线段增加的答案是覆盖长度变化值的绝对值。横向再做一遍就好了。</p>
+<h2 id="cf558e-a-simple-task">CF558E A Simple Task</h2>
+<p><a href="https://www.luogu.com.cn/problem/CF558E">题目</a></p>
+<p>珂朵莉树。</p>
+<p>比 CF896C 还简单，直接用长为 26 的数组维护。</p>
+<h1 id="日-7">21日</h1>
+<h2 id="at2062-agc005d-k-perm-counting">AT2062 [AGC005D] ~K Perm Counting</h2>
+<p><a href="https://www.luogu.com.cn/problem/AT2062">题目</a></p>
+<p>容斥 + DP。</p>
+<p>设 <span class="math inline">\(F(i)\)</span> 为有 <span class="math inline">\(i\)</span> 个位置不合法的方案数，容斥（反演）一下就是求 <span class="math inline">\(\sum_{i=0}^n(-1)^iF(i)\)</span>。</p>
+<p>要求 <span class="math inline">\(F(i)\)</span>。每个位置 <span class="math inline">\(i\)</span> 放 <span class="math inline">\(i-k\)</span> 或 <span class="math inline">\(i+k\)</span>，会影响到其它的位置。</p>
+<p>把坐标看作一列点，值也看成一列点，点 <span class="math inline">\(i\)</span> 和值 <span class="math inline">\(i\pm k\)</span> 连边，可以发现这是个二分图上 <span class="math inline">\(2k\)</span> 条链。</p>
+<p>要选 <span class="math inline">\(i\)</span> 个点不合法，也就是坐标点向值点连边，但是坐标点和值点都至多连一条边。</p>
+<p>把所有链拎出来并连成一条 <span class="math inline">\(2n\)</span> 的大链，设 <span class="math inline">\(f(i,j,0/1)\)</span> 表示前 <span class="math inline">\(i\)</span> 个点连了 <span class="math inline">\(j\)</span> 条边并且 <span class="math inline">\((i-1,i)\)</span> 这条边是否连上的方案数。</p>
+<p>转移就很简单了： <span class="math inline">\(\begin{cases}f(i,j,0)=f(i-1,j,0)+f(i-1,j,1)\\f(i,j,1)=f(i-1,j-1,0)\end{cases}\)</span>，注意 <span class="math inline">\(i\)</span> 为链的开头时 <span class="math inline">\(f(i,j,1)=0\)</span>。</p>
+<p>那么 <span class="math inline">\(F(i)=(f(2n,i,0)+f(2n,i,1))\times (n-i)!\)</span>，其中 <span class="math inline">\((n-i)!\)</span> 表示合法的点随便放。</p>
+<p>复杂度 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
