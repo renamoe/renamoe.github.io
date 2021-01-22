@@ -4384,6 +4384,13 @@ f_*(u,i+1)=f(u,i+1)+f(u,i)\times (sum_0(u)-i)
 <p>转移就很简单了： <span class="math inline">\(\begin{cases}f(i,j,0)=f(i-1,j,0)+f(i-1,j,1)\\f(i,j,1)=f(i-1,j-1,0)\end{cases}\)</span>，注意 <span class="math inline">\(i\)</span> 为链的开头时 <span class="math inline">\(f(i,j,1)=0\)</span>。</p>
 <p>那么 <span class="math inline">\(F(i)=(f(2n,i,0)+f(2n,i,1))\times (n-i)!\)</span>，其中 <span class="math inline">\((n-i)!\)</span> 表示合法的点随便放。</p>
 <p>复杂度 <span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<h1 id="日-8">22日</h1>
+<h2 id="p4097-heoi2013segment">P4097 [HEOI2013]Segment</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4097">题目</a></p>
+<p>李超线段树。</p>
+<p>板子题。就是用线段树每个节点维护包含该区间最优线段（暴露在最高折线中横坐标跨度最大），插入线段时与原最优线段对交点分类讨论，查询就用 <span class="math inline">\(\log n\)</span> 个节点的最优线段都更新一遍。</p>
+<p>具体见 <a href="https://www.luogu.com.cn/blog/_post/232133">George1123 的题解</a>。</p>
+<p>每插入一条线段，会分到 <span class="math inline">\(\log n\)</span> 个节点里，而每个节点都需要 <span class="math inline">\(\mathcal O(\log n)\)</span> 的时间对所有子区间判断新线段是否为最优线段，所以单次插入复杂度 <span class="math inline">\(\mathcal O(\log^2 n)\)</span>；查询显然 <span class="math inline">\(\mathcal O(\log n)\)</span>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
