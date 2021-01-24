@@ -4559,7 +4559,7 @@ F(n)&amp;=\sum_{Q}\prod_{i=1}^kG(i)\\
 <p><strong>性质：</strong></p>
 <ul>
 <li><p>若 <span class="math inline">\(st_u&lt;st_v\)</span> 且 <span class="math inline">\(ed_u&gt;ed_v\)</span>，则 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(v\)</span> 的祖先。</p></li>
-<li><p>括号序上 <span class="math inline">\([st_u,st_v]\)</span> 中未匹配的括号的个数就是 <span class="math inline">\(u-v\)</span> 的树上距离 / 路径长度。</p></li>
+<li><p>括号序上 <span class="math inline">\((st_u,st_v]\)</span> 中未匹配的括号的个数就是 <span class="math inline">\(u-v\)</span> 的树上距离 / 路径长度。</p></li>
 <li><p><strong>若题目满足答案可减性</strong>，那么树上的一条链对应括号序上的一段连续区间，那么可以把路径问题放到括号序上：</p>
 <ul>
 <li><p>把 <span class="math inline">\(u\)</span> 的答案在 <span class="math inline">\(st_u\)</span> 处存 <span class="math inline">\(+1\)</span> 倍，<span class="math inline">\(ed_u\)</span> 处存 <span class="math inline">\(-1\)</span> 倍，那么 <span class="math inline">\([1,st_u]\)</span> 的和就是根到 <span class="math inline">\(u\)</span> 路径的答案之和。可以树上差分得到链答案。</p></li>
