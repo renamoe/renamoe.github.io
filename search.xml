@@ -3156,13 +3156,14 @@ f_1(fa_u,k-dis(fa_u,x))-f_2(u,k-dis(fa_u,x))
 <p>给定 <span class="math inline">\(n\)</span> 个结点的树，每个结点有一种颜色，<span class="math inline">\(m\)</span> 次询问，每次询问 <span class="math inline">\(u,v\)</span> 之间的路径上的结点的不同颜色数。</p>
 <p><span class="math inline">\(1\le n\le 4\times 10^4\)</span>，<span class="math inline">\(1\le m\le 10^5\)</span>。</p>
 </blockquote>
-<p>把树转化成欧拉序，就是序列问题了，设 <span class="math inline">\(st_u,ed_u\)</span> 表示欧拉序中 <span class="math inline">\(u\)</span> 的进栈、出栈顺序。</p>
+<p>把树转化成括号序，就是序列问题了，设 <span class="math inline">\(st_u,ed_u\)</span> 表示欧拉序中 <span class="math inline">\(u\)</span> 的进栈、出栈顺序。</p>
 <p><span class="math inline">\(st_u&lt;st_v\)</span> 时：</p>
 <ul>
 <li><span class="math inline">\(u\)</span> 为 <span class="math inline">\(v\)</span> 的祖先，查询 <span class="math inline">\([st_u,st_v]\)</span> 中所有出现 <span class="math inline">\(1\)</span> 次的点的答案；</li>
 <li>否则，查询 <span class="math inline">\([ed_u,st_v]\)</span> 的所有出现 <span class="math inline">\(1\)</span> 次的点的答案，记得单独处理 <span class="math inline">\(\operatorname{LCA}\)</span>。</li>
 </ul>
-<p>通过重链剖分可以轻松得到 <span class="math inline">\(\operatorname{LCA}\)</span> 和欧拉序，然后就是普通莫队问题了。</p>
+<p>通过重链剖分可以轻松得到 <span class="math inline">\(\operatorname{LCA}\)</span> 和括号序，然后就是普通莫队问题了。</p>
+<p><a href="https://www.luogu.com.cn/paste/dqvgjhd2">code</a></p>
 <h2 id="带修莫队">带修莫队</h2>
 <p><a href="https://www.luogu.com.cn/problem/P1903">P1903 「国家集训队」数颜色 / 维护队列</a></p>
 <p>相对于普通莫队多了修改操作。</p>
@@ -3180,6 +3181,7 @@ f_1(fa_u,k-dis(fa_u,x))-f_2(u,k-dis(fa_u,x))
 <p>设修改操作序列长为 <span class="math inline">\(t\)</span>，将块的大小调整为 <span class="math inline">\(\sqrt[3]{nt}\)</span> 最优，此时总体复杂度 <span class="math inline">\(\mathcal O(\sqrt[3]{n^4t})\)</span>。</p>
 <p>证明见 <a href="https://www.luogu.com.cn/blog/KYD/solution-p1903">Minclxc 的博客</a>。</p>
 <p><del>懒得话</del>实测 <span class="math inline">\(n^{\frac{2}{3}}\)</span> 跑的更快，毕竟 <span class="math inline">\(n\)</span>，<span class="math inline">\(t\)</span> 同阶。</p>
+<p><a href="https://www.luogu.com.cn/paste/n4rt5t4e">code</a></p>
 <h2 id="回滚莫队">回滚莫队</h2>
 <p><a href="https://www.luogu.com.cn/problem/AT1219">AT1219 歴史の研究</a></p>
 <blockquote>
@@ -3196,6 +3198,7 @@ f_1(fa_u,k-dis(fa_u,x))-f_2(u,k-dis(fa_u,x))
 <p>对于每一个块内，设指针 <span class="math inline">\(l,r\)</span>，我们要<strong>保留块的右端点到上一次 <span class="math inline">\(r\)</span> 的答案为 <span class="math inline">\(last\)</span> </strong>；</p>
 <p><span class="math inline">\(r\)</span> 从上一次的 <span class="math inline">\(r\)</span> 向右扩展，更新 <span class="math inline">\(last\)</span>；</p>
 <p><span class="math inline">\(l\)</span> 从块的右端暴力向左扩展，更新答案后撤销掉贡献的所有 <span class="math inline">\(c(a_i)\)</span>。</p>
+<p><a href="https://www.luogu.com.cn/paste/otye22w7">code</a></p>
 <h2 id="二次离线莫队">二次离线莫队</h2>
 <p><a href="https://www.luogu.com.cn/problem/P4887">P4887 【模板】莫队二次离线（第十四分块(前体)）</a></p>
 <blockquote>
@@ -3213,11 +3216,14 @@ f(r+1,[l,r]) = f(r+1,[1,r])-f(r+1,[1,l-1])
 <p>并且每次将 <span class="math inline">\([l,r]\)</span> 扩展到 <span class="math inline">\([l,r&#39;]\)</span> 时，中间需要挂在 <span class="math inline">\(l-1\)</span> 处的点是个区间，可以将空间复杂度由 <span class="math inline">\(\mathcal O(n\sqrt{n})\)</span> 降到 <span class="math inline">\(\mathcal O(n)\)</span>。</p>
 <p>这题有个坑点：<span class="math inline">\(k=0\)</span> 时，在差分处理 <span class="math inline">\(f(x,[l,r]),x\le r\)</span> 时，<span class="math inline">\(x\)</span> 在桶中会多算一次，因为 <span class="math inline">\(x\operatorname{xor}x=0\)</span> 但不符合题目要求。</p>
 <p><strong>总结</strong>一下，二次离线就是在莫队时，通过扫描线一类的方法，将需要更新的答案再次离线处理。</p>
+<p><a href="https://www.luogu.com.cn/paste/gid2fndl">code</a></p>
 <h2 id="一些题目">一些题目</h2>
 <ul>
 <li><p><a href="https://www.luogu.com.cn/problem/P4074">P4074 「WC2013」糖果公园</a></p>
 <p>树上莫队 + 带修莫队。</p>
-<p>不太好码。</p></li>
+<p>二合一，没啥，就是不太好码。</p>
+<p><a href="https://www.luogu.com.cn/paste/5dombdrq">code</a></p></li>
+<li><p>咕~</p></li>
 </ul>
 ]]></content>
       <categories>
@@ -4391,7 +4397,13 @@ f_*(u,i+1)=f(u,i+1)+f(u,i)\times (sum_0(u)-i)
 <p>板子题。就是用线段树每个节点维护包含该区间最优线段（暴露在最高折线中横坐标跨度最大），插入线段时与原最优线段对交点分类讨论，查询就用 <span class="math inline">\(\log n\)</span> 个节点的最优线段都更新一遍。</p>
 <p>具体见 <a href="https://www.luogu.com.cn/blog/_post/232133">George1123 的题解</a>。</p>
 <p>每插入一条线段，会分到 <span class="math inline">\(\log n\)</span> 个节点里，而每个节点都需要 <span class="math inline">\(\mathcal O(\log n)\)</span> 的时间对所有子区间判断新线段是否为最优线段，所以单次插入复杂度 <span class="math inline">\(\mathcal O(\log^2 n)\)</span>；查询显然 <span class="math inline">\(\mathcal O(\log n)\)</span>。</p>
-]]></content>
+<h1 id="日-9">23日</h1>
+<h2 id="p4198-楼房重建">P4198 楼房重建</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4198">题目</a></p>
+<p>分块（正解是线段树）。</p>
+<p>显然每个点转化成斜率。分块的话每个块内维护一个单调递增的序列，序列上二分来合并每个块，复杂度 <span class="math inline">\(\mathcal O(n\sqrt{n}\log n)\)</span> 或者 <span class="math inline">\(\mathcal O(n\sqrt{n\log n})\)</span>，实测前者更快。</p>
+<p>线段树做法是维护区间最大值的该区间答案，每次合并两个区间就是在右区间上二分，复杂度 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
       <categories>
         <category>刷题记录</category>
       </categories>
@@ -4518,6 +4530,76 @@ F(n)&amp;=\sum_{Q}\prod_{i=1}^kG(i)\\
 ]]></content>
       <categories>
         <category>比赛</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>笔记 一些树上问题</title>
+    <url>/2021/01/24/%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>单点、链、子树的查询及修改，很多时候可以相互转化；并且放到 dfs 序或者括号序上，从而避免重链剖分或者 LCT。</p>
+<p><del>大量口胡警告⚠️</del></p>
+<a id="more"></a>
+<p>参照博客：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/zjp-shadow/p/9355538.html">【zjp-shadow】一类树上问题的解决办法</a></li>
+<li><a href="https://www.cnblogs.com/weeping/p/6847112.html">【weeping】dfs序七个经典问题</a></li>
+</ul>
+<h2 id="dfs-序-括号序-欧拉序">dfs 序 &amp; 括号序 &amp; 欧拉序</h2>
+<h3 id="dfs-序">dfs 序</h3>
+<p>按照 dfs 的入栈顺序转化成一个序列。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><p>树上一个子树在 dfs 序中是个连续的区间。</p>
+<p>子树修改转化为序列问题。</p></li>
+<li><p>树上一点与第一个访问的儿子在 dfs 序上是相邻的。</p>
+<p>若优先 dfs 最大的儿子 / 最深的儿子，可用于重链剖分 / 长链剖分。</p></li>
+<li><p>毕竟是 dfs 序，有时候可以模拟递归 dfs。</p></li>
+</ul>
+<h3 id="括号序">括号序</h3>
+<p>入栈加入左括号，出栈加入右括号，分别记为 <span class="math inline">\(st_u\)</span>，<span class="math inline">\(ed_u\)</span>。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><p>若 <span class="math inline">\(st_u&lt;st_v\)</span> 且 <span class="math inline">\(ed_u&gt;ed_v\)</span>，则 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(v\)</span> 的祖先。</p></li>
+<li><p>括号序上 <span class="math inline">\([st_u,st_v]\)</span> 中未匹配的括号的个数就是 <span class="math inline">\(u-v\)</span> 的树上距离 / 路径长度。</p></li>
+<li><p><strong>若题目满足答案可减性</strong>，那么树上的一条链对应括号序上的一段连续区间，那么可以把路径问题放到括号序上：</p>
+<ul>
+<li><p>把 <span class="math inline">\(u\)</span> 的答案在 <span class="math inline">\(st_u\)</span> 处存 <span class="math inline">\(+1\)</span> 倍，<span class="math inline">\(ed_u\)</span> 处存 <span class="math inline">\(-1\)</span> 倍，那么 <span class="math inline">\([1,st_u]\)</span> 的和就是根到 <span class="math inline">\(u\)</span> 路径的答案之和。可以树上差分得到链答案。</p></li>
+<li><p>另一种是用于树上莫队，括号序记录点的编号，我们只统计区间内出现次数为 <span class="math inline">\(1\)</span> 的点的答案，需要对 <span class="math inline">\(u,v\)</span> 的祖先关系分类讨论一下。</p>
+<p>具体应用见 <a href="/2020/12/17/总结-莫队/">题解 SP10707 COT2 - Count on a tree II</a>。</p></li>
+</ul></li>
+</ul>
+<h3 id="欧拉序">欧拉序</h3>
+<p>入栈时加入 <span class="math inline">\(u\)</span>，出栈时加入 <span class="math inline">\(fa_u\)</span>。记 <span class="math inline">\(u\)</span> 在欧拉序中第一次出现位置 <span class="math inline">\(fir_u\)</span>。</p>
+<p><strong>性质：</strong></p>
+<ul>
+<li><p>欧拉序 <span class="math inline">\([fir_u,fir_v]\)</span> 中深度最小的点为 <span class="math inline">\(\operatorname{LCA}(u,v)\)</span>。</p>
+<p>通过 st 表可以 <span class="math inline">\(\mathcal O(n\log n)\)</span> 预处理、<span class="math inline">\(\mathcal O(1)\)</span> 求 <span class="math inline">\(\operatorname{LCA}\)</span>，看 <a href="/2020/01/17/2020-01-17-板子-LCA/">这里</a>。</p></li>
+</ul>
+<h2 id="树上差分">树上差分</h2>
+<ul>
+<li><p><strong>链上修改</strong>，设 <span class="math inline">\(lca\)</span> 为 <span class="math inline">\(，\operatorname{LCA}(u,v)\)</span>对于任意一条树上的链 <span class="math inline">\([u,v]\)</span>，都可以拆成两条“直上直下”的链，即 <span class="math inline">\([u,lca]\)</span> 和 <span class="math inline">\([v,lca)\)</span>。</p>
+<p>然后就在 <span class="math inline">\(u,v\)</span> 处标记 <span class="math inline">\(+1\)</span>，在 <span class="math inline">\(lca,fa_{lca}\)</span> 处标记 <span class="math inline">\(-1\)</span>。</p>
+<p>用什么东西维护根到某一点的链和，或者像多次修改一次询问的题（<a href="https://www.luogu.com.cn/problem/P3258">松鼠的新家</a>）最后处理。</p></li>
+<li><p><strong>链上查询</strong>，拆成两条链后再差分，因为我们往往容易得到根到某节点的路径和。下文默认省略拆链和差分。</p></li>
+</ul>
+<h2 id="一些转化关系">一些转化关系</h2>
+<p>以下均只适用于能够简单加和的答案。</p>
+<p>子树查询就是用数据结构维护 dfs 序。</p>
+<ul>
+<li><p><strong>链上修改，单点查询</strong> <span class="math inline">\(\large\Rightarrow\)</span> <strong>单点修改，子树查询</strong></p>
+<p>差分链，一个点 <span class="math inline">\(u\)</span> 为根的子树之和只会统计起点在子树里、终点是 <span class="math inline">\(u\)</span> 的祖先的所有链的答案，而终点也在子树内的会抵消掉。所以转化为单点修改，子树查询。</p>
+<p><del>右边到左边也是可以的，就是将单点修改转化为将根到该点的路径都修改了，不过没用。</del></p></li>
+<li><p><strong>单点修改，链上查询</strong> <span class="math inline">\(\large\Rightarrow\)</span> <strong>子树修改，单点查询</strong></p>
+<p>修改询问倒过来也一样，画个图模拟就懂了。实现也是维护根到该点的路径和，然后链底减去链顶就是链的答案。</p></li>
+<li><p><strong>链上修改，子树查询</strong> <span class="math inline">\(\large\Rightarrow\)</span> <strong>单点修改，子树查询</strong></p>
+<p>链上修改对于子树的答案是多个，设 <span class="math inline">\(deep_u\)</span> 表示 <span class="math inline">\(u\)</span> 的深度，对于每个点维护修改值 <span class="math inline">\(val_u\)</span> 和 <span class="math inline">\(val_u\times deep_u\)</span>。这样子树查询就是 <span class="math inline">\(\sum val_v\times deep_v-deep_u\times\sum val_v\)</span>（<span class="math inline">\(v\)</span> 为 <span class="math inline">\(u\)</span> 子树里的点）。</p></li>
+<li><p><strong>子树修改，链上查询</strong> <span class="math inline">\(\large\Rightarrow\)</span> <strong>子树修改，单点查询</strong></p>
+<p>类似地，对 <span class="math inline">\(u\)</span> 的子树修改值为 <span class="math inline">\(val_u\)</span> 和 <span class="math inline">\(val_u\times deep_u\)</span>，单点 <span class="math inline">\(v\)</span> 的答案得到根到 <span class="math inline">\(v\)</span> 的路径和，即 <span class="math inline">\(-\sum val_u\times deep_u+deep_v\times \sum val_u\)</span>（这里 <span class="math inline">\(u\)</span> 为 <span class="math inline">\(v\)</span> 的祖先）。</p></li>
+</ul>
+<hr />
+<p>感觉还有很多要总结的。。。</p>
+]]></content>
+      <categories>
+        <category>总结</category>
       </categories>
   </entry>
 </search>
