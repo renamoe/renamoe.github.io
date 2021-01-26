@@ -3753,7 +3753,7 @@ f_i\leftarrow 1+\sum_{1\le j&lt; i}[a_i \operatorname{xor} a_j\ge x]f_j
 </blockquote>
 <a id="more"></a>
 <h2 id="思路">思路</h2>
-<p>DP 时，如果点 i 能从点 j 转移过来，满足条件： <span class="math display">\[
+<p>DP 时，如果点 <span class="math inline">\(i\)</span> 能从点 <span class="math inline">\(j\)</span> 转移过来，满足条件： <span class="math display">\[
 \begin{align}
 i&amp;&gt;j\\
 a_i&amp;&gt; a_j\\
@@ -3770,9 +3770,6 @@ a_i-a_j&amp;\le i-j
       <categories>
         <category>题解</category>
       </categories>
-      <tags>
-        <tag>CDQ分治</tag>
-      </tags>
   </entry>
   <entry>
     <title>题解 P7078 贪吃蛇</title>
@@ -4403,7 +4400,16 @@ f_*(u,i+1)=f(u,i+1)+f(u,i)\times (sum_0(u)-i)
 <p>分块（正解是线段树）。</p>
 <p>显然每个点转化成斜率。分块的话每个块内维护一个单调递增的序列，序列上二分来合并每个块，复杂度 <span class="math inline">\(\mathcal O(n\sqrt{n}\log n)\)</span> 或者 <span class="math inline">\(\mathcal O(n\sqrt{n\log n})\)</span>，实测前者更快。</p>
 <p>线段树做法是维护区间最大值的该区间答案，每次合并两个区间就是在右区间上二分，复杂度 <span class="math inline">\(\mathcal O(n\log^2n)\)</span>。</p>
-<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>]]></content>
+<h1 id="日-10">26日</h1>
+<h2 id="p2056-zjoi2007捉迷藏">P2056 [ZJOI2007]捉迷藏</h2>
+<p><a href="https://www.luogu.com.cn/problem/P2056">题目</a></p>
+<p>括号序 + 线段树。</p>
+<p>将树的 <a href="/2021/01/24/笔记-一些树上问题/">括号序</a> 弄出来，然后我们知道两点在括号序上的位置 <span class="math inline">\(pos_u,pos_v\)</span> 之间未匹配的括号数就是距离。去掉匹配的括号，剩下的就是左边若干 <code>)</code> 和右边若干 <code>(</code>，数目记为 <span class="math inline">\(a,b\)</span>。</p>
+<p>我们要求黑点之间最大距离，可以类似“最大子段和”用线段树维护。</p>
+<p>两个区间合并，左区间是以黑点开头的后缀（<span class="math inline">\(a_r,b_r\)</span>），右区间是以黑点结尾的前缀（<span class="math inline">\(a_l,b_l\)</span>），合并就是 <span class="math inline">\(a_r+b_l+|b_l-a_r|\)</span>，也就是 <span class="math inline">\(\max(a_r+b_r-a_l+b_l,~a_r-b_r+a_l+b_l)\)</span>。</p>
+<p>设 <span class="math inline">\(lmax_1\)</span> 为前缀最大 <span class="math inline">\(a+b\)</span>，<span class="math inline">\(lmax_2\)</span> 为前缀最大 <span class="math inline">\(b-a\)</span>，<span class="math inline">\(rmax_1\)</span> 为前缀最大 <span class="math inline">\(a+b\)</span>，<span class="math inline">\(rmax_2\)</span> 为前缀最大 <span class="math inline">\(a-b\)</span>，就可以维护了。</p>
+<p>这道题还可以用动态点分治做。</p>
+]]></content>
       <categories>
         <category>刷题记录</category>
       </categories>
@@ -4555,11 +4561,11 @@ F(n)&amp;=\sum_{Q}\prod_{i=1}^kG(i)\\
 <li><p>毕竟是 dfs 序，有时候可以模拟递归 dfs。</p></li>
 </ul>
 <h3 id="括号序">括号序</h3>
-<p>入栈加入左括号，出栈加入右括号，分别记为 <span class="math inline">\(st_u\)</span>，<span class="math inline">\(ed_u\)</span>。</p>
+<p>入栈加入左括号和编号，出栈加入右括号，位置分别记为 <span class="math inline">\(st_u\)</span>，<span class="math inline">\(pos_u\)</span>，<span class="math inline">\(ed_u\)</span>。</p>
 <p><strong>性质：</strong></p>
 <ul>
 <li><p>若 <span class="math inline">\(st_u&lt;st_v\)</span> 且 <span class="math inline">\(ed_u&gt;ed_v\)</span>，则 <span class="math inline">\(u\)</span> 是 <span class="math inline">\(v\)</span> 的祖先。</p></li>
-<li><p>括号序上 <span class="math inline">\((st_u,st_v]\)</span> 中未匹配的括号的个数就是 <span class="math inline">\(u-v\)</span> 的树上距离 / 路径长度。</p></li>
+<li><p>括号序上区间 <span class="math inline">\((pos_u,pos_v)\)</span> 中未匹配的括号的个数就是 <span class="math inline">\(u-v\)</span> 的树上距离 / 路径长度。</p></li>
 <li><p><strong>若题目满足答案可减性</strong>，那么树上的一条链对应括号序上的一段连续区间，那么可以把路径问题放到括号序上：</p>
 <ul>
 <li><p>把 <span class="math inline">\(u\)</span> 的答案在 <span class="math inline">\(st_u\)</span> 处存 <span class="math inline">\(+1\)</span> 倍，<span class="math inline">\(ed_u\)</span> 处存 <span class="math inline">\(-1\)</span> 倍，那么 <span class="math inline">\([1,st_u]\)</span> 的和就是根到 <span class="math inline">\(u\)</span> 路径的答案之和。可以树上差分得到链答案。</p></li>
