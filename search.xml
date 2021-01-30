@@ -4580,7 +4580,7 @@ f_n-f_m&amp;\equiv(A^n-A^m)X+\frac{(A^n-A_m)B}{A-1}\\
 <p>斐波那契循环节 + 矩阵快速幂。</p>
 <p>考场上想写 <span class="math inline">\(60\)</span> 分，随机化找循环节 + <span class="math inline">\(\mathcal O(\log n)\)</span> 快速幂 + 巨大常数，混了个 <span class="math inline">\(35\)</span> 分。</p>
 <p>求斐波那契循环节的确定性算法及证明还没懂，先咕。</p>
-<h2 id="寿司晚宴">寿司晚宴</h2>
+<h2 id="c-寿司晚宴">C 寿司晚宴</h2>
 <p><a href="https://www.luogu.com.cn/problem/T166447">题目</a></p>
 <blockquote>
 <p>有 <span class="math inline">\(n\)</span> 个寿司排成一排，<span class="math inline">\(m\)</span> 个人，每个人有一个喜欢的寿司，可以以某个寿司的左右侧为起点，朝向喜欢的寿司移动，直到取走并离开；若已经被其他人拿走，方向不变继续走，取走之后遇见的第一份未被取走的寿司后离开，或者直到边界。</p>
