@@ -2664,6 +2664,13 @@ f_*(u,i+1)=f(u,i+1)+f(u,i)\times (sum_0(u)-i)
 <p>这里有个技巧，只统计经过最小值的方案。<code>00</code> 和 <code>01</code> 操作过程中 <span class="math inline">\(x\)</span> 值是会变小的，当 <span class="math inline">\(x=0\)</span> 时就没法通过这两个操作转移了，所以最小值就是 <span class="math inline">\(0\)</span>。</p>
 <p>那么设 <span class="math inline">\(f(i,j,0/1)\)</span> 表示走 <span class="math inline">\(i\)</span> 步有 <span class="math inline">\(j\)</span> 个白球、是否经过 <span class="math inline">\(x=0\)</span> 的方案数，初始状态注意 <span class="math inline">\(f(0,0,1)=1\)</span>，<span class="math inline">\(f(0,i,0)=1\)</span>。</p>
 <p>另外注意 <code>00</code> 操作是不能在 <span class="math inline">\(x=0\)</span> 处转移的。最后复杂度 <span class="math inline">\(\mathcal O(nm)\)</span>。</p>
+<h1 id="日-12">31日</h1>
+<h2 id="bzoj2870-最长道路tree">BZOJ#2870 最长道路tree</h2>
+<p><a href="https://darkbzoj.tk/problem/2870">题目</a></p>
+<p>边分治。</p>
+<p>类似点分治，找到最接近重心的边，分成两棵子树来处理，相比点分治的优势就是处理答案简单，且不需要麻烦的容斥。不过会被菊花图卡，所以需要三度化处理。</p>
+<p>对于这道题，就是统计答案时维护距离和路径最小值，然后双指针扫两遍。</p>
+<p>具体地最好看 <a href="https://darkbzoj.tk/submission/107881">代码</a>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
@@ -2764,8 +2771,8 @@ f_n-f_m&amp;\equiv(A^n-A^m)X+\frac{(A^n-A_m)B}{A-1}\\
 <p><span class="math inline">\(m\le n\le 10^5\)</span>。</p>
 </blockquote>
 <p>先接链成环，在 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(n\)</span> 之间加入 <span class="math inline">\(0\)</span> 号寿司表示断点。</p>
-<p>考虑每个人的方向和起点，那么这样一个排列方案数为 <span class="math inline">\(2^m(n+1)^m\)</span>，除以轮换数就是圆排列的方案数 <span class="math inline">\(2^m(n+1)^{m-1}\)</span>。</p>
-<p>然后没有人会拿的寿司有 <span class="math inline">\(n-m+1\)</span> 个，即可以放断点的方案数。</p>
+<p>考虑每个人的方向和起点，排列方案数为 <span class="math inline">\(2^m(n+1)^m\)</span>，除以轮换数 <span class="math inline">\(n+1\)</span> 就是圆排列方案数。</p>
+<p>然后我们钦定每个人都能拿到寿司，显然没有人会拿的寿司有 <span class="math inline">\(n-m+1\)</span> 个并且不再某个人的路径上，即可以放断点的方案数。</p>
 <p>所以最后方案数为： <span class="math display">\[
 2^m(n+1)^{m-1}(n-m+1)
 \]</span> 代码就没必要了。</p>
@@ -3293,7 +3300,26 @@ f_1(fa_u,k-dis(fa_u,x))-f_2(u,k-dis(fa_u,x))
 <p><a href="https://www.luogu.com.cn/paste/7lg5e1ma">code</a></p>
 <h3 id="p3920-wc2014紫荆花之恋">P3920 [WC2014]紫荆花之恋</h3>
 <p><a href="https://www.luogu.com.cn/problem/P3920">题目</a></p>
-<p>在写了在写了。</p>
+<blockquote>
+<p>树上有点权 <span class="math inline">\(r_i\)</span> 和边权 <span class="math inline">\(c_i\)</span>，每次往一棵树里加一个叶子，每次操作之后查询满足 <span class="math inline">\(dis(i,j)\le r_i+r_j\)</span> 的 <span class="math inline">\((i,j)\)</span> 点对数量。</p>
+<p><span class="math inline">\(n\le 10^5\)</span>，<span class="math inline">\(r_i\le 2\times 10^9\)</span>，<span class="math inline">\(c_i\le 10^4\)</span>。强制在线。</p>
+</blockquote>
+<p>由于点权数据范围限制，点分树上每个点信息只能用平衡树维护（我选择替罪羊树）。</p>
+<p>设某个子树的根为 <span class="math inline">\(x\)</span>，很显然的得到 <span class="math inline">\(dis(x,j)-r_j\le r_i-dis(x,i)\)</span>，每个点就可以用两棵平衡树维护了。</p>
+<p>发现加叶子非常难做，普通的点分树结构都是不变的，如果直接加入点分树会导致不平衡。</p>
+<p>这时候类似替罪羊树的思想，把不平衡的子树拍扁重建。</p>
+<p>具体的，插入叶子后，往上跳父亲，找到深度最小的点 <span class="math inline">\(x\)</span> 满足：<span class="math inline">\(x\)</span> 最大的儿子的 <span class="math inline">\(size\)</span> <span class="math inline">\(\ge\)</span> <span class="math inline">\(x\)</span> 的 <span class="math inline">\(size\)</span> <span class="math inline">\(\times\)</span> <span class="math inline">\(\alpha\)</span>。把这 <span class="math inline">\(x\)</span> 子树的点全部拿出来重构点分树。</p>
+<p>细节很多：</p>
+<ul>
+<li><span class="math inline">\(\alpha=0.8\)</span> 才能在 UOJ 卡过（Luogu 评测机好快啊）；</li>
+<li>重构点分树时要把原来每个点的平衡树删掉；</li>
+<li>平衡树的总空间大概是 <span class="math inline">\(\mathcal O(n\log n)\)</span> 级别的，并且要写垃圾回收；</li>
+<li>注意不要让 <span class="math inline">\(0\)</span> 和 <span class="math inline">\(1\)</span> 连边；<del>只有我才会犯这种错。</del></li>
+<li>为了维护点分树上父子关系，每个点会开一个 <code>vector</code> 来存儿子，但是重构时一定记得修改（重构的子树的根）。</li>
+</ul>
+<p>其实写的不是太丑的话，不需要特意卡常。</p>
+<p>具体看代码。</p>
+<p><a href="https://www.luogu.com.cn/paste/hjk0xfrb">code</a></p>
 ]]></content>
       <categories>
         <category>总结</category>
