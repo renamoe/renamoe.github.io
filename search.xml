@@ -2520,6 +2520,8 @@ f_{i,j,S}\leftarrow f_{i-1,j,S}+f_{i-1,j-1,S-p(x)}
     <title>21年1月 刷题记录</title>
     <url>/2021/01/08/21%E5%B9%B41%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>哇塞怎么 2021 年了，怎么我还是那么菜。qwq</p>
+<p>这个月做题重心在 SAM、数据结构。</p>
+<p>因为疫情被封在学校很自闭，这个月做题很少啊，文化课也开始拖后腿了。</p>
 <a id="more"></a>
 <h1 id="日">8日</h1>
 <h2 id="p3181-haoi2016找相同字符">P3181 [HAOI2016]找相同字符</h2>
@@ -4619,6 +4621,27 @@ w(j,i)&amp;=\max\{\max_{j\le k&lt;i}\{a_k\},\ a_i-1\} + 1
 <p><a href="https://www.luogu.com.cn/problem/CF1175E">题目</a></p>
 <p>倍增。</p>
 <p>设 <span class="math inline">\(f_{i,j}\)</span> 表示从 <span class="math inline">\(i\)</span> 点走 <span class="math inline">\(j\)</span> 条线段能够到达最远的点，每次询问 <span class="math inline">\(\mathcal O(\log n)\)</span> 跳到最远的不超过区间右端，再跳一条线段就是答案。</p>
+]]></content>
+      <categories>
+        <category>刷题记录</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>21年2月 刷题记录</title>
+    <url>/2021/02/02/21%E5%B9%B42%E6%9C%88-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>拖着疲惫打开新的一月，也要加油啊。</p>
+<a id="more"></a>
+<h1 id="日">1日</h1>
+<h2 id="p4220-wc2018通道">P4220 [WC2018]通道</h2>
+<p><a href="https://www.luogu.com.cn/problem/P4220">题目</a></p>
+<p>边分治 + 虚树 + 树形 DP。</p>
+<p>三棵树 <span class="math inline">\(T_1,T_2,T_3\)</span>，最大化 <span class="math inline">\(dis_1(u,v)+dis_2(u,v)+dis_3(u,v)\)</span>。</p>
+<p>那么 <span class="math inline">\(T_1\)</span> 先边分治，设每次重心边端点为 <span class="math inline">\(eu,ev\)</span> 那么答案就是 <span class="math display">\[
+dis_1(eu,u)+dis_1(ev,v)+deep_2(u)+deep_2(v)-2deep_2(\operatorname{LCA}_2(u,v))+dis_3(u,v)
+\]</span> 我们得到分治的连通块，将重心边两边的子树分别染成黑色和白色，然后在 <span class="math inline">\(T_2\)</span> 对这些点建立虚树。在虚树上 dfs，那么 <span class="math inline">\(\operatorname{LCA}_2(u,v)\)</span> 就固定了，只要统计属于不同子树且颜色不同的 <span class="math inline">\(u,v\)</span> 的最大答案。</p>
+<p>然后设 <span class="math inline">\(w(u)=dis_1(eu)+deep_2(u)\)</span>，把 <span class="math inline">\(w(u),w(v)\)</span> 加到 <span class="math inline">\(T_3\)</span> 中 <span class="math inline">\(u,v\)</span> 的路径长度上，最大化这个新的 <span class="math inline">\(dis_3&#39;(u,v)\)</span> 即可。</p>
+<p>现在就是虚树上答案的统计问题了，合并两个 <span class="math inline">\(T_2\)</span> 的子树其实就是合并 <span class="math inline">\(T_3\)</span> 上的两个点集。这里有个结论：点集 <span class="math inline">\(A,B\)</span> 最长路径的端点分别为 <span class="math inline">\(u_A,v_A,u_B,v_B\)</span>，那么 <span class="math inline">\(A\cup B\)</span> 的最长路径的端点一定是 <span class="math inline">\(\{u_A,v_A,u_B,v_B\}\)</span> 中的两个。答案也同时类似的更新一下。</p>
+<p><span class="math inline">\(\operatorname{LCA}\)</span> 使用 st 表 <span class="math inline">\(\mathcal O(1)\)</span> 查询。总复杂度 <span class="math inline">\(\mathcal O(n\log^2 n)\)</span>。</p>
 ]]></content>
       <categories>
         <category>刷题记录</category>
