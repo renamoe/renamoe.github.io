@@ -25,7 +25,7 @@
 <meta property="og:description" content="计数 + SAM + 计数。 \(\rm \color{black}{E}\color{red}{ternalAlexander}\) 出的神仙模拟赛，我再一次爆零垫底了，不过题目质量很高👍。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-03T13:35:32.000Z">
-<meta property="article:modified_time" content="2021-01-16T08:00:31.376Z">
+<meta property="article:modified_time" content="2021-02-02T03:57:34.582Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-16 16:00:31" itemprop="dateModified" datetime="2021-01-16T16:00:31+08:00">2021-01-16</time>
+                <time title="修改时间：2021-02-02 11:57:34" itemprop="dateModified" datetime="2021-02-02T11:57:34+08:00">2021-02-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,7 +275,7 @@
 </blockquote>
 <p>容斥 + 多项式求逆。</p>
 <p>转化题意将带标号的点 <span class="math inline">\(1\dots n\)</span> 依次连成一条链，将其划分，并且一个点的两条边不能同时被割去，然后连接成一棵新树。</p>
-<p>有个引理：<span class="math inline">\(n\)</span> 个点 <span class="math inline">\(k\)</span> 个连通块形成生成树方案数为 <span class="math inline">\(n^{n-2}\prod_{i=1}^k a_i\)</span>。</p>
+<p>有个引理：<span class="math inline">\(n\)</span> 个点 <span class="math inline">\(k\)</span> 个连通块形成生成树方案数为 <span class="math inline">\(n^{k-2}\prod_{i=1}^k a_i\)</span>。</p>
 <p>枚举合法划分方案（看做一个割掉边的集合）<span class="math inline">\(P\)</span>，记 <span class="math inline">\(W(P)\)</span> 为划分 <span class="math inline">\(P\)</span> 产生的方案数，这里提出一个 <span class="math inline">\(n^{-2}\)</span> 后面再乘回去，所以 <span class="math inline">\(W(P)=\prod_{i=1}^k a_in\)</span>。</p>
 <p>设 <span class="math inline">\(n\)</span> 个点满足要求的答案为 <span class="math inline">\(F(n)\times n^{-2}\)</span>，现在要计算 <span class="math inline">\(F(n)\)</span>。</p>
 <p>直接计和会发现有的方案重复了，因为没有限定连的是那条边，两个连通块可能重新连上割掉的边合并成一个。</p>
