@@ -25,7 +25,7 @@
 <meta property="og:description" content="拖着疲惫打开新的一个月，也要加油啊。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-01T17:01:51.000Z">
-<meta property="article:modified_time" content="2021-02-02T16:21:16.695Z">
+<meta property="article:modified_time" content="2021-02-04T03:47:35.582Z">
 <meta property="article:author" content="RenaMoe">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-03 00:21:16" itemprop="dateModified" datetime="2021-02-03T00:21:16+08:00">2021-02-03</time>
+                <time title="修改时间：2021-02-04 11:47:35" itemprop="dateModified" datetime="2021-02-04T11:47:35+08:00">2021-02-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,7 +294,42 @@ dis_1(eu,u)+dis_1(ev,v)+deep_2(u)+deep_2(v)-2deep_2(\operatorname{LCA}_2(u,v))+d
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1742">题目</a> <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2533">双倍经验</a></p>
 <p>计算几何 + 随机增量法。</p>
 <p>随机增量法：枚举 <span class="math inline">\(i\)</span>，找到 <span class="math inline">\([1,i)\)</span> 中不在圆内的点 <span class="math inline">\(j\)</span>，由 <span class="math inline">\(i,j\)</span> 更新圆；再找到 <span class="math inline">\([1,j)\)</span> 中不在圆内的点，由 <span class="math inline">\(i,j,k\)</span> 更新圆。可以 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/_post/96008">证明</a> 复杂度为 <span class="math inline">\(\mathcal O(n)\)</span>。</p>
-<p>问题在于如何由三个点 <span class="math inline">\(A,B,C\)</span> 确定外接圆，设三个向量 <span class="math inline">\(\vec a,\vec b,\vec c\)</span>，我们要求 <span class="math inline">\(AB\)</span> 和 <span class="math inline">\(BC\)</span> 垂线交点。可以通过向量的加减、旋转得到垂线的一点 <span class="math inline">\(\vec p\)</span> 和单位向量 <span class="math inline">\(\vec v\)</span>。列方程 <span class="math inline">\((\vec{p_1}+t\vec{v_1}-\vec{p_2})\cdot \vec{v2}=0\)</span> 得到 <span class="math inline">\(\displaystyle t=\frac{(\vec{p_2}-\vec{p_1})\cdot \vec{v_2}}{\vec{v_1}\cdot\vec{v_2}}\)</span>。</p>
+<p>问题在于如何由三个点 <span class="math inline">\(A,B,C\)</span> 确定外接圆，设三个向量 <span class="math inline">\(\vec a,\vec b,\vec c\)</span>，我们要求 <span class="math inline">\(AB\)</span> 和 <span class="math inline">\(BC\)</span> 垂线交点。可以通过向量的加减、旋转得到垂线的一点 <span class="math inline">\(\vec p\)</span> 和单位向量 <span class="math inline">\(\vec v\)</span>。列方程 <span class="math inline">\((\vec{p_1}+t\vec{v_1}-\vec{p_2})\cdot \vec{v_2}=0\)</span> 得到 <span class="math inline">\(\displaystyle t=\frac{(\vec{p_2}-\vec{p_1})\cdot \vec{v_2}}{\vec{v_1}\cdot\vec{v_2}}\)</span>。</p>
+<h1 id="日-2">3日</h1>
+<h2 id="p4886-快递员">P4886 快递员</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4886">题目</a></p>
+<p>点分治。</p>
+<p>以重心为中心点，算出询问点对的距离的最大值，再分治按重心移动。把距离最大的若干个点对拎出来：</p>
+<ul>
+<li>如果有一个点对分属不同子树，那么移动中心点答案只会不变或者更劣；</li>
+<li>剩下的点对一定是两个点在同一棵子树的情况，如果这样的点对大于等于两个，移动中心点只会更劣；</li>
+<li>唯一可以移动的情况是只有一个点对为最大值且两点在一个子树，那么递归进该子树。</li>
+</ul>
+<p>复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h2 id="cf566c-logistical-questions">CF566C Logistical Questions</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF566C">题目</a></p>
+<p>点分治。</p>
+<p>先考虑一条链的情况，设 <span class="math inline">\(f(x)\)</span> 表示 <span class="math inline">\(\sum_i dis(x,i)^{1.5}\)</span>，<del>我猜</del>显然这是一个下凸的单峰函数，那么可以在链上二分，计算 <span class="math inline">\(x\)</span> 和相邻点的 <span class="math inline">\(f\)</span> 值，递归到更小的一侧。</p>
+<p>放到树上，就是用点分治来代替二分。由于单峰函数的和还是单峰函数，所以树上最优的中心点只有一个。怎么判断中心点 <span class="math inline">\(u\)</span> 到其它点 <span class="math inline">\(f\)</span> 值变化的走向？求导。我们求出每个子树 <span class="math inline">\(v\)</span> 的函数值和的导数 <span class="math inline">\(s(v)\)</span>（也是导数和）。设 <span class="math inline">\(d_i\)</span> 表示 <span class="math inline">\(i\)</span> 到 <span class="math inline">\(u\)</span> 的距离，<span class="math inline">\(\Delta d\)</span> 表示 <span class="math inline">\((u,v)\)</span> 边的长度，则 <span class="math inline">\(u\)</span> 转移到 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(f\)</span> 值为 <span class="math display">\[
+\sum_{i\not\in tree(v)}(d_i+\Delta d)^{1.5}-\sum_{i\in tree(v)}(d_i-\Delta d)^{1.5}
+\]</span> 求导得 <span class="math display">\[
+\sum_{i\not\in tree(v)}1.5\sqrt{d_i+\Delta d}-\sum_{i\in tree(v)}1.5\sqrt{d_i-\Delta d}
+\]</span> 找到一个 <span class="math inline">\(v\)</span> 满足上式小于 <span class="math inline">\(0\)</span> 就递归下去。复杂度 <span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<h1 id="日-3">4日</h1>
+<h2 id="p5395-第二类斯特林数行">P5395 第二类斯特林数·行</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5395">题目</a></p>
+<p>二项式反演 + NTT。</p>
+由组合意义（<span class="math inline">\(n\)</span> 个物品放到 <span class="math inline">\(m\)</span> 个盒子，枚举有 <span class="math inline">\(i\)</span> 个盒子非空，划分 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(i\)</span> 个集合，再乘上排列数）得 <span class="math display">\[
+m^n=\sum_{i=0}^m \begin{Bmatrix}n\\i\end{Bmatrix}i!\binom{m}{i}
+\]</span> 二项式反演得 $$
+<span class="math display">\[\begin{aligned}
+
+\\
+\begin{Bmatrix}n\\m\end{Bmatrix}&amp;=\frac{1}{m!}\sum_{i=0}^m(-1)^{m-i}\binom{m}{i}i^n
+\\
+&amp;=\sum_{i=0}^m\frac{(-1)^{m-i}}{(m-i)!}\frac{i^n}{i!}
+\end{aligned}\]</span>
+<p>$$ 就可以 NTT 来 <span class="math inline">\(\mathcal O(m\log m)\)</span> 计算卷积了。</p>
 
     </div>
 
@@ -373,7 +408,7 @@ dis_1(eu,u)+dis_1(ev,v)+deep_2(u)+deep_2(v)-2deep_2(\operatorname{LCA}_2(u,v))+d
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">1日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4220-wc2018%E9%80%9A%E9%81%93"><span class="nav-text">P4220 [WC2018]通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4565-ctsc2018%E6%9A%B4%E5%8A%9B%E5%86%99%E6%8C%82"><span class="nav-text">P4565 [CTSC2018]暴力写挂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf757g-can-bash-save-the-day"><span class="nav-text">CF757G Can Bash Save the Day?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96"><span class="nav-text">P1742 最小圆覆盖</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5"><span class="nav-text">1日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4220-wc2018%E9%80%9A%E9%81%93"><span class="nav-text">P4220 [WC2018]通道</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-1"><span class="nav-text">2日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4565-ctsc2018%E6%9A%B4%E5%8A%9B%E5%86%99%E6%8C%82"><span class="nav-text">P4565 [CTSC2018]暴力写挂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf757g-can-bash-save-the-day"><span class="nav-text">CF757G Can Bash Save the Day?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96"><span class="nav-text">P1742 最小圆覆盖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-2"><span class="nav-text">3日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p4886-%E5%BF%AB%E9%80%92%E5%91%98"><span class="nav-text">P4886 快递员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cf566c-logistical-questions"><span class="nav-text">CF566C Logistical Questions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5-3"><span class="nav-text">4日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p5395-%E7%AC%AC%E4%BA%8C%E7%B1%BB%E6%96%AF%E7%89%B9%E6%9E%97%E6%95%B0%E8%A1%8C"><span class="nav-text">P5395 第二类斯特林数·行</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
